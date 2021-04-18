@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'top_pages#home'
+  root 'Top#home'
 end
