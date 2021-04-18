@@ -11,6 +11,7 @@ module HanaNavApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.assets.initialize_on_precompile = false
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -18,9 +19,15 @@ module HanaNavApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    # devise日本語化
-    config.i18n.default_locale = :ja
-    # タイムゾーンも変更
-    config.time_zone = 'Asia/Tokyo'
   end
 end
+
+module AssociationTutorial
+  class Application < Rails::Application
+    # 以下を追加すれば日本語に
++   config.i18n.default_locale = :ja
+    # タイムゾーンも変更するなら，以下を追加
++   config.time_zone = 'Asia/Tokyo'
+  end
+end
+

@@ -18,9 +18,5 @@ module HanaNavApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    # devise日本語化
-    config.i18n.default_locale = :ja
-    # タイムゾーンも変更
-    config.time_zone = 'Asia/Tokyo'
   end
 end
