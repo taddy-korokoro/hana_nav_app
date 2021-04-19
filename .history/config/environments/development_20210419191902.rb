@@ -54,7 +54,7 @@ Rails.application.configure do
       password: password,
       authentication: "plain"
   }
-
+  
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
