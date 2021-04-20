@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div class="container-fluid py-4 <%= devise_controller? ? 'mw-md' : 'mw-xl' %>">
+    <div class="container-fluid py-4 devise_controller? ">
     <%= render 'shared/header'%>
     <%= yield %>
     </div>
