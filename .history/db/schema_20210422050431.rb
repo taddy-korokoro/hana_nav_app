@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_04_18_102803) do
     t.string "user_name", default: "", null: false
     t.string "profile_image", default: ""
     t.text "self_introduction", default: "", null: false
-    t.string "email", default: "", null: false
+    t.string "email", default: "111111", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
