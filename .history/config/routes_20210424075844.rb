@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     delete 'logout', to: 'devise/sessions#destroy'
   end
 
+  # get 'users/show' => 'users#show'
   resources :users, only: [:show]
 end

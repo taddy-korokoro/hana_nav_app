@@ -26,6 +26,13 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+
+    <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
+  </div>
+
+  <div class="form-group">
     <%= f.label :自己紹介 %>
     <%= f.text_area :self_introduction, autofocus: true, autocomplete: 'off', placeholder: "プロフィールを入力してください", class: 'form-control' %>
   </div>

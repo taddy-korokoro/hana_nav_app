@@ -1,0 +1,6 @@
+<%= render 'shared/flash_messages' %>
+<% @user.each do |user|%>
+  <h2><%= user.user_name %>さんのはなたび記録</h2>
+  <p>自己紹介<br><%= user.self_introduction %></p>
+  <p>ID: <%= user.id %></p>
+<% end %>
