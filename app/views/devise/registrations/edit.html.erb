@@ -4,7 +4,7 @@
   <%= bootstrap_devise_error_messages! %>
 
   <div class="form-group">
-    <%= f.label :ニックネーム %>
+    <%= f.label :user_name %>
     <%= f.text_field :user_name, autofocus: true, autocomplete: 'username', placeholder: "ハナナビ", class: 'form-control' %>
   </div>
 
@@ -26,8 +26,8 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :自己紹介 %>
-    <%= f.text_area :self_introduction, autofocus: true, autocomplete: 'off', placeholder: "プロフィールを入力してください", class: 'form-control' %>
+    <%= f.label :self_introduction %>
+    <%= f.text_area :self_introduction, :size => "45x15", autofocus: true, autocomplete: 'off', placeholder: "プロフィールを入力してください", class: 'form-control' %>
   </div>
 
   <div class="form-group">
