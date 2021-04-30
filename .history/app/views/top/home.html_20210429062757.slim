@@ -1,0 +1,45 @@
+- if user_signed_in?
+  = search_form_for @spot, builder: SimpleForm::FormBuilder, url: spots_path do |f|
+    = f.input :flower_item_spots_flower_item_id_eq, as: :select, label: '花', collection: FlowerItem.pluck(:name, :id)
+    = f.submit
+- else
+  = image_tag 'Top_Image.png', :size =>'800x550', class: 'd-block mx-auto pt-5'
+
+  .card.mx-auto.mt-5[style="max-width: 1000px;"]
+    .row.no-gutters
+      .col-7
+        .card-body
+          h4.card-title
+            | コンセプト
+          p.card-text
+            | 旅行先や今住んでいる近場で花を楽しみたい！
+          p.card-text
+            | でも周りにどのようなスポットがあるか分からない、、
+          p.card-text
+            | そんな悩みを解決！
+          p.card-text
+            | 全国のオススメスポートを分かりやすく紹介！
+          p.card-text
+            | ユーザー同士で情報の共有も可能！みんなで行ってみたい花スポを探そう!
+          = link_to "アカウント作成", signup_path, class: 'btn btn-light mr-2'
+          = link_to "ログイン", login_path, class: 'btn btn-primary'
+      .col-5.pt-2
+        = image_tag 'flower-main.jpeg', :size =>'400x280', class: 'rounded'
+
+    /.row.mt-4.mx-auto
+      .col-8
+        .card-body
+          p.card-text
+            | 旅行先や今住んでいる近場で花を楽しみたい！
+          p.card-text
+            | でも周りにどのようなスポットがあるか分からない、、
+          p.card-text
+            | そんな悩みを解決！
+          p.card-text
+            | 全国のオススメスポートを分かりやすく紹介！
+          p.card-text
+            | ユーザー同士で情報の共有も可能！みんなで行ってみたい花スポを探そう!
+          = link_to "アカウント作成", signup_path, class: 'btn btn-light'
+          = link_to "ログイン", login_path, class: 'btn btn-primary'
+      .col-4
+        = image_tag 'flower-main.jpeg', :size =>'540x250'

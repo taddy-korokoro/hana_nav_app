@@ -1,0 +1,82 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+// 全要素の余白をリセット
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// Bootstrap 色のカスタマイズ
+$theme-colors: ("primary": #30a1f2, "light": #E5E5E5);
+$custom-gray: #909397;
+$bg-yellow: #fefff7;
+
+@import "bootstrap/scss/bootstrap";
+
+// ログイン画面
+.container-login {
+  @extend .container-fluid;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+header {
+  border: 2px solid $custom-gray;
+}
+
+// 背景色の設定
+.bg-color {
+  background-color: #000;
+}
+
+// max-width
+.mw-md {
+  max-width: 700px;
+}
+
+// ***** 以下を追加 *****
+.mw-xl {
+  max-width: 1200px;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+// placeholderの文字サイズを変更
+.form-control::placeholder {
+  font-size: 12px;
+}
+
+// 区切り線
+hr {
+  height: 2px;
+  background-color: $blue;
+  width: 100%;
+  border: none;
+}
+
+// フッター
+footer {
+  border: 2px solid $custom-gray;
+  text-align: center;
+  background-color: #FFF;
+  color: $custom-gray;
+}

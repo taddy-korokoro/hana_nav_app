@@ -1,0 +1,13 @@
+- flash.each do |name, msg|
+  .alert class="alert-#{name}" role="alert" #alert
+    a href="#" class="close" data-dismiss="alert"
+      |
+        x
+
+/- flash.each do |name, msg|
+  |  <div class="alert alert-
+  = name
+  | " role="alert" id="alert">
+  a.close[href="#" data-dismiss="alert"]
+    | ×
+  = msg
