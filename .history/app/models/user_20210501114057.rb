@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :self_introduction,  length: { maximum: 160 }
   # mount_uploader :image, ImgNameUploader
 
-  #パスワードの更新
+　#パスワードの更新
   def update_without_current_password(params, *options)
     # パスワード変更のためのパスワード入力フィールドとその確認フィールドの両者とも空の場合のみ、
     # パスワードなしで更新できるようにする
