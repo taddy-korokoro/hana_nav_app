@@ -1,0 +1,31 @@
+= render 'spots/search_form'
+.row
+  .col-6
+    h3
+      | スポット一覧
+    table
+      - @spots.each do |spot|
+        tr
+          td
+            = spot.name
+          td
+            = spot.location
+          td
+            = spot.feature
+          td
+          - binding.pry
+            = spot.flower_items.name
+  .col-6
+    h3
+      | 花一覧
+    table
+      - @flower_items.each do |item|
+        tr
+          td
+            = item.name
+          td
+            = item.feature
+          td
+            = item.image
+
+= link_to 'トップ', root_path

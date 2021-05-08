@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_024123) do
+ActiveRecord::Schema.define(version: 2021_05_08_013902) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "flower_item_spots", force: :cascade do |t|
     t.integer "spot_id", null: false
@@ -21,9 +27,16 @@ ActiveRecord::Schema.define(version: 2021_04_25_024123) do
 
   create_table "flower_items", force: :cascade do |t|
     t.string "name", null: false
-    t.string "season", null: false
     t.text "feature", null: false
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "season_id"
+    t.index ["season_id"], name: "index_flower_items_on_season_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.string "month_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,7 +44,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_024123) do
   create_table "spots", force: :cascade do |t|
     t.string "name", null: false
     t.string "location", null: false
-    t.string "season", null: false
     t.text "feature", null: false
     t.string "image"
     t.string "url"
@@ -39,6 +51,8 @@ ActiveRecord::Schema.define(version: 2021_04_25_024123) do
     t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_spots_on_area_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,4 +72,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_024123) do
 
   add_foreign_key "flower_item_spots", "flower_items"
   add_foreign_key "flower_item_spots", "spots"
+  add_foreign_key "flower_items", "seasons"
+  add_foreign_key "spots", "areas"
 end

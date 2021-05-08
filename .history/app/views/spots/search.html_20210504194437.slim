@@ -1,0 +1,13 @@
+h2
+  | 検索結果
+table
+  - @spots.each do |spot|
+    tr
+      td
+        = spot.name
+      td
+        = spot.location
+      td
+        = spot.feature
+
+= link_to 'トップ', root_path

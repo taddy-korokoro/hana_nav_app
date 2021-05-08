@@ -1,0 +1,24 @@
+header
+  nav.navbar.navbar-expand.navbar-light.mx-2
+    = link_to_unless_current "hana_nav" spots_path, class: 'navbar-brand' do
+
+    #Navber.collapse.navbar-collapse.justify-content-end
+      ul.navbar-nav
+        - if user_signed_in?
+          li.nav-item.active
+            = link_to 'アカウント編集', edit_user_registration_path, class: 'nav-link'
+          li.nav-item.active
+            = link_to 'タイムライン', "#", method: :delete, class: 'nav-link'
+          li.nav-item.active
+            = link_to 'お気に入り一覧', "#", method: :delete, class: 'nav-link'
+          li.nav-item.active
+            = link_to '投稿する', "#", method: :delete, class: 'nav-link'
+          li.nav-item.active
+            = link_to 'マイページ', user_path(current_user), class: 'nav-link'
+          li.nav-item.active
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+        - else
+          li.nav-item.active
+            = link_to "アカウント作成", new_user_registration_path, class: 'btn btn-light mr-2'
+          li.nav-item.active
+            = link_to "ログイン", new_user_session_path, class: 'btn btn-primary'

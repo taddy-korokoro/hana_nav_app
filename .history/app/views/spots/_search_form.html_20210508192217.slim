@@ -1,0 +1,34 @@
+= search_form_for @q, url:search_path do |f|
+  .form-group.row.justify-content-center
+    .form-group.col-2
+      = f.input :flower_items_season_id_eq, as: :select, label: '見頃',
+        collection: Season.pluck(:month_name), :include_blank => '指定なし', required: false
+    .form-group.col-2
+      = f.input :flower_items_name_eq, as: :select, label: '花の名前',
+        collection: FlowerItem.pluck(:name), :include_blank => '指定なし', required: false
+    .form-group.col-2
+      = f.input :area_name_eq, as: :select, label: '場所',
+        collection: Area.pluck(:name), :include_blank => '指定なし', required: false
+  .form-group.row.justify-content-center
+    .form-group.col-4
+      = f.search_field :name_or_location_or_flower_items_name_or_area_name_cont, label: false,
+        class: 'form-control', placeholder: 'フリーワード', required: false
+    .form-group.col-2
+      = f.submit class: 'btn btn-success btn-block'
+
+<div class="form-horizontal" role="form">
+  <div class="row justify-content-center" style="border:solid 1px #F00;"> #赤枠
+    <div class="col-6" style="border:solid 1px #333;"> #グレーの枠
+      <%= form_for(@person) do |f| %>
+        <div class="form-group">
+          <div class="col-4"  style="border:solid 1px #0F0;"> #緑色の枠
+            <%= f.label :age, '年齢', class:'control-label' %>
+          </div>
+          <div class='col-8'  style="border:solid 1px #00F;"> #青色の枠
+            <%= f.select :age, ["20代", "30代", "40代", "50代", "60代" ], {},   class: 'form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
