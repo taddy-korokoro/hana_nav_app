@@ -1,0 +1,20 @@
+- if  @user == current_user
+  h2
+    | マイページ
+  p
+    | 自己紹介
+  = @user.self_introduction
+  p
+    | ID:
+    = @user.id
+  = image_tag @user.profile_image.to_s
+- else
+  h2
+    = @user.user_name
+    | さんのはなたび記録
+  p
+    | 自己紹介
+  = @user.self_introduction
+  p
+    | ID:
+    = @user.id

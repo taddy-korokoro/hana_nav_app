@@ -1,0 +1,25 @@
+- if  @user == current_user
+  h2
+    |  マイページ
+  p
+    | 自己紹介
+  = @user.self_introduction
+  p
+    | ID:
+    = @user.id
+- else
+  h2
+    = @user.user_name
+    | さんのはなたび記録
+  p
+    | 自己紹介
+  = @user.self_introduction
+  p
+    | ID:
+    = @user.id
+
+<% if @article.image? %>
+  <%= image_tag @article.image.to_s, class: 'mypage-article-img' %>
+<% else %>
+  <%= image_tag 'no_image.png', class: 'mypage-article-img' %>
+<% end %>
