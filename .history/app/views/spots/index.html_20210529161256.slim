@@ -1,6 +1,10 @@
 .main-img.mb-5
 = render 'spots/search_form'
 
+.field
+  = form.label :image
+  = form.file_field :image
+
 /h4.mt-3
   | スポット一覧
   table

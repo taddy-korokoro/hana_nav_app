@@ -6,7 +6,7 @@
           = f.input :flower_items_season_month_name_eq, as: :select, label: '見頃',
             collection: Season.pluck(:month_name), include_blank: "指定なし", required: false
         .col-4
-          = f.input :flower_items_name_eq, as: :select, label: '花の名前',
+          = f.input :flower_items_name_eq, value: "", as: :select, label: '花の名前',
             collection: FlowerItem.pluck(:name), include_blank: "指定なし", required: false
         .col-4
           = f.input :area_name_eq, as: :select, label: '場所',
