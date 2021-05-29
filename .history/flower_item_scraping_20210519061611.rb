@@ -1,0 +1,15 @@
+require 'open-uri'
+require 'nokogiri'
+require 'kconv'
+
+url = 'https://loconavi.jp/features/hananomeisho'
+
+html = URI.open(url).read.toutf8
+doc = Nokogiri::HTML.parse(html)
+img_src = "flower_item.ipg"
+img_url = 'https://image-loconavi.tokubai.co.jp/h=200,w=200,a=2/uploads/hananomeisho/flower/image/10/9afccc4b-6929-42ed-8375-785ffd3ddeeb.jpg'
+
+sleep 1
+open(img_src, 'w') do |f|
+  f.puts URI.open(img_url).read
+end

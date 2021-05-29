@@ -1,0 +1,22 @@
+.pt-5
+  = image_tag 'Top_Image.png', :size =>'800x550', class: 'd-block mx-auto img-shadow'
+
+.card.mx-auto.my-5(style="max-width: 1000px;")
+  .row.no-gutters
+    .col-7
+      .card-body.text-center
+        h4.card-title
+          | コンセプト
+        p.card-text
+          | 旅行先や今住んでいる近場で花を楽しみたい！
+        p.card-text
+          | でも周りにどのようなスポットがあるか分からない、、
+        p.card-text
+          | そんな悩みを解決！
+        p.card-text
+          | 全国のオススメスポートを分かりやすく紹介！
+        p.card-text
+          | ユーザー同士で情報の共有も可能！みんなで行ってみたい花スポを探そう!
+        = link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: 'btn btn-warning'
+    .col-5.pt-4
+      = image_tag 'メイン画像.png', :size =>'400x280',class: 'rounded '

@@ -1,0 +1,199 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+// Bootstrap 色のカスタマイズ
+$theme-colors: ("primary": #30a1f2, "light": #E5E5E5);
+$custom-gray: #909397;
+$custom-bg-yellow: #fefff7;
+$custom-search-form-bg-yellow: #FDF966;
+
+@import "bootstrap/scss/bootstrap";
+
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// 全要素の余白をリセット
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin main-font {
+  font-family: DIN Condensed;
+}
+
+// ログイン画面
+.container-login {
+  @extend .container-fluid;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+// max-width
+.mw-md {
+  max-width: 700px;
+}
+
+// ***** 以下を追加 *****
+.mw-xl {
+  max-width: 1200px;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+.alert-notice {
+  @extend .alert-info;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+// placeholderの文字サイズを変更
+.form-control::placeholder {
+  font-size: 12px;
+}
+
+// フォントの設定
+body {
+  font-family: 'YuGothic', 'Yu Gothic', 'Hiragino Kaku Gothic ProN',
+    'ヒラギノ角ゴ ProN W3', 'メイリオ', 'Meiryo', 'ＭＳ ゴシック', sans-serif;
+}
+
+// 背景色の設定
+.bg-color {
+  background-color: $custom-bg-yellow;
+}
+
+header {
+  border-bottom: 0.2rem solid $custom-gray;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+    object-fit: cover;
+  }
+
+  h1 {
+    @include main-font;
+    color: $custom-gray;
+    font-size: 3.2rem;
+  }
+}
+
+// メインイメージのデザイン設定
+.img-shadow {
+  box-shadow: 0 20px 10px 2px $custom-gray;
+}
+
+// コンセプト欄のデザイン設定
+.card-body {
+  color: $custom-gray;
+  font-weight: bold;
+}
+
+// 検索フォームの背景色
+.search-form-bg-color {
+  background-color: $custom-search-form-bg-yellow;
+}
+
+// ラベルの文字色
+label {
+  color: $custom-gray;
+}
+
+p {
+  color: $custom-gray;
+}
+
+// プロフィール画像表示の設定
+.profile-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+// 区切り線
+hr {
+  height: 2px;
+  background-color: $blue;
+  width: 100%;
+  border: none;
+}
+
+// フッター
+footer {
+  text-align: center;
+  background-color: #FFF;
+  border-top: 0.2rem solid $custom-gray;
+  color: $custom-gray;
+  @include main-font;
+}
+
+.flower-list {
+  a {
+    color: #3b7cec;
+    text-decoration: none;
+  }
+
+  .flower {
+    padding: 0 20px;
+    margin-bottom: 40px;
+    width: 33%;
+
+    .flower-image {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding-top: 70%;
+      margin: 10px 0;
+
+      .image {
+        background-image: url('Top_Image.png');
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background-position: center center;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .flower-body {
+      .season {
+        padding: 5px;
+        color: #ffffff;
+        background-color: #d9b340;
+      }
+
+      .name {
+        padding: 8px 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: #54bca9;
+      }
+
+      .feature {
+        line-height: 1.4;
+        color: #999999;
+      }
+    }
+  }
+}
