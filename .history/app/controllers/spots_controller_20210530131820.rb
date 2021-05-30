@@ -8,8 +8,8 @@ class SpotsController < ApplicationController
 
   def search
     # 検索結果
-    @q = FlowerItem.ransack(search_params)
-    @flower_items = @q.result
+    @q = Spot.ransack(search_params)
+    @spots = @q.result
   end
 
   def show

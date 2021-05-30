@@ -24,7 +24,7 @@ end
   )
 end
 
-# flower_item_sample
+flower_item_sample
 9.times do |n|
   FlowerItem.create!(
     id: n+1,

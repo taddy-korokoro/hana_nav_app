@@ -7,7 +7,7 @@
         .flower-body
           .season  = item.season.month_name
           .name  = item.name
-          .feature = item.feature.truncate(70)
+          .feature = item.feature.truncate(50)
     / 花アイテムの見本表示
     = link_to "#", class: "flower col-4"
       .flower-image
@@ -15,4 +15,4 @@
       .flower-body
         .season  4月上旬〜5月中旬
         .name  チューリップ
-        .feature  = "春の代表、色とりどりのチューリップ。ネモフィラ・菜の花・ポピー等とのコラボが楽しめるのも魅力の一つ。"
+        .feature  = "春の代表、色とりどりのチューリップ。ネモフィラ・菜の花・ポピー等とのコラボが楽しめるのも魅力の一つ。".truncate(20)

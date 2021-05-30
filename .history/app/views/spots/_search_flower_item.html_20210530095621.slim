@@ -3,8 +3,8 @@
     .flower-description
       .row.no-gutters
         .col-9
-          h1 = item.name
-          p.p-2 = item.feature
+          h1 = item.flower_items.pluck(:name)
+          p.p-2 = item.flower_items.pluck(:feature)
         .col-3.image
 
 /花アイテム表示の見本

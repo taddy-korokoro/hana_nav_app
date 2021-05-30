@@ -25,15 +25,15 @@ end
 end
 
 # flower_item_sample
-9.times do |n|
-  FlowerItem.create!(
-    id: n+1,
-    name: "flower_item_#{n+1}",
-    feature: "#{Faker::Color.unique.color_name}できれい",
-    image: "img_#{n+1}",
-    season_id: n+1
-  )
-end
+# 9.times do |n|
+#   FlowerItem.create!(
+#     id: n+1,
+#     name: "flower_item_#{n+1}",
+#     feature: "#{Faker::Color.unique.color_name}できれい",
+#     image: "img_#{n+1}",
+#     season_id: n+1
+#   )
+# end
 
 # spotsとflower_itemsの中間テーブル
 9.times do |n|

@@ -1,13 +1,4 @@
-# user_sample
-50.times do |n|
-  User.create!(
-    user_name: Faker::Name.unique.name,
-    email: "example-#{n+1}@rails.org",
-    password: "password",
-    profile_image: open("./db/fixtures/no_image.png"),
-    self_introduction: "よろしくお願いします。"
-  )
-end
+
 
 # spot_sample
 9.times do |n|

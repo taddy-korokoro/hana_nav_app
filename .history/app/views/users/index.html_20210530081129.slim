@@ -1,0 +1,8 @@
+h1 ユーザー一覧
+.container
+  .row
+    - @users.each do | user |
+      .col-4
+        = user.user_name
+        = user.self_introduction
+        = image_tag user.profile_image

@@ -4,7 +4,7 @@
       = link_to "#", class: "flower-spot"
         .row.no-gutters.py-2
           .col-9.body
-            h1 = item.spots.name
+            h1 = item.spots.pluck(:name)
             .address = item.spots.pluck(:location)
             .season = item.season.month_name
             p.mt-2 = item.spots.pluck(:feature)
