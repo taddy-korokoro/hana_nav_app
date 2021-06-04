@@ -35,9 +35,17 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_form'
 gem 'carrierwave'
+gem 'fog-aws'
+gem 'rmagick'
 gem 'ransack'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'faker'
+gem 'pry-rails'
+gem 'font-awesome-sass'
+gem 'dotenv-rails'
+gem "nokogiri", ">= 1.11.4"
+gem 'mechanize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

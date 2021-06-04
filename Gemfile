@@ -44,7 +44,7 @@ gem 'faker'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
-gem "nokogiri"
+gem "nokogiri", ">= 1.11.4"
 gem 'mechanize'
 
 group :development, :test do
