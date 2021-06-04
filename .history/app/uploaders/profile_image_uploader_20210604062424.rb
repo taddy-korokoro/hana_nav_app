@@ -1,12 +1,13 @@
 class ProfileImageUploader < CarrierWave::Uploader::Base
+  # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
+  # include CarrierWave::MiniMagick
 
-  if Rails.env.development?
-    storage :file
-  elsif Rails.env.test?
-    storage :file
-  else
+  # S3にアップロードする場合
+  if Rails.env.production? || Rails.env.staging?
     storage :fog
+  else
+    storage :file
   end
 
   # S3のディレクトリ名

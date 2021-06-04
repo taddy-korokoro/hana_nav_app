@@ -3,6 +3,7 @@ class SpotsController < ApplicationController
 
   def index
     # ransackの検索実行前
+    @flower_items = FlowerItem.new
     @q = FlowerItem.ransack(params[:q])
     @flower_items = @q.result
 
