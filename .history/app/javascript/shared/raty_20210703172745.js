@@ -576,7 +576,6 @@
 
         if (name) {
           var icon = this.opt[name];
-          // Uncaught TypeError: Cannot set property 'src' of undefined（エラー改善のため下記を変更）
           var star = this.stars[Math.max(Math.ceil(score) - 1, 0)];
 
           this._setIcon(star, icon);
