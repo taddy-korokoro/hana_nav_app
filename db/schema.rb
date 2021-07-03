@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_112452) do
+ActiveRecord::Schema.define(version: 2021_06_26_000020) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "travel_record_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "flower_item_spots", force: :cascade do |t|
@@ -35,6 +45,13 @@ ActiveRecord::Schema.define(version: 2021_05_19_112452) do
     t.index ["season_id"], name: "index_flower_items_on_season_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "travel_record_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "scrapings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,12 +69,29 @@ ActiveRecord::Schema.define(version: 2021_05_19_112452) do
     t.text "feature", null: false
     t.string "image"
     t.string "url"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "area_id"
     t.index ["area_id"], name: "index_spots_on_area_id"
+  end
+
+  create_table "travel_records", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "place"
+    t.float "review"
+    t.date "visited_on"
+    t.string "image_1"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "image_2"
+    t.string "image_3"
+    t.index ["user_id"], name: "index_travel_records_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,16 +102,18 @@ ActiveRecord::Schema.define(version: 2021_05_19_112452) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_name"
+    t.string "name"
     t.text "self_introduction"
     t.string "profile_image"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
+  add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "flower_item_spots", "flower_items"
   add_foreign_key "flower_item_spots", "spots"
   add_foreign_key "flower_items", "seasons"
   add_foreign_key "spots", "areas"
+  add_foreign_key "travel_records", "users"
 end

@@ -1,0 +1,43 @@
+.container.p-4.travel-record-wrapper
+  h2 投稿編集
+  .hr-blue
+  = simple_form_for @travel_record do |f|
+    .form-group
+      = f.label :images
+      br
+      /- @travel_record.images.each_with_index do |image, index|
+        = image_tag(image.url)
+        = link_to "削除", travel_record_path(@travel_record, index), :method => :delete, data: { confirm: "Are you sure you want to delete this image?" }
+      .row.post-img
+        - @travel_record.images.each do | image |
+          .col-4
+            = image_tag image.to_s
+      /.form-group
+        - if current_user.persisted? && current_user.profile_image?
+          p プロフィール画像
+          = image_tag current_user.profile_image.to_s
+          .form-group.mt-2
+            = f.check_box :remove_profile_image, class: "mr-2"
+            = f.label :remove_profile_image
+        - else
+          p プロフィール画像
+          .mb-2
+            = image_tag 'no_profile_img.png'
+            = f.hidden_field :profile_image_cache
+    = f.input :images, as: :file, input_html: { multiple: true }, label: false
+    .form-group.mt-4
+      = f.input :title
+      = f.input :content, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 }
+    .form-group.mt-4
+      = f.input :place, :placeholder => "例）茨城県ひたちなか市 or ひたち海浜公園"
+    .row.mt-4
+      .form-group.col-4
+        = f.input :visited_on, as: :date, html5: true
+      #star.form-group.offset-2.col-6
+        = f.label :review, required: false
+        .d-flex id=("star-rate-#{@travel_record.id}")
+      = render 'shared/star'
+    .mt-4
+      = f.button :submit, "編集する", class: 'btn btn-primary btn-block'
+    .mt-4
+      = link_to "削除する", travel_record_path(@travel_record), method: :delete, class: 'btn btn-light text-danger font-weight-bold btn-block'

@@ -1,0 +1,18 @@
+- unless comment.id.nil?
+  .container
+    .row.d-flex.align-items-center.pb-3
+      .col
+        - if comment.user.profile_image.blank?
+          = link_to image_tag('no_profile_img.png'), user_path(comment.user.id)
+        - else
+          = link_to image_tag(comment.user.profile_image.thumb.url), user_path(comment.user.id)
+        = link_to "#{comment.user.name}さん", user_path(comment.user.id), class: 'link pl-1'
+      .col.d-flex.justify-content-end
+        = comment.created_at.strftime('%Y/%m/%d')
+  .card-body.border.rounded.mb-3 = comment.comment.order(created_at: :desc)
+  - if comment.user == current_user
+    = link_to travel_record_comment_path(comment.travel_record_id, comment.id), method: :delete, remote: true do
+      .text-right
+        button.btn.btn-outline-secondary
+          | 削除する
+  hr

@@ -1,0 +1,38 @@
+.main-img.mb-5
+= render 'spots/search_form'
+
+h1 スポット一覧
+= link_to "新規作成", new_spot_path
+- @spots.each do | spot |
+  h2 = spot.name
+  = image_tag spot.image.to_s
+  = link_to "詳細", spot_path(spot)
+  = "/"
+  = link_to "削除", spot_path(spot), method: :delete
+
+/h4.mt-3
+  | スポット一覧
+  table
+    - @flower_item_spots.each do |spot|
+      tr
+        td
+          = spot.name
+        td
+          = spot.location
+        td
+          = spot.feature
+        td
+          = spot.flower_items.pluck(:name)
+  h4.mt-3
+    | 花一覧
+  table
+    - @flower_item_spots.each do |flower_item|
+      tr
+        td
+          = flower_item.flower_items.map{|flower_item| flower_item.season.month_name}
+        td
+          = flower_item.flower_items.pluck(:name)
+        td
+          = flower_item.flower_items.pluck(:feature)
+
+= render 'spots/flower_item'

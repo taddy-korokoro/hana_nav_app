@@ -1,0 +1,9 @@
+h2 新規投稿
+hr
+h4 写真の投稿
+= form_with model: @travel_record, local: true do | f |
+  .form-group
+    .post-image
+      = image_tag 'no_img-2.png'
+      = f.hidden_field :image_cache
+    = f.file_field :image

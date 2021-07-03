@@ -1,0 +1,20 @@
+.container.bg.p-4.travel-record-wrapper
+  h2 新規投稿
+  hr
+  /= form_with model: @travel_record, local: true do | f |
+    .form-group.post-img
+      h4 写真の投稿
+      = image_tag 'no_img.png'
+      = f.hidden_field :image_cache
+    = f.file_field :image
+    .form-group.mt-4
+      h4 クチコミ入力
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+      = f.text_area :content, class: 'form-control'
+      = f.submit "投稿する", class: 'btn btn-primary btn-block'
+
+  = simple_form_for @travel_record do |f|
+    .form-group.mt-4
+      = f.input :title, placeholder: "タイトル（任意）", class: 'form-control'
+      = f.text_area :content, :content, class: 'form-control'

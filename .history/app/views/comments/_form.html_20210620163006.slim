@@ -1,0 +1,6 @@
+.comment-create
+  h3.text-left レビューを投稿する
+  = simple_form_for @travel_record do |f|
+    f.simple_fields_for @comment do |f|
+      = f.input :comment, class: "input-mysize"
+      = f.button :submit, "コメントする", class: 'btn btn-primary btn-block'

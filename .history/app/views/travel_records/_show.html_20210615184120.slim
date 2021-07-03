@@ -1,0 +1,36 @@
+.hr-blue
+.row.p-4
+  .col-4
+    .row
+      .col-2
+        = render 'travel_records/profile_image', travel_record: @travel_record
+      .col-8 #{@travel_record.user.name}さん
+  .offset-5.col-3 = l @travel_record.visited_on, format: :long
+  #star.star-size.offset-9.col-3
+    .d-flex id=("star-rate-#{@travel_record.id}")
+p 訪れた場所
+.card-body.border.rounded.mb-3 = @travel_record.place
+p タイトル
+.card-body.border.rounded.mb-3 = @travel_record.title
+p クチコミ
+.card-body.border.rounded.mb-3 = @travel_record.content
+- if current_travel_record.persisted?
+  .post-img.row
+    .col-4.mb-4
+      = image_tag @travel_record.image_1.url
+      .form-group.mt-2
+        = f.check_box :remove_image_1, class: "mr-2"
+        = f.label :remove_image_1
+    .col-4.mb-4 = image_tag @travel_record.image_2.url
+    .col-4.mb-4 = image_tag @travel_record.image_3.url
+- else
+  .post-img.row
+  .mb-2
+    = image_tag 'no_profile_img.png'
+    = f.hidden_field :profile_image_cache
+p 地図表示
+#map
+hr
+
+= render 'shared/star', travel_record: @travel_record
+= render 'shared/google_map', travel_record: @travel_record

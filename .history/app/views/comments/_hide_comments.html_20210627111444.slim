@@ -1,0 +1,33 @@
+- unless comment.id.nil?
+  .container
+    .row.d-flex.align-items-center.pb-3
+      .col
+        - if comment.user.profile_image.blank?
+          = link_to image_tag('no_profile_img.png'), user_path(comment.user.id)
+        - else
+          = link_to image_tag(comment.user.profile_image.thumb.url), user_path(comment.user.id)
+        = link_to "#{comment.user.name}さん", user_path(comment.user.id), class: 'link pl-1'
+      .col.d-flex.justify-content-end
+        = comment.created_at.strftime('%Y/%m/%d')
+  .card-body.border.rounded.mb-3
+    = comment.comment
+  - if comment.user == current_user
+    = link_to travel_record_comment_path(comment.travel_record_id, comment.id), method: :delete, remote: true do
+      .text-right
+        button.btn.btn-outline-secondary
+          | 削除する
+  / 返信コメントの表示
+  - comment.replies.order(:created_at).each do | reply |
+    - Rails::logger::debug('=============')
+    .card-body.border.rounded.mb-3
+      = reply.comment
+  - if comment.user != current_user
+
+    = form_with model: [@travel_record, @comment_reply], local: false do |f|
+      .form-group
+          = f.label "コメントに返信する"
+          = f.text_area :comment, :size => "3x3", autocomplete: 'off', placeholder: "コメントに返信してみよう", class: 'form-control'
+      = f.hidden_field :parent_id, value: comment.id
+      .text-right
+        = f.submit "返信する", class: 'btn btn-warning text-white'
+  hr

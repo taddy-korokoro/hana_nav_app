@@ -1,0 +1,19 @@
+.box.travel-record-wrapper.p-4
+  h4 はなたび記録の一覧
+  hr
+  - @travel_records.each do |travel_record|
+    .row.p-4
+      .col-4
+        .row
+          .col-2 = link_to image_tag(travel_record.user.profile_image.thumb.url), user_path(travel_record.user.id)
+          .col-8 #{travel_record.user.name}さん
+      .offset-5.col-3 = l travel_record.visited_on, format: :long
+    .card-body.border.rounded.mb-3 = travel_record.title
+    .card-body.border.rounded.mb-3 = travel_record.content
+    .row
+      .post-img.col-4
+      /- travel_record.image.each do | img |
+        = image_tag img.to_s
+    hr
+    = link_to "詳細", travel_record_path(travel_record)
+    = link_to "削除", travel_record_path(travel_record), method: :delete

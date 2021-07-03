@@ -1,0 +1,60 @@
+.main-img.mb-5
+= render 'spots/search_form'
+
+h1 スポット一覧
+= link_to "新規作成", new_spot_path
+- @spots.each do | spot |
+  h2 = spot.name
+  = image_tag spot.image_url
+  = link_to "詳細", spot_path(spot)
+  = "/"
+  = link_to "削除", spot_path(spot), method: :delete
+
+/h4.mt-3
+  | スポット一覧
+  table
+    - @flower_item_spots.each do |spot|
+      tr
+        td
+          = spot.name
+        td
+          = spot.location
+        td
+          = spot.feature
+        td
+          = spot.flower_items.pluck(:name)
+  h4.mt-3
+    | 花一覧
+  table
+    - @flower_item_spots.each do |flower_item|
+      tr
+        td
+          = flower_item.flower_items.map{|flower_item| flower_item.season.month_name}
+        td
+          = flower_item.flower_items.pluck(:name)
+        td
+          = flower_item.flower_items.pluck(:feature)
+
+= render 'spots/flower_item'
+
+h2 Gmap
+#map
+
+javascript:
+  let map
+
+  function initMap(){
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 40.7828, lng:-73.9653},
+      zoom: 12,
+    });
+
+    marker = new google.maps.Marker({
+      position:  {lat: 40.7828, lng:-73.9653},
+      map: map
+    });
+  }
+
+script async defer src="https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAP_API']}&callback=initMap"

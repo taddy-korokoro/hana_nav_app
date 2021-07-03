@@ -1,0 +1,9 @@
+/ ----- 'comments/_hide_comments'で使用中 -----
+- if comment.user != current_user
+    = form_with model: [@travel_record, comment_reply], local: false do |f|
+      .form-group
+        = f.label "コメントに返信する"
+        = f.text_area :comment, :size => "3x3", autocomplete: 'off', placeholder: "コメントに返信してみよう", class: 'form-control'
+        /= f.hidden_field :parent_id, value: comment.id
+      .text-right
+        = f.submit "返信する", class: 'btn btn-warning text-white'

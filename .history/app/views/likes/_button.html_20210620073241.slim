@@ -1,0 +1,7 @@
+- if current_user.already_liked?(travel_record.id)
+  = link_to travel_record_likes_path(travel_record), method: :delete, remote: true do
+    i.fas.fa-thumbs-up.fa-fw.yellow-color
+-else
+  = link_to travel_record_likes_path(travel_record), method: :post, remote: true do
+    i.far.fa-thumbs-up.fa-fw.yellow-color
+= travel_record.likes.count

@@ -1,0 +1,41 @@
+= render 'layouts/flash_messages'
+.box.travel-record-wrapper.p-4
+  h4 はなたび記録の一覧
+  .hr-blue
+  - @travel_records.each do |travel_record|
+    .row.p-4
+      .col-4
+        .row
+          .col-2
+            = render 'travel_records/profile_image', travel_record: travel_record
+          .col-8 #{travel_record.user.name}さん
+      .offset-5.col-3 = l travel_record.visited_on, format: :long
+      #star.star-size.offset-9.col-3
+        .d-flex id=("star-rate-#{travel_record.id}")
+      = render 'shared/star', travel_record: travel_record
+      .offset-9.col-3
+        - if current_user.already_liked?(travel_record)
+          = link_to travel_record_likes_path(travel_record), method: :delete do
+            i.fas.fa-thumbs-up.fa-fw
+        -else
+          = link_to travel_record_likes_path(travel_record), method: :post do
+            i.far.fa-thumbs-up.fa-fw
+        = travel_record.likes.count
+    p 訪れた場所
+    .card-body.border.rounded.mb-3 = travel_record.place
+    p タイトル
+    .card-body.border.rounded.mb-3 = travel_record.title
+    p クチコミ
+    .card-body.border.rounded.mb-3 = travel_record.content
+    .post-img.row.mb-4
+      - if travel_record.image_1.present?
+        .col-4 = image_tag travel_record.image_1.url
+      - if travel_record.image_2.present?
+        .col-4 = image_tag travel_record.image_2.url
+      - if travel_record.image_3.present?
+        .col-4 = image_tag travel_record.image_3.url
+      - elsif travel_record.image_1.blank? && travel_record.image_2.blank? && travel_record.image_3.blank?
+        .col-4 = image_tag 'no_img.png'
+    br
+    = link_to "投稿詳細ページ", travel_record_path(travel_record)
+    hr

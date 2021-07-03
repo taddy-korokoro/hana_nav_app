@@ -1,6 +1,0 @@
-ja:
-  helpers:
-    submit:
-      create: "登録する"
-      update: "更新する"
-      submit: "保存する"

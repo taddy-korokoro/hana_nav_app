@@ -1,0 +1,60 @@
+.box.travel-record-wrapper.p-4
+  - if  @user == current_user
+    h4 My はなたび記録
+    .hr-blue
+    .row.p-4
+      .col-4
+        .row
+          .col-2
+            = render 'travel_records/profile_image'
+          /.col-8 #{@travel_record.user.name}さん
+      .offset-5.col-3 = l @travel_record.visited_on, format: :long
+      #star.star-size.offset-9.col-3
+        .d-flex id=("star-rate-#{@travel_record.id}")
+      /= render 'shared/star'
+    p 訪れた場所
+    .card-body.border.rounded.mb-3 = @travel_record.place
+    p タイトル
+    .card-body.border.rounded.mb-3 = @travel_record.title
+    p クチコミ
+    .card-body.border.rounded.mb-3 = @travel_record.content
+    .post-img.row
+      - @travel_record.images.each do | image |
+        .col-4.mb-4
+          = image_tag image.to_s
+    hr
+    = link_to "編集", edit_travel_record_path(@travel_record)
+    = link_to "削除", travel_record_path(@travel_record), method: :delete
+  - else
+    h4 #{@user.name}さんのはなたび記録
+    .hr-blue
+    .row.p-4
+      .col-4
+        .row
+          .col-2
+            = render 'travel_records/profile_image'
+          .col-8 #{@travel_record.user.name}さん
+      .offset-5.col-3 = l @travel_record.visited_on, format: :long
+      #star.star-size.offset-9.col-3
+        .d-flex id=("star-rate-#{@travel_record.id}")
+      javascript:
+        $('#star-rate-#{@travel_record.id}').raty({
+          size     : 36,
+          starOff: "#{asset_path('star-off.png')}",
+          starOn: "#{asset_path('star-on.png')}",
+          starHalf: "#{asset_path('star-half.png')}",
+          half: true,
+          readOnly: true,
+          score: #{@travel_record.review},
+        });
+    p 訪れた場所
+    .card-body.border.rounded.mb-3 = @travel_record.place
+    p タイトル
+    .card-body.border.rounded.mb-3 = @travel_record.title
+    p クチコミ
+    .card-body.border.rounded.mb-3 = @travel_record.content
+    .post-img.row
+      - @travel_record.images.each do | image |
+        .col-4.mb-4
+          = image_tag image.to_s
+    hr

@@ -1,0 +1,11 @@
+/ プロフィール画像がnilの場合の対処方法
+- if controller.action_name == 'index'
+  - if @travel_records.user.profile_image.blank?
+    = link_to image_tag('no_profile_img.png'), user_path(@travel_records.user.id)
+  - else
+    = link_to image_tag(@travel_records.user.profile_image.thumb.url), user_path(@travel_records.user.id)
+- else
+  - if @travel_record.user.profile_image.blank?
+    = link_to image_tag('no_profile_img.png'), user_path(@travel_record.user.id)
+  - else
+    = link_to image_tag(@travel_record.user.profile_image.thumb.url), user_path(@travel_record.user.id)

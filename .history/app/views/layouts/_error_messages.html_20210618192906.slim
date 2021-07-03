@@ -1,0 +1,12 @@
+if @travel_record.errors.empty?
+  @travel_record.errors.full_messages.each do |error_message|
+    html += <<-EOF
+    .alert.alert-danger.alert-dismissible[role="alert"]
+      button.close[type="button" data-dismiss="alert"]
+        span[aria-hidden="true"]
+          | ×
+        span.sr-only
+          | close
+      #{error_message}
+    EOF
+  html.html_safe end
