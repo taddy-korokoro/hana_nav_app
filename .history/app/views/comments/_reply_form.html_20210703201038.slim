@@ -1,5 +1,5 @@
 / ----- 'comments/_hide_comments'で使用中 -----
-= form_with model: [@travel_record, comment_reply], local: false do |f|
+= form_with model: [@travel_record, comment_reply], local: false, class: 'collapse', id: 'collapseExample' do |f|
   .form-group
     = f.label "コメントに返信する"
     = f.text_area :comment, :size => "3x3", autocomplete: 'off', placeholder: "コメントに返信してみよう", class: 'form-control'

@@ -34,9 +34,8 @@
               .text-right
                 button.btn.btn-outline-secondary
                   | 削除する
-    / ----- ここまで ----
-    - if comment.user != current_user
-      = render 'comments/reply_form', comment: comment, comment_reply: comment_reply
+      / ----- ここまで ----
+    = render 'comments/reply_form', comment: comment, comment_reply: comment_reply
     - if comment.user == current_user
       = link_to travel_record_comment_path(comment.travel_record_id, comment.id), method: :delete, remote: true do
         .text-right

@@ -12,6 +12,8 @@
   .card-body.border.rounded.mb-3
     = comment.comment
   hr.d-none
+    - if comment.user != current_user
+      = render 'comments/reply_form', comment: comment, comment_reply: comment_reply
     /----- 返信コメントの表示 -----
     - comment.replies.each do | reply |
       .container.w-95.pt-3
@@ -35,8 +37,7 @@
                 button.btn.btn-outline-secondary
                   | 削除する
     / ----- ここまで ----
-    - if comment.user != current_user
-      = render 'comments/reply_form', comment: comment, comment_reply: comment_reply
+    
     - if comment.user == current_user
       = link_to travel_record_comment_path(comment.travel_record_id, comment.id), method: :delete, remote: true do
         .text-right
