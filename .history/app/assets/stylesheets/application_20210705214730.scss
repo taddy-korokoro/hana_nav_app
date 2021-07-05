@@ -12,10 +12,13 @@
  *
  */
 // Bootstrap 色のカスタマイズ
-$theme-colors: ("primary": #30a1f2,
+$theme-colors: (
+  "primary": #30a1f2,
   "light": #e5e5e5,
 );
+// $custom-blue: #30a1f2;
 $custom-gray: #909397;
+$custom-yellow: #feb25c;
 $custom-bg-yellow: #fefff7;
 $custom-search-form-bg-yellow: #fdf966;
 
@@ -32,6 +35,14 @@ $custom-search-form-bg-yellow: #fdf966;
 
 @mixin main-font {
   font-family: DIN Condensed;
+}
+
+// サムネイル画像の表示設定
+@mixin thumb-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  object-fit: cover;
 }
 
 // ログイン画面
@@ -53,7 +64,7 @@ $custom-search-form-bg-yellow: #fdf966;
 
 // 「ログインしました」などのフラッシュ用スタイル
 .alert-notice {
-  @extend .alert-info;
+  @extend .alert-info !optional;
 }
 
 .alert-alert {
@@ -65,6 +76,19 @@ $custom-search-form-bg-yellow: #fdf966;
   font-size: 12px;
 }
 
+.blue-color {
+  color: $blue;
+}
+
+.yellow-color {
+  color: $custom-yellow;
+}
+
+// リンクの文字色
+.link {
+  color: black;
+}
+
 // フォントの設定
 body {
   font-family: "YuGothic", "Yu Gothic", "Hiragino Kaku Gothic ProN",
@@ -73,8 +97,14 @@ body {
 
 // 背景色の設定
 .bg-color {
-  // background-color: $custom-bg-yellow;
-  background-color: #000;
+  background-color: $custom-bg-yellow;
+}
+
+// 囲み枠の設定
+.box {
+  background-color: white;
+  border: 1px solid $custom-gray;
+  border-radius: 5px;
 }
 
 .card {
@@ -85,10 +115,7 @@ header {
   border-bottom: 0.2rem solid $custom-gray;
 
   img {
-    width: 40px;
-    height: 40px;
-    border-radius: 10%;
-    object-fit: cover;
+    @include thumb-img;
   }
 
   h1 {
@@ -100,9 +127,11 @@ header {
 
 // body幅の設定
 .home-width {
-  // background-color: $custom-bg-yellow;
-  background-color: #000;
   width: 1000px;
+}
+
+.w-95 {
+  width: 95%;
 }
 
 // メインイメージのデザイン設定
@@ -132,15 +161,15 @@ p {
 }
 
 .main-img {
-  height: 600px;
-  background-image: url('main_image.png');
+  height: 535px;
+  background-image: url("main_img.png");
   background-position: center center;
   background-size: cover;
-  border-radius: 80px;
+  border-radius: 20px;
 }
 
-// プロフィール画像表示の設定
-.profile-image img {
+// プロフィール画像の表示
+.profile-wrapper img {
   width: 300px;
   height: 300px;
   border-radius: 5%;
@@ -148,11 +177,13 @@ p {
 }
 
 // 区切り線
-hr {
+.hr-blue {
+  width: 100%;
   height: 2px;
   background-color: $blue;
-  width: 100%;
   border: none;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 // フッター
@@ -278,4 +309,47 @@ footer {
       border-radius: 5px;
     }
   }
+}
+
+// スポット投稿ページ
+.travel-record-wrapper {
+  img {
+    @include thumb-img;
+  }
+
+  // レビュー星の間隔(new,editで使用)
+  #star img {
+    margin-right: 40px;
+  }
+
+  // レビュー星の間隔(index,showで使用)
+  .star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
+
+  // 地図の画面サイズ
+  #map {
+    height: 300px;
+    width: 70%;
+  }
+
+  .post-img {
+    margin-right: 0;
+
+    img {
+      width: 300px;
+      height: 300px;
+      border: 1px solid $custom-gray;
+      border-radius: 5%;
+      object-fit: cover;
+    }
+  }
+}
+
+// ページネーションの設定
+.pagination {
+  justify-content: center;
+  padding-top: 1.5rem;
 }

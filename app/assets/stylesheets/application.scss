@@ -12,12 +12,13 @@
  *
  */
 // Bootstrap 色のカスタマイズ
-$theme-colors: ("primary": #30a1f2,
+$theme-colors: (
+  "primary": #30a1f2,
   "light": #e5e5e5,
 );
 // $custom-blue: #30a1f2;
 $custom-gray: #909397;
-$custom-yellow: #FEB25C;
+$custom-yellow: #feb25c;
 $custom-bg-yellow: #fefff7;
 $custom-search-form-bg-yellow: #fdf966;
 
@@ -63,7 +64,7 @@ $custom-search-form-bg-yellow: #fdf966;
 
 // 「ログインしました」などのフラッシュ用スタイル
 .alert-notice {
-  @extend .alert-info;
+  @extend .alert-info !optional;
 }
 
 .alert-alert {
@@ -161,7 +162,7 @@ p {
 
 .main-img {
   height: 535px;
-  background-image: url('main_img.png');
+  background-image: url("main_img.png");
   background-position: center center;
   background-size: cover;
   border-radius: 20px;
