@@ -7,7 +7,7 @@
     "@rails/activestorage": "^6.1.4",
     "@rails/ujs": "^6.1.4",
     "@rails/webpacker": "5.4.0",
-    "bootstrap": "^5.0.2",
+    "bootstrap": "4.6.0",
     "jquery": "^3.6.0",
     "raty-js": "^3.0.0",
     "turbolinks": "^5.2.0"
