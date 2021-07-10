@@ -1,6 +1,7 @@
 # user_sample
 50.times do |n|
   User.create!(
+    # name: Faker::Name.unique.name,
     name: "user_#{n+1}",
     email: "example-#{n+1}@rails.org",
     password: "password",

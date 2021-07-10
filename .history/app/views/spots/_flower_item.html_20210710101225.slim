@@ -1,18 +1,13 @@
-/ ----- 'spots/index'で使用中 -----
 .flower-list.container
   .row
-    - @flower_items.each do |item|
+    /- @flower_items.each do |item|
       = link_to "#", class: "flower col-4"
         .flower-image
           .image
         .flower-body
-          .season
-            = item.season.month_name
-          .name
-            = item.name
-          .feature
-            = item.feature.truncate(70)
-
+          .season  = item.season.month_name
+          .name  = item.name
+          .feature = item.feature.truncate(70)
     / 花アイテムの見本表示
     = link_to "#", class: "flower col-4"
       .flower-image

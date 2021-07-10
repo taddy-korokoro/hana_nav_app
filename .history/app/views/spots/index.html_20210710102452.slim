@@ -1,0 +1,14 @@
+= render 'layouts/flash_messages'
+.main-img.mb-5
+= render 'spots/search_form'
+
+/= link_to "新規作成", new_spot_path
+h1 スポット一覧
+  - @spots.each do | spot |
+    h2 = spot.name
+    = image_tag spot.image_url
+    = link_to "詳細", spot_path(spot)
+    = "/"
+    = link_to "削除", spot_path(spot), method: :delete
+
+= render 'spots/flower_item'

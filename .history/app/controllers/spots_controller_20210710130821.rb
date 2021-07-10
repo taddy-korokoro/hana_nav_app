@@ -6,8 +6,6 @@ class SpotsController < ApplicationController
     # ransackの検索実行前
     @q = Spot.ransack(params[:q])
     @spots = @q.result
-
-    @flower_items = FlowerItem.all
   end
 
   def search
@@ -51,8 +49,7 @@ class SpotsController < ApplicationController
 
   private
     def search_params
-      params.require(:q).permit(:flower_items_season_month_name_eq,
-        :flower_items_name_eq, :area_name_eq, :name_or_location_or_flower_items_name_cont)
+      params.require(:q).permit(:flower_items_season_month_name_eq, :flower_items_name_eq, :area_name_eq, :name_or_location_or_flower_items_name_cont)
     end
 
     def spot_params

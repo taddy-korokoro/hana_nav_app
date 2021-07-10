@@ -1,5 +1,3 @@
-/ ----- 'spots/search'で使用中 -----
-h4.mt-3 スポット一覧
 .flower-spots
   - @spots.each do |spot|
     .card.my-5
@@ -8,8 +6,19 @@ h4.mt-3 スポット一覧
           .col-9.body
             h1 = spot.name
             .address = spot.location
-            .season = spot.flower_items.map{|flower_item| flower_item.season.month_name}
+            .season = spot.flower_item_spots.map{|flower_item| flower_item.season.month_name}
             p.mt-2 = spot.feature
+          .col-3.image
+/.flower-spots
+  - @spots.each do |item|
+    .card.my-5
+      = link_to "#", class: "flower-spot"
+        .row.no-gutters.py-2
+          .col-9.body
+            h1 = item.spots.name
+            .address = item.spots.pluck(:location)
+            .season = item.season.month_name
+            p.mt-2 = item.spots.pluck(:feature)
           .col-3.image
 
 / 検索後のスポット表示見本

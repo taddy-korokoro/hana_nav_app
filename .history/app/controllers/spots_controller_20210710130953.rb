@@ -6,8 +6,6 @@ class SpotsController < ApplicationController
     # ransackの検索実行前
     @q = Spot.ransack(params[:q])
     @spots = @q.result
-
-    @flower_items = FlowerItem.all
   end
 
   def search

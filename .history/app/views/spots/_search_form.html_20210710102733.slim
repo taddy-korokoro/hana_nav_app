@@ -12,9 +12,9 @@
         .col-4
           = f.input :area_name_eq, as: :select, label: '場所',
             collection: Area.pluck(:name), include_blank: "指定なし", required: false
-      .form-group
-        = f.search_field :name_or_location_or_flower_items_name_cont, label: false,
-          class: 'form-control', placeholder: 'フリーワードを入力してください', required: false
+      /.form-group
+        = f.search_field :name_or_location_or_flower_items_name_or_area_name_cont, label: false,
+          class: 'form-control', placeholder: 'フリーワード', required: false
       .form-group
           = f.button :button, 'search', type: 'submit', class: 'btn btn-success btn-block'
             |  この条件で検索

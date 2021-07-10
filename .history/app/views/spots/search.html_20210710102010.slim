@@ -1,0 +1,19 @@
+.main-img.mb-5
+= render 'spots/search_form'
+/h4.mt-3 スポット一覧
+/table
+  - @flower_item_spots.each do |spot|
+    tr
+      td = spot.name
+      td = spot.location
+      td = spot.feature
+      td = spot.flower_items.pluck(:name)
+/h4.mt-3 花一覧
+/table
+  - @flower_item_spots.each do |item|
+    tr
+      td = item.flower_items.map{|flower_item| flower_item.season.month_name}
+      td = item.flower_items.pluck(:name)
+      td = item.flower_items.pluck(:feature)
+
+= render 'spots/search_spots'
