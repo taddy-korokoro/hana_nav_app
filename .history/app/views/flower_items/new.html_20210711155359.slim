@@ -1,0 +1,12 @@
+h1 Flower_item_create
+= form_with model: @flower_item, local: true do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :time
+  = f.text_field :time
+  = f.label :feature
+  = f.text_field :feature
+  br
+  = f.label :image
+  = f.file_field :image
+  p = f.submit

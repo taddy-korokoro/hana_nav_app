@@ -1,0 +1,7 @@
+h1 花編集
+= form_with model: @flower_item, local: true do | f |
+  = f.label :name
+  = f.text_field :name
+  = f.label :image
+  = f.file_field :image
+  p = f.submit

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_000020) do
+ActiveRecord::Schema.define(version: 2021_07_13_131259) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -37,11 +37,12 @@ ActiveRecord::Schema.define(version: 2021_06_26_000020) do
 
   create_table "flower_items", force: :cascade do |t|
     t.string "name", null: false
+    t.text "time", null: false
     t.text "feature", null: false
     t.string "image"
+    t.integer "season_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "season_id"
     t.index ["season_id"], name: "index_flower_items_on_season_id"
   end
 
@@ -65,15 +66,16 @@ ActiveRecord::Schema.define(version: 2021_06_26_000020) do
 
   create_table "spots", force: :cascade do |t|
     t.string "name", null: false
-    t.string "location", null: false
-    t.text "feature", null: false
+    t.string "time"
+    t.string "location"
+    t.text "feature"
     t.string "image"
     t.string "url"
     t.float "latitude"
     t.float "longitude"
+    t.integer "area_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "area_id"
     t.index ["area_id"], name: "index_spots_on_area_id"
   end
 
@@ -84,13 +86,13 @@ ActiveRecord::Schema.define(version: 2021_06_26_000020) do
     t.float "review"
     t.date "visited_on"
     t.string "image_1"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
     t.string "image_2"
     t.string "image_3"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_travel_records_on_user_id"
   end
 
