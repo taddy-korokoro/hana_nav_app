@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :self_introduction,  length: { maximum: 300 }
 
-  mount_uploader :profile_image, ImageUploader
+  # mount_uploader :profile_image, ImageUploader
 
 # 　ゲストログイン機能の設定
   def self.guest

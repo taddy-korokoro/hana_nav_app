@@ -1,17 +1,21 @@
 class User < ApplicationRecord
+  has_many :travel_records, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
-  validates :user_name, presence: true, length: { maximum: 20 }, uniqueness: true
+  validates :name, presence: true, length: { maximum: 20 }, uniqueness: true
   validates :self_introduction,  length: { maximum: 300 }
 
-  mount_uploader :profile_image, ProfileImageUploader
+  # mount_uploader :profile_image, ImageUploader
 
 # 　ゲストログイン機能の設定
   def self.guest
     find_or_create_by!(email: 'guest@exsample.com') do | user |
       user.password = SecureRandom.urlsafe_base64
-      user.user_name = "ゲストユーザー"
+      user.name = "ゲストユーザー"
     end
   end
 
