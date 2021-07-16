@@ -44,7 +44,11 @@ gem 'faker'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
-gem "nokogiri"
+gem "nokogiri", ">= 1.11.4"
+gem 'mechanize'
+gem 'i18n_generators'
+gem 'geocoder'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

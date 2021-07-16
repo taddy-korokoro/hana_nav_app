@@ -16,6 +16,4 @@ CarrierWave.configure do |config|
   else
     config.storage = :file
   end
-  # 日本語ファイル名の設定
-  CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
 end
