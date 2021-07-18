@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_000020) do
+ActiveRecord::Schema.define(version: 2021_07_18_034325) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2021_06_26_000020) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "spot_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "flower_item_spots", force: :cascade do |t|

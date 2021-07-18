@@ -1,0 +1,7 @@
+= render 'layouts/flash_messages'
+.box.p-4.font-weight-bold
+  h1 スポット詳細
+  h2 = @spot.name
+  = image_tag @spot.image.to_s
+  p = link_to "編集", edit_spot_path(@spot)
+  p = link_to "戻る", spots_path

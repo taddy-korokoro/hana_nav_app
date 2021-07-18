@@ -1,0 +1,24 @@
+= render 'layouts/flash_messages'
+.box.spot-detail.p-4.font-weight-bold
+  .container
+    .row.d-flex.align-items-center
+      h1
+        = @spot.name
+      .d-flex.align-items-center.bg-success.favorite.mb-2
+        .d-flex.justify-content-end
+          .i.far.fa-bookmark.pr-1
+          div
+            | お気に入りに追加
+    .d-flex.align-items-center
+      i.fas.fa-map-marker-alt.pr-1
+      = @spot.location
+    .d-flex.align-items-center
+      i.far.fa-clock.pr-1
+      = @spot.time
+
+  = image_tag @spot.image.to_s
+  p = link_to "編集", edit_spot_path(@spot)
+  p = link_to "戻る", spots_path
+
+/= render 'shared/star', travel_record: @spot
+/= render 'shared/google_map', travel_record: @travel_record

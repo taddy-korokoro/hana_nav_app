@@ -1,0 +1,12 @@
+= render 'layouts/flash_messages'
+.box.spot-detail.p-4.font-weight-bold
+  h1
+    = @spot.name
+  p
+    = @spot.location
+  = image_tag @spot.image.to_s
+  p = link_to "編集", edit_spot_path(@spot)
+  p = link_to "戻る", spots_path
+
+/= render 'shared/star', travel_record: @spot
+/= render 'shared/google_map', travel_record: @travel_record
