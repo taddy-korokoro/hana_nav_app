@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_18_034325) do
+ActiveRecord::Schema.define(version: 2021_07_18_091632) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 2021_07_18_034325) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "spot_id"
+    t.index ["spot_id"], name: "index_travel_records_on_spot_id"
     t.index ["user_id"], name: "index_travel_records_on_user_id"
   end
 
@@ -124,5 +126,6 @@ ActiveRecord::Schema.define(version: 2021_07_18_034325) do
   add_foreign_key "flower_item_spots", "spots"
   add_foreign_key "flower_items", "seasons"
   add_foreign_key "spots", "areas"
+  add_foreign_key "travel_records", "spots"
   add_foreign_key "travel_records", "users"
 end

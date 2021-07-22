@@ -1,0 +1,3 @@
+$("#comments_area").html("<%= j(render 'index', { comments: @comment.comments.order(created_at: :desc), comment_reply: @comment_reply }) %>");
+$("#comment_icon").html("<%= j(render 'comment_icon', { comments: @comment.travel_record.comments }) %>");
+$("textarea").val('');
