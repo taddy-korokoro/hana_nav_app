@@ -24,8 +24,8 @@
       = f.input :title, required: false
       = f.input :content, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 }, required: false
     .form-group.mt-4
-      = f.input :place, :placeholder => "例）茨城県ひたちなか市馬渡 字大沼605-4 or 国営ひたち海浜公園", required: false
-      /= f.input :place, as: :select, collection: Spot.pluck(:name, :id),
+      /= f.input :place, :placeholder => "例）茨城県ひたちなか市馬渡 字大沼605-4 or 国営ひたち海浜公園", required: false
+      = f.input :place, as: :select, collection: Spot.pluck(:name, :id),
         include_blank: "訪れた場所を選択してください", required: false
     .row.mt-4
       .form-group.col-4
