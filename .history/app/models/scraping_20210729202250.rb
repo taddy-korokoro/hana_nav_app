@@ -6,8 +6,6 @@ class Scraping < ApplicationRecord
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
-    # google mapsの正規表現、緯度経度をキャプチャする
-    maps_regexp = /\Ahttp:\/\/maps\.google\.com\/\?q=(.+),(.+)\z/
 
     20.times do |i|
       html = URI.open(url).read
@@ -39,23 +37,14 @@ class Scraping < ApplicationRecord
         doc.css('.main-left-layout').each do | node |
           sleep 0.5
 
-          latitude, longitude = nil, nil
-          node.css("a").each do |node|
-            # aタグを絞り込み正規表現にマッチするリンクを探す
-            result = maps_regexp.match(node[:href])
-            # アンマッチの場合はnilなので次の要素へ
-            next if result.nil?
-            # match:マッチ全体 latitude:緯度 longitude:経度
-            match, latitude, longitude = result.to_a
-          end
-
           # データが取得できなかった場合、次のループに移行
           if node.at_css('.block') == nil \
             || node.css('.spot-info > .t-cell')[1] == nil \
             || node.css('.spot-info > .t-row > .t-cell')[1] == nil \
             || node.at_css('.text') == nil \
             || node.at_css('img') == nil \
-            || node.at_css('#information p a') == nil
+            || node.at_css('#information p a') == nil \
+            || node.at_css('#information p a')[1]
             next
           end
 
@@ -67,8 +56,8 @@ class Scraping < ApplicationRecord
             feature: node.at_css('.text').inner_text,
             image: node.at_css('img').attribute('src'),
             url: node.at_css('#information p a')["href"],
-            latitude: latitude,
-            longitude: longitude
+            latitude: node.at_css('#information p a')[1]["href"].slice(26,9),
+            longitude: node.at_css('#information p a')[1]["href"].slice(35,9)
           )
         end
       end

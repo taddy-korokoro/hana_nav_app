@@ -48,6 +48,8 @@ class Scraping < ApplicationRecord
             # match:マッチ全体 latitude:緯度 longitude:経度
             match, latitude, longitude = result.to_a
           end
+          puts latitude
+          puts longitude
 
           # データが取得できなかった場合、次のループに移行
           if node.at_css('.block') == nil \
@@ -66,9 +68,7 @@ class Scraping < ApplicationRecord
             location: node.css('.spot-info > .t-row > .t-cell')[1].inner_text,
             feature: node.at_css('.text').inner_text,
             image: node.at_css('img').attribute('src'),
-            url: node.at_css('#information p a')["href"],
-            latitude: latitude,
-            longitude: longitude
+            url: node.at_css('#information p a')["href"]
           )
         end
       end

@@ -39,16 +39,6 @@ class Scraping < ApplicationRecord
         doc.css('.main-left-layout').each do | node |
           sleep 0.5
 
-          latitude, longitude = nil, nil
-          node.css("a").each do |node|
-            # aタグを絞り込み正規表現にマッチするリンクを探す
-            result = maps_regexp.match(node[:href])
-            # アンマッチの場合はnilなので次の要素へ
-            next if result.nil?
-            # match:マッチ全体 latitude:緯度 longitude:経度
-            match, latitude, longitude = result.to_a
-          end
-
           # データが取得できなかった場合、次のループに移行
           if node.at_css('.block') == nil \
             || node.css('.spot-info > .t-cell')[1] == nil \
@@ -66,9 +56,7 @@ class Scraping < ApplicationRecord
             location: node.css('.spot-info > .t-row > .t-cell')[1].inner_text,
             feature: node.at_css('.text').inner_text,
             image: node.at_css('img').attribute('src'),
-            url: node.at_css('#information p a')["href"],
-            latitude: latitude,
-            longitude: longitude
+            url: node.at_css('#information p a')["href"]
           )
         end
       end

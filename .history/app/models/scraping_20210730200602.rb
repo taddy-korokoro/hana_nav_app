@@ -56,6 +56,7 @@ class Scraping < ApplicationRecord
             || node.at_css('.text') == nil \
             || node.at_css('img') == nil \
             || node.at_css('#information p a') == nil
+            # || maps_regexp.match(node[:href]) == nil
             next
           end
 
