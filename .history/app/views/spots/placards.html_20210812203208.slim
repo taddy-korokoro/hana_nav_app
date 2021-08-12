@@ -17,7 +17,7 @@
       - if @placards.present?
         - @placards.each do | placard |
           = render 'shared/post_detail', travel_record: placard
-          = link_to "投稿詳細ページへ", travel_record_path(placard), style: "color: #30a1f2;"
+          = link_to "投稿詳細ページへ", travel_record_path(placard), style: "color: $link-color;"
           .hr-gray
       - else
         div

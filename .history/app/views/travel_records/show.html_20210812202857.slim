@@ -14,7 +14,7 @@
   - if user_signed_in?
     = render 'comments/form', travel_record: @travel_record, comment: @comment
   - if  @user == current_user
-    = link_to "投稿編集ページへ", edit_travel_record_path(@travel_record), style: "color: #30a1f2;"
+    = link_to "投稿編集ページへ", edit_travel_record_path(@travel_record)
 
 = render 'shared/google_map', travel_record: @travel_record
 
