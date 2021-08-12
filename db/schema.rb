@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_18_091632) do
+ActiveRecord::Schema.define(version: 2021_08_08_045328) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_07_18_091632) do
     t.string "title"
     t.text "content"
     t.string "place"
-    t.float "review"
+    t.float "review", default: 0.0
     t.date "visited_on"
     t.string "image_1"
     t.string "image_2"

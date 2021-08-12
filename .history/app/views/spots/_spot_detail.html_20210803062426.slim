@@ -1,0 +1,20 @@
+.row.d-flex.align-items-center
+  .col
+    .title
+      = spot.name
+  .col.d-flex.justify-content-end
+    = render spots/post_button', spot: spot
+    div id='favorite-button_#{ spot.id }'
+      = render 'favorites/button', spot: spot
+.row.d-flex.align-items-center.pb-1
+  .col
+    #star.star-size.d-flex
+      div id=("star-rate-#{travel_record.id}")
+      .ml-2.score-size
+        | (#{@review_average})
+.d-flex.align-items-center
+  i.fas.fa-map-marker-alt.pr-1
+  = spot.location
+.d-flex.align-items-center.mb-3
+  i.far.fa-clock.pr-1
+  = spot.time

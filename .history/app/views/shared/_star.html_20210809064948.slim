@@ -1,0 +1,51 @@
+/ ----- レビュー星評価の実装 -----
+
+/ ----- 'spots/show,photos,placards,map'で使用中（平均値） -----
+- if controller.controller_name == 'spots'
+  /- travel_record.each do |t|
+  javascript:
+    $('#star-rate-#{travel_record.ids}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: "#{review_average}",
+    });
+/ ----- 'users/show'で使用中 -----
+-elsif controller.controller_name == 'users'
+  javascript:
+    $('#star-rate-#{travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: #{travel_record.review},
+    });
+
+/ ----- 'travel_record/new'で使用中 -----
+- if controller.controller_name == 'travel_records' && controller.action_name == 'new'
+  javascript:
+    $('#star').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      scoreName: 'travel_record[review]',
+      half: true,
+    });
+/ ----- 'travel_record/edit'で使用中 -----
+- elsif controller.controller_name == 'travel_records' && controller.action_name == 'edit'
+  javascript:
+    $('#star-rate-#{@travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: #{@travel_record.review},
+      scoreName: 'travel_record[review]'
+    });

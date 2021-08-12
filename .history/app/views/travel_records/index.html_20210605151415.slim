@@ -1,8 +1,0 @@
-.container.bg.p-4
-  h2 はなたび記録の一覧
-  hr
-  - @travel_records.each do |travel_record|
-    = link_to image_tag(travel_record.user.profile_image.thumb.url), edit_user_registration_path
-    = "#{travel_record.user.user_name}さん"
-    = link_to "詳細", travel_record_path(travel_record)
-    = link_to "削除", travel_record_path(travel_record), method: :delete

@@ -1,9 +1,0 @@
-.box.travel-record-wrapper.p-4
-  - if  @user == current_user
-    h4 My はなたび記録
-    = render 'travel_records/show'
-    = link_to "編集", edit_travel_record_path(@travel_record)
-    = link_to "削除", travel_record_path(@travel_record), method: :delete
-  - else
-    h4 #{@user.name}さんのはなたび記録
-    = render 'travel_records/show'

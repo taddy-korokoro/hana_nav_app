@@ -1,7 +1,0 @@
-.container.bg
-  h1 はなたび記録の一覧
-  hr
-  - @travel_records.each do |travel_record|
-    = travel_record.title
-    br
-    = image_tag travel_record.user.profile_image.to_s

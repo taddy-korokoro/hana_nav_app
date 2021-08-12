@@ -1,0 +1,17 @@
+.box.user-page.p-4.font-weight-bold
+  = render 'profile_detail', user: @user
+  .btn-group.btn-group-lg.d-flex.mb-4
+    = link_to spot_path, class: 'btn btn-block btn-light flex-fill'
+      | はなたび記録
+    = link_to photos_spot_path, class: 'btn btn-block active-btn flex-fill'
+      | お気に入り
+    = link_to placards_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | いいね！記録
+    = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | フォロワー
+    = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | フォロー
+
+  - @favorites.each do |favorite|
+    div
+      = favorite.spot.name

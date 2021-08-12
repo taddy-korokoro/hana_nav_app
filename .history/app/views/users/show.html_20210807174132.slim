@@ -1,0 +1,97 @@
+= render 'layouts/flash_messages'
+.box.user-page.p-4.font-weight-bold
+  - if  @user == current_user
+    h4 My はなたび記録
+  - else
+    h4 #{@user.name}さんのはなたび記録
+  .hr-blue
+  .card(stlye="max-width: 1000px;")
+    .row.mb-3
+      .col-4
+        .trim-img.mb-2
+          - if @user.profile_image?
+            = image_tag @user.profile_image.to_s
+          - else
+            = image_tag 'no_profile_img.png'
+        .text-center.mb-1
+          | #{@user.name}
+        = link_to "プロフィール編集", edit_user_registration_path, class: "edit-btn d-block mx-auto"
+      .col-8
+        .card-boby
+          .mb-1
+           | 自己紹介
+          .bg-light(style="width: 500px; height: 200px;")
+            .p-2
+             | #{@user.self_introduction}
+  .btn-group.btn-group-lg.d-flex.mb-4
+    = link_to spot_path, class: 'btn btn-block active-btn flex-fill'
+      | はなたび記録
+    = link_to photos_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | お気に入り
+    = link_to placards_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | いいね！記録
+    = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | フォロワー
+    = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+      | フォロー
+
+  - @travel_records.each do |travel_record|
+    .row
+      .col-8
+        = travel_record.title
+        #star.star-size.pb-1
+          .d-flex id=("star-rate-#{travel_record.id}")
+          / ----- レビュー星評価 -----
+          javascript:
+            $('#star-rate-#{travel_record.id}').raty({
+              size     : 36,
+              starOff: "#{asset_path('star-off.png')}",
+              starOn: "#{asset_path('star-on.png')}",
+              starHalf: "#{asset_path('star-half.png')}",
+              half: true,
+              readOnly: true,
+              score: #{travel_record.review},
+            });
+        div
+          = travel_record.spot.name
+        div
+          = travel_record.content
+        div
+          = travel_record.visited_on
+        /.d-flex.justify-content-end
+          .pr-3 id='like-button_#{ travel_record.id }'
+            = render 'likes/button', travel_record: @travel_record
+          .pr-1#comment_icon
+            = render 'comments/comment_icon', comments: @travel_record.comments
+      .col-4
+        - if travel_record.image_1?
+          = image_tag travel_record.image_1.to_s, class: "image"
+        - else
+          = image_tag 'no_img.png', class: "image"
+    hr
+
+
+
+
+
+
+/.profile-wrapper
+  - if  @user == current_user
+    h2 My
+    p = "ニックネーム：#{@user.name}"
+    p = "自己紹介：#{@user.self_introduction}"
+    p = "ID：#{@user.id}"
+    p プロフィール画像
+    - if @user.profile_image?
+      = image_tag @user.profile_image.to_s
+    - else
+      = image_tag 'no_profile_img.png'
+  - else
+    h2 = "#{@user.name}さんのはなたび記録"
+    p = "自己紹介：#{@user.self_introduction}"
+    p = "ID：#{@user.id}"
+    P プロフィール画像
+    - if @user.profile_image?
+      = image_tag @user.profile_image.to_s
+    - else
+      = image_tag 'no_profile_img.png'

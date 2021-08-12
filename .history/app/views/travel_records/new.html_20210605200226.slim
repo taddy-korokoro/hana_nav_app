@@ -1,8 +1,0 @@
-.container.bg.p-4.travel-record-wrapper
-  h2 新規投稿
-  hr
-  = form_with model: @travel_record, local: true do | f |
-    .form-group.post-img 写真の投稿
-      = image_tag 'no_img.png'
-      = f.hidden_field :image_cache
-    = f.file_field :image

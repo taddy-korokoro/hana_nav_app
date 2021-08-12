@@ -1,0 +1,40 @@
+.box.spot-detail.p-4.font-weight-bold
+  .container
+    .row.d-flex.align-items-center
+      .col
+        .title
+         | #{@spot.name}
+      .col.d-flex.justify-content-end
+        = render 'spots/post_button', spot: @spot
+        div id='favorite-button_#{ @spot.id }'
+          = render 'favorites/button', spot: @spot
+    .d-flex.align-items-center
+      i.fas.fa-map-marker-alt.pr-1
+      = @spot.location
+    .d-flex.align-items-center.mb-4
+      i.far.fa-clock.pr-1
+      = @spot.time
+
+    .btn-group.btn-group-lg.d-flex.mb-4
+      = link_to spot_path, class: 'btn btn-block btn-light flex-fill'
+        | TOP
+      = link_to photos_spot_path, class: 'btn btn-block active-btn flex-fill'
+        | 写真
+      = link_to placards_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | はなたび記録
+      = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | アクセス
+    .information
+     | #{@spot.name}の写真一覧
+    .hr-blue
+    .row
+      .col-6
+        = image_tag @spot.image.to_s, class: 'position-relative img'
+      - @travel_records.each do | travel_record |
+        - travel_record.image_1.present?
+          .col-6
+            = image_tag travel_record.image_1.to_s, class: 'position-relative img'
+            = link_to travel_record_path(travel_record.id) do
+              p.contributors
+              | by #{travel_record.user.name}さん
+    = paginate @travel_records
