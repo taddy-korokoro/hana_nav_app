@@ -1,0 +1,21 @@
+.box.user-page.p-4.font-weight-bold
+  = render 'profile_detail', user: @user
+  .btn-group.btn-group-lg.d-flex.mb-4
+    = link_to travel_record_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
+      | はなたび記録
+    = link_to favorite_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
+      | お気に入り
+    = link_to like_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
+      | いいね記録
+    = link_to followings_user_path(@user.id), class: 'btn btn-block active-btn flex-fill'
+      | フォロー
+    = link_to followers_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
+      | フォロワー
+  .container
+    .row.d-flex.align-items-center.pb-1
+      .col
+        - @users.each do |user|
+          = render 'travel_records/profile_image', user: user
+          = link_to "#{user.name}さん", travel_record_user_path(user.id), class: 'link pl-1'
+      /.col.d-flex.justify-content-end
+        = l travel_record.visited_on, format: :long

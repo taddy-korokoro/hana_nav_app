@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_08_045328) do
+ActiveRecord::Schema.define(version: 2021_08_13_022815) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2021_08_08_045328) do
     t.integer "travel_record_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "following_id"
+    t.integer "follower_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
   end
 
   create_table "scrapings", force: :cascade do |t|

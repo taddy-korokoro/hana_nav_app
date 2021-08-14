@@ -7,9 +7,9 @@
       | お気に入り
     = link_to like_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
       | いいね！記録
-    = link_to '#', class: 'btn btn-block btn-light flex-fill'
+    = link_to following_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
       | フォロー
-    = link_to '#', class: 'btn btn-block btn-light flex-fill'
+    = link_to followers_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
       | フォロワー
   .favorite-list
     - @favorites.each do |favorite|
