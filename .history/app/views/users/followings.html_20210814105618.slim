@@ -7,13 +7,13 @@
       | お気に入り
     = link_to likes_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
       | いいね記録
-    = link_to followings_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
+    = link_to followings_user_path(@user.id), class: 'btn btn-block active-btn flex-fill'
       | フォロー
-    = link_to followers_user_path(@user.id), class: 'btn btn-block active-btn flex-fill'
+    = link_to followers_user_path(@user.id), class: 'btn btn-block btn-light flex-fill'
       | フォロワー
   .follow-list.p-3
     h5
-     | フォロワー (#{@user.followers.count})
+     | フォロー (#{@user.followings.count})
     .hr-blue
     .row.d-flex.align-items-center.px-1.py-2
       .col
@@ -24,5 +24,5 @@
             hr
         - else
           div
-           | フォロワーがいません
+          | フォローしていません
           hr
