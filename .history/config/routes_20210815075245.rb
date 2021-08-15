@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root 'top#home'
   get 'index', to: 'top#index', as: 'index'
-  get 'search', to: 'top#search', as: 'search'
-
   # ログイン、アカウント編集後、任意のページに推移させるための記述
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -38,6 +36,7 @@ Rails.application.routes.draw do
     end
     resource :favorites, only: %i[create destroy]
   end
+  get 'search', to: 'spots#search', as: 'search'
 
   post 'travel_records/:travel_record_id/comments', to: 'comments#create', as: :travel_record_comments
   delete 'travel_records/:travel_record_id/comments/:id', to: 'comments#destroy', as: :travel_record_comment

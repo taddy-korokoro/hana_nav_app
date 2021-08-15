@@ -13,7 +13,7 @@ class TopController < ApplicationController
   def search
     # ransackの検索結果
     @q = Spot.ransack(search_params)
-    @spots = @q.result.page(params[:page]).per(3)
+    @spots = @q.result.page(params[:page]).per(1)
   end
 
   private
