@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_022815) do
+ActiveRecord::Schema.define(version: 2021_08_16_065033) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -47,10 +47,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_022815) do
     t.text "time", null: false
     t.text "feature", null: false
     t.string "image"
-    t.integer "season_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["season_id"], name: "index_flower_items_on_season_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -75,6 +73,13 @@ ActiveRecord::Schema.define(version: 2021_08_13_022815) do
 
   create_table "seasons", force: :cascade do |t|
     t.string "month_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "spot_seasons", force: :cascade do |t|
+    t.integer "spot_id", null: false
+    t.integer "season_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -132,7 +137,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_022815) do
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "flower_item_spots", "flower_items"
   add_foreign_key "flower_item_spots", "spots"
-  add_foreign_key "flower_items", "seasons"
+  add_foreign_key "spot_seasons", "seasons"
+  add_foreign_key "spot_seasons", "spots"
   add_foreign_key "spots", "areas"
   add_foreign_key "travel_records", "spots"
   add_foreign_key "travel_records", "users"
