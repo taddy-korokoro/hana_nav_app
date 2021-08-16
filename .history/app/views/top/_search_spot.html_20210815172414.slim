@@ -1,0 +1,42 @@
+/ ----- 'spots/search'で使用中 -----
+.box.p-4
+  .heading
+    | スポット一覧
+  .hr-blue
+  div
+    = @spot.flower_items.map{| item |item.name}.join('、')
+.box.p-4
+  .heading
+    | スポット一覧
+  .hr-blue
+  .flower-spots
+    - @spots.each do |spot|
+      .card.mt-3
+        = link_to spot_path(spot.id), class: "flower-spot"
+          .row.no-gutters.py-2
+            .col-9.body
+              h1
+                = spot.name
+              .address
+                = spot.location
+              .season
+                = spot.time
+              p.mt-2
+                = spot.feature
+            .col-3.pl-2
+              = image_tag spot.image.to_s, class: "image"
+            div
+              = spot.flower_items.map{| item |item.name}.join('、')
+      hr
+
+  / 検索後のスポット表示見本
+  /.flower-spots
+    .card.my-5
+      = link_to "#", class: "flower-spot"
+        .row.no-gutters.py-2
+          .col-9.body
+            h1 天空の花畑のチューリップ
+            .address 静岡県裾野市須山字藤原2427 遊園地ぐりんぱ内
+            .season 4月下旬〜5月下旬
+            p.mt-2 富士山の2合目にある遊園地「ぐりんぱ」内にある天空の花畑。毎年4月下旬頃になると天空のチューリップ祭りが開催され、青空と富士山をバックにカラフルな約20万本のチューリップが色鮮やかに咲き誇ります。
+          .col-3.sample-image

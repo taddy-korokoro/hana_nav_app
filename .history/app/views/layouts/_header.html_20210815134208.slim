@@ -1,0 +1,32 @@
+header
+  nav.navbar.navbar-expand.navbar-light.mx-2
+    - if user_signed_in?
+      = link_to index_path, class: 'navbar-brand'
+        h1 hana_nav
+    - else
+      = link_to image_tag('logo.png'), root_path, class: 'navbar-brand'
+    #Navber.collapse.navbar-collapse.justify-content-end
+      ul.navbar-nav
+        - if user_signed_in?
+          li.nav-item.active
+            = link_to 'ユーザー一覧', '#', class: 'nav-link'
+          li.nav-item.active
+            = link_to 'タイムライン', feeds_user_path(current_user), class: 'nav-link'
+          li.nav-item.active
+            = link_to '投稿する', new_travel_record_path, class: 'nav-link'
+          li.nav-item.active
+            = link_to 'マイページ', travel_records_user_path(current_user), class: 'nav-link'
+          li.nav-item.active.pr-3
+            - if current_user.persisted? && current_user.profile_image?
+              = link_to image_tag(current_user.profile_image.thumb.url), edit_user_registration_path
+            - else
+              = link_to image_tag('no_profile_img.png'), edit_user_registration_path
+          li.nav-item.active
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+        - else
+          li.nav-item.active
+            = link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: 'btn btn-warning mr-2'
+          li.nav-item.active
+            = link_to "アカウント作成", new_user_registration_path, class: 'btn btn-light mr-2'
+          li.nav-item.active
+            = link_to "ログイン", new_user_session_path, class: 'btn btn-primary'

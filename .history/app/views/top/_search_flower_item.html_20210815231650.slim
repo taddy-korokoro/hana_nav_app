@@ -1,0 +1,15 @@
+.flower-box.mb-3.p-4
+  - if @flower_item.present?
+    .row.no-gutters
+      .col-9
+        .flower-name.mb-2
+          | #{@flower_item.flower_items.map{| item |item.name}.join('、')}の名所・見頃情報
+        .season.mb-2
+          = @flower_item.flower_items.map{| item |item.time}.join('、')
+        .feature
+          = @flower_item.flower_items.map{| item |item.feature}.join('、')
+      .col-3.flower-image.pl-2
+        = image_tag @flower_item.flower_items.map{| item |item.image.to_s}.join('、'), class: "image"
+  - else
+    div
+      = 該当スポットがありません
