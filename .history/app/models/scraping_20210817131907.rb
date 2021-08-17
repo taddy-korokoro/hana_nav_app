@@ -3,7 +3,7 @@ class Scraping < ApplicationRecord
   require 'nokogiri'
   require 'csv'
 
-  def self.spot_list_scrape
+  def self.spot_scrape
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
@@ -16,6 +16,7 @@ class Scraping < ApplicationRecord
 
     20.times do |i|
       html = URI.open(url).read
+
       doc = Nokogiri::HTML.parse(html)
 
       if doc.css('.flower')[i] == nil
@@ -48,6 +49,7 @@ class Scraping < ApplicationRecord
             # aタグを絞り込み正規表現にマッチするリンクを探す
             result = maps_regexp.match(node[:href])
             # アンマッチの場合はnilなので次の要素へ
+            # next if result.nil?
             if result.nil?
               next
             end
@@ -76,11 +78,11 @@ class Scraping < ApplicationRecord
 
           rows << [name, time, location, feature, image, url, latitude, longitude]
         end
-      end
-    end
-    CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
-      rows.each do |row|
-        csv << row
+        CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
+          rows.each do |row|
+            csv << row
+          end
+        end
       end
     end
   end

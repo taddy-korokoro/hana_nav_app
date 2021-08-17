@@ -1,9 +1,8 @@
 / ----- CSV出力ボタン -----
-= link_to "CSV出力装置", flower_items_path(format: :csv), class: "btn btn-warning mb-3"
-.box.p-4
-  .heading
-   | 花の一覧
-  .hr-blue
+= link_to "CSV出力装置", flower_items_path(format: :csv), class: "btn btn-warning"
+/ ----- スクレイピングでスポット作成 -----
+  = link_to "新規作成", new_flower_item_path
+  h1 花一覧
   .flower-list.container
     .row
       - @flower_items.each do |item|

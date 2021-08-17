@@ -3,7 +3,7 @@ class Scraping < ApplicationRecord
   require 'nokogiri'
   require 'csv'
 
-  def self.spot_list_scrape
+  def self.spot_scrape
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
@@ -27,6 +27,7 @@ class Scraping < ApplicationRecord
 
       3.times do |i|
         html = URI.open(next_url).read
+
         doc = Nokogiri::HTML.parse(html)
 
         # 取得したいスポットがない場合、次のループに移行
@@ -76,11 +77,11 @@ class Scraping < ApplicationRecord
 
           rows << [name, time, location, feature, image, url, latitude, longitude]
         end
-      end
-    end
-    CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
-      rows.each do |row|
-        csv << row
+        CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
+          rows.each do |row|
+            csv << row
+          end
+        end
       end
     end
   end
@@ -180,6 +181,7 @@ class Scraping < ApplicationRecord
 
     CSV.open('flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
+        byebug
         csv << row
       end
     end

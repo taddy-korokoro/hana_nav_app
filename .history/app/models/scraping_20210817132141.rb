@@ -3,19 +3,16 @@ class Scraping < ApplicationRecord
   require 'nokogiri'
   require 'csv'
 
-  def self.spot_list_scrape
+  def self.spot_scrape
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
     # google mapsの正規表現、緯度経度をキャプチャする
     maps_regexp = /\Ahttp:\/\/maps\.google\.com\/\?q=(.+),(.+)\z/
 
-    header = ['name', 'time', 'location', 'feature', 'image', 'url', 'latitude', 'longitude']
-    rows = []
-    rows << header
-
     20.times do |i|
       html = URI.open(url).read
+
       doc = Nokogiri::HTML.parse(html)
 
       if doc.css('.flower')[i] == nil
@@ -27,6 +24,11 @@ class Scraping < ApplicationRecord
 
       3.times do |i|
         html = URI.open(next_url).read
+
+        header = ['name', 'time', 'location', 'feature', 'image', 'url', 'latitude', 'longitude']
+        rows = []
+        rows << header
+
         doc = Nokogiri::HTML.parse(html)
 
         # 取得したいスポットがない場合、次のループに移行
@@ -75,12 +77,13 @@ class Scraping < ApplicationRecord
           longitude = longitude
 
           rows << [name, time, location, feature, image, url, latitude, longitude]
+          byebug
         end
-      end
-    end
-    CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
-      rows.each do |row|
-        csv << row
+        CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
+          rows.each do |row|
+            csv << row
+          end
+        end
       end
     end
   end

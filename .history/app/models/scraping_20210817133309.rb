@@ -3,7 +3,7 @@ class Scraping < ApplicationRecord
   require 'nokogiri'
   require 'csv'
 
-  def self.spot_list_scrape
+  def self.spot_scrape
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
@@ -27,6 +27,7 @@ class Scraping < ApplicationRecord
 
       3.times do |i|
         html = URI.open(next_url).read
+
         doc = Nokogiri::HTML.parse(html)
 
         # 取得したいスポットがない場合、次のループに移行

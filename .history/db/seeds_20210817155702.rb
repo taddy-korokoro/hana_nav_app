@@ -15,3 +15,14 @@ Area.create!(id: 6, name: "四国")
 Area.create!(id: 7, name: "中国")
 Area.create!(id: 8, name: "九州")
 Area.create!(id: 9, name: "沖縄")
+
+require 'csv'
+
+CSV.foreach('db/csv_data/flower_item.csv', headers: true) do |row|
+  FlowerItem.create(
+    name: row['name'],
+    time: row['time'],
+    feature: row['feature'],
+    image: row['image']
+  )
+end

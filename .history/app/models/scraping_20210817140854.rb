@@ -3,7 +3,7 @@ class Scraping < ApplicationRecord
   require 'nokogiri'
   require 'csv'
 
-  def self.spot_list_scrape
+  def self.spot_scrape
     base_url = 'https://loconavi.jp/'
     features_url = 'features/hananomeisho'
     url = "#{base_url}#{features_url}"
@@ -80,6 +80,7 @@ class Scraping < ApplicationRecord
     end
     CSV.open('db/csv_data/spot_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
+        byebug
         csv << row
       end
     end
