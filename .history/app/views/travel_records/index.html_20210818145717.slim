@@ -1,0 +1,12 @@
+/ ----- 'travel_records/show'で使用中 -----
+= render 'layouts/flash_messages'
+.box.travel-record-wrapper.p-4
+  .heading.py-2
+   | はなたび記録の一覧
+  .hr-blue
+  - @travel_records.each do |travel_record|
+    = render 'shared/post_detail', travel_record: travel_record
+    br
+    = link_to "投稿詳細ページ", travel_record_path(travel_record)
+    hr
+  = paginate @travel_records
