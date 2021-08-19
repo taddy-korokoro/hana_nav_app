@@ -1,10 +1,10 @@
 # sample_user
 User.create!(
-    name: "猫",
+    name: "cat",
     email: "cat@rails.org",
     password: "11111111",
     profile_image: open("./db/fixtures/cat.jpeg"),
-    self_introduction: "吾輩は猫である。"
+    self_introduction: "ニャー。"
   )
 
 # spotsとflower_itemsの中間テーブル

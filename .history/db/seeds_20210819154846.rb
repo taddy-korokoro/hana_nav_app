@@ -1,11 +1,11 @@
-# 見頃データ
+# 見頃
 12.times do |n|
   Season.create!(
     id: n+1,
     month_name: "#{n+1}月" )
 end
 
-# 場所データ
+# 場所
 Area.create!(id: 1, name: "北海道")
 Area.create!(id: 2, name: "東北")
 Area.create!(id: 3, name: "関東")
