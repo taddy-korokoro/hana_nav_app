@@ -1,0 +1,2 @@
+class FlowerItemSeason < ApplicationRecord
+end

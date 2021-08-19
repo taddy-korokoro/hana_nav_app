@@ -1,7 +1,7 @@
 / ----- 'top/index'で使用中 -----
 .flower-list.container
   .row
-    - @flower_items.each do |item|
+    - flower_items.each do |item|
       = link_to flower_item_path(item.id), class: "flower col-4"
         .flower-image
           = image_tag item.image.to_s, class: "image"

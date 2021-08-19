@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_065033) do
+ActiveRecord::Schema.define(version: 2021_08_18_114950) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2021_08_16_065033) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "spot_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "flower_item_seasons", force: :cascade do |t|
+    t.integer "flower_item_id", null: false
+    t.integer "season_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -135,6 +142,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_065033) do
   end
 
   add_foreign_key "comments", "comments", column: "parent_id"
+  add_foreign_key "flower_item_seasons", "flower_items"
+  add_foreign_key "flower_item_seasons", "seasons"
   add_foreign_key "flower_item_spots", "flower_items"
   add_foreign_key "flower_item_spots", "spots"
   add_foreign_key "spot_seasons", "seasons"
