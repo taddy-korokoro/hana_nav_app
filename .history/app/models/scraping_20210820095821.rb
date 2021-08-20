@@ -87,7 +87,7 @@ class Scraping < ApplicationRecord
       }
       rows << row_2 + row_1 + row_3
     }
-    CSV.open('db/csv_data/flower_item.csv', 'w', :force_quotes=>true) do |csv|
+    CSV.open('db/csv_data/re_flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
         csv << row
       end

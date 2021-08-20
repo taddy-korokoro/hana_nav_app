@@ -62,7 +62,7 @@ class Scraping < ApplicationRecord
     feature_url = '/features/hananomeisho'
     url = "#{base_url}#{feature_url}"
 
-    header = ['name', 'time', 'feature', 'image', 'detailed_feature']
+    header = ['name', 'time', 'feature', 'image']
     rows = [header]
 
     html = URI.open(url).read
@@ -70,7 +70,6 @@ class Scraping < ApplicationRecord
 
     doc.css('.flower').each{|flower|
       row_2 = []
-      row_3 = []
 
       time = flower.at_css('.time').inner_text
       feature = flower.at_css('.description').inner_text
@@ -81,13 +80,12 @@ class Scraping < ApplicationRecord
 
       doc.css('.flower-description').each {|node|
         name = node.at_css('h1').inner_text.delete("の名所・見頃情報")
-        detailed_feature = node.at_css('.text')&.inner_text
+        detailed_feature = node.at_css('.text').inner_text
         row_2 = [name]
-        row_3 = [detailed_feature]
       }
-      rows << row_2 + row_1 + row_3
+      rows << row_2 + row_1
     }
-    CSV.open('db/csv_data/flower_item.csv', 'w', :force_quotes=>true) do |csv|
+    CSV.open('db/csv_data/re_flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
         csv << row
       end

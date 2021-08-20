@@ -81,13 +81,13 @@ class Scraping < ApplicationRecord
 
       doc.css('.flower-description').each {|node|
         name = node.at_css('h1').inner_text.delete("の名所・見頃情報")
-        detailed_feature = node.at_css('.text')&.inner_text
+        detailed_feature = node.at_css('.text').inner_text
         row_2 = [name]
         row_3 = [detailed_feature]
       }
       rows << row_2 + row_1 + row_3
     }
-    CSV.open('db/csv_data/flower_item.csv', 'w', :force_quotes=>true) do |csv|
+    CSV.open('db/csv_data/re_flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
         csv << row
       end
