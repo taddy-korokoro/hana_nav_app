@@ -63,31 +63,66 @@ class Scraping < ApplicationRecord
     url = "#{base_url}#{feature_url}"
 
     header = ['name', 'time', 'feature', 'image']
-    rows = [header]
+    rows = []
+    rows << header
 
-    html = URI.open(url).read
-    doc = Nokogiri::HTML.parse(html)
-
-    doc.css('.flower').each{|flower|
-      row_2 = []
-
-      time = flower.at_css('.time').inner_text
-      feature = flower.at_css('.description').inner_text
-      image = flower.at_css('img').attribute('src')
-      row_1 = [time, feature, image]
-      html = URI.open(base_url + flower['href']).read
+    20.times do |i|
+      html = URI.open(url).read
       doc = Nokogiri::HTML.parse(html)
+      if doc.css('.flower')[i] == nil
+        break
+      end
+      byebug
+      doc.css('.flower')[i].each do | node |
+        time = node.css('.time').inner_text
+        feature = node.css('.description').inner_text
+        image = node.css('img').attribute('src').value
 
-      doc.css('.flower-description').each {|node|
-        name = node.at_css('h1').inner_text.delete("の名所・見頃情報")
-        row_2 = [name]
-      }
-      rows << row_2 + row_1
-    }
+        row_1 = [time, feature, image]
+
+        flower_href = doc.css('.flower')[i]["href"]
+        next_url = "#{base_url}#{flower_href}"
+
+        html = URI.open(next_url).read
+        doc = Nokogiri::HTML.parse(html)
+
+        doc.css('.flower-description').each do |node|
+          name = node.at_css('h1').inner_text.delete("の名所・見頃情報")
+
+          row = [name]
+          rows << row + row_1
+        end
+      end
+    end
     CSV.open('db/csv_data/re_flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
         csv << row
       end
     end
   end
+
+  # def self.flower_item_scrape
+  #   url = 'https://loconavi.jp/features/hananomeisho'
+  #   html = URI.open(url).read
+
+  #   header = ['name', 'time', 'feature', 'image']
+  #   rows = []
+  #   rows << header
+
+  #   doc = Nokogiri::HTML.parse(html)
+
+  #   doc.css('.flower').each do | node |
+  #     name = node.at_css('.name').inner_text.delete("の名所" "お花見" "まつり" "・")
+  #     time = node.at_css('.time').inner_text
+  #     feature = node.at_css('.description').inner_text
+  #     image = node.at_css('img').attribute('src').value
+
+  #     rows << [name, time, feature, image]
+  #   end
+  #   CSV.open('flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
+  #     rows.each do |row|
+  #       csv << row
+  #     end
+  #   end
+  # end
 end

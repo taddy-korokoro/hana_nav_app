@@ -71,18 +71,20 @@ class Scraping < ApplicationRecord
     doc.css('.flower').each{|flower|
       row_2 = []
 
-      time = flower.at_css('.time').inner_text
-      feature = flower.at_css('.description').inner_text
-      image = flower.at_css('img').attribute('src')
+      time = doc.css('.time')[i].inner_text
+      feature = doc.css('.description')[i].inner_text
+      image = doc.css('.flower img')[i].attribute('src')
       row_1 = [time, feature, image]
+
       html = URI.open(base_url + flower['href']).read
       doc = Nokogiri::HTML.parse(html)
 
       doc.css('.flower-description').each {|node|
         name = node.at_css('h1').inner_text.delete("の名所・見頃情報")
         row_2 = [name]
-      }
+      end
       rows << row_2 + row_1
+      }
     }
     CSV.open('db/csv_data/re_flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
       rows.each do |row|
@@ -90,4 +92,29 @@ class Scraping < ApplicationRecord
       end
     end
   end
+
+  # def self.flower_item_scrape
+  #   url = 'https://loconavi.jp/features/hananomeisho'
+  #   html = URI.open(url).read
+
+  #   header = ['name', 'time', 'feature', 'image']
+  #   rows = []
+  #   rows << header
+
+  #   doc = Nokogiri::HTML.parse(html)
+
+  #   doc.css('.flower').each do | node |
+  #     name = node.at_css('.name').inner_text.delete("の名所" "お花見" "まつり" "・")
+  #     time = node.at_css('.time').inner_text
+  #     feature = node.at_css('.description').inner_text
+  #     image = node.at_css('img').attribute('src').value
+
+  #     rows << [name, time, feature, image]
+  #   end
+  #   CSV.open('flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
+  #     rows.each do |row|
+  #       csv << row
+  #     end
+  #   end
+  # end
 end

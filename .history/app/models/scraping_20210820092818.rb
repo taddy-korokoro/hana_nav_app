@@ -90,4 +90,29 @@ class Scraping < ApplicationRecord
       end
     end
   end
+
+  # def self.flower_item_scrape
+  #   url = 'https://loconavi.jp/features/hananomeisho'
+  #   html = URI.open(url).read
+
+  #   header = ['name', 'time', 'feature', 'image']
+  #   rows = []
+  #   rows << header
+
+  #   doc = Nokogiri::HTML.parse(html)
+
+  #   doc.css('.flower').each do | node |
+  #     name = node.at_css('.name').inner_text.delete("の名所" "お花見" "まつり" "・")
+  #     time = node.at_css('.time').inner_text
+  #     feature = node.at_css('.description').inner_text
+  #     image = node.at_css('img').attribute('src').value
+
+  #     rows << [name, time, feature, image]
+  #   end
+  #   CSV.open('flower_item_list.csv', 'w', :force_quotes=>true) do |csv|
+  #     rows.each do |row|
+  #       csv << row
+  #     end
+  #   end
+  # end
 end
