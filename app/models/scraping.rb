@@ -84,7 +84,7 @@ class Scraping < ApplicationRecord
 
       doc.css('.flower-description').each{|main|
         name = main.at_css('h1')&.inner_text.delete("の名所・見頃情報")
-        time = "月旬〜月旬"
+        time = "月〜月"
         feature = main.at_css('p')&.inner_text
         image = main.at_css('img')&.attribute('src')&.value
 
