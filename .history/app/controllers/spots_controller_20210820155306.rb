@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
   before_action :review_average, only: %i[ show photos placards map ]
 
   def index
-    @spots = Spot.all.page(params[:page]).per(6).order(created_at: :asc)
+    @spots = Spot.all.page(params[:page]).per(6).order(created_at: :ask)
   end
 
   def new
