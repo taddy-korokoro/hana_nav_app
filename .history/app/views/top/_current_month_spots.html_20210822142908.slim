@@ -6,6 +6,7 @@
   .flower-spots
     - spots.each do |spot|
       - spot.spot_seasons.where(season_id: current_month).each do |season|
+        - binding.pry
         .card.mt-3
           = link_to spot_path(season.spot.id), class: "flower-spot"
             .row.no-gutters
@@ -21,4 +22,4 @@
               .col-3.pl-2
                 = image_tag season.spot.image.to_s, class: "image"
         hr
-  = paginate spots
+  /= paginate spots

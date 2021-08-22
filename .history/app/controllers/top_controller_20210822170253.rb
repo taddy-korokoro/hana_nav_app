@@ -9,7 +9,6 @@ class TopController < ApplicationController
     @flower_items = FlowerItem.all
     # 現在の月を格納
     @current_month = Date.today.month
-    # TODO: ページネーションの作成
   end
 
   def search

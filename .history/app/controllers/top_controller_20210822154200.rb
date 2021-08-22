@@ -5,11 +5,12 @@ class TopController < ApplicationController
   def index
     # ransackの検索実行前
     @q = Spot.ransack(params[:q])
-    @spots = @q.result
+    @spots = @q.result.page(params[:page]).per(3)
     @flower_items = FlowerItem.all
     # 現在の月を格納
     @current_month = Date.today.month
-    # TODO: ページネーションの作成
+    @spot = Season.find(name).spots
+    byebug
   end
 
   def search

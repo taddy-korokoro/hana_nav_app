@@ -4,8 +4,9 @@
    | スポット一覧
   .hr-blue
   .flower-spots
-    - spots.each do |spot|
-      - spot.spot_seasons.where(season_id: current_month).each do |season|
+    - spots.where(season_id: current_month)each do |spot|
+    - binding.pry
+      /- spot.spot_seasons.where(season_id: current_month).each do |season|
         .card.mt-3
           = link_to spot_path(season.spot.id), class: "flower-spot"
             .row.no-gutters
