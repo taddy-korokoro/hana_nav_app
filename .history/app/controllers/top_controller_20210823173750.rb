@@ -1,7 +1,6 @@
 class TopController < ApplicationController
   before_action :authenticate_user!, only: %i[index search]
   def home
-    redirect_to :index if user_signed_in?
   end
 
   def index

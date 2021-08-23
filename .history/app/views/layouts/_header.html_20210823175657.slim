@@ -13,7 +13,7 @@ header
             = link_to 'タイムライン', feeds_user_path(current_user), class: 'nav-link'
           li.nav-item.active
             = link_to '投稿する', new_travel_record_path, class: 'nav-link'
-          li.nav-item.active.px-3
+          li.nav-item.active.mx-3
             - if current_user.persisted? && current_user.profile_image?
               = link_to image_tag(current_user.profile_image.thumb.url), travel_records_user_path(current_user)
             - else
