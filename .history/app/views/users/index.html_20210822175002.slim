@@ -1,0 +1,12 @@
+.box.user-page.p-4
+  .follow-list.px-3
+    .information
+      | ユーザー一覧
+    .hr-blue
+    .row.d-flex.align-items-center.px-2.py-2
+      .col
+        - if @users.present?
+          - @users.each do |user|
+            = render 'shared/profile_image', user: user
+            = link_to "#{user.name}さん", travel_records_user_path(user.id), class: 'link pl-1'
+            hr

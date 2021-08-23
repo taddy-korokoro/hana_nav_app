@@ -1,0 +1,12 @@
+ .justify-content-center
+  = search_form_for @q, url:search_users_path do |f|
+      .row.justify-content-center
+        .col-4
+          = f.select(:sorts, { "並び替え": 'id desc', "投稿数が多い順": 'travel_records_count desc', "いいね!の多い順": 'likes_count desc'})
+        .col-4
+          = f.search_field :name_cont, label: false,
+          class: 'form-control', placeholder: 'ニックネームを入力してください', required: false
+        .col-4
+          = f.button :button, 'search', type: 'submit', class: 'btn btn-success btn-block'
+            |  検索
+            i.fas.fa-search.fa-fw

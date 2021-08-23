@@ -1,0 +1,11 @@
+ = search_form_for @q, url:search_users_path, class: 'form-control' do |f|
+    .row
+      .col
+        = f.select(:sorts, { "並び替え": 'id desc', "投稿数が多い順": 'travel_records_count desc', "いいね!の多い順": 'likes_count desc'}, class: "form-control select optional")
+      .col
+        = f.search_field :name_cont, label: false,
+        class: 'form-control', placeholder: 'ニックネームを入力してください', required: false
+      .col
+        = f.button :button, 'search', type: 'submit', class: 'btn btn-success btn-block'
+          |  この条件で検索
+          i.fas.fa-search.fa-fw

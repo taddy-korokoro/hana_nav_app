@@ -1,0 +1,12 @@
+ = search_form_for @q, url:search_users_path do |f|
+    .row.justify-content-center
+      .col-4
+        /= f.input :seasons_month_name_eq, as: :select, label: '見頃',
+          collection: Season.pluck(:month_name), include_blank: "指定なし", required: false
+      .col-4
+        = f.search_field :name_cont, label: false,
+        class: 'form-control', placeholder: 'ニックネームを入力してください', required: false
+      .col-4
+        = f.button :button, 'search', type: 'submit', class: 'btn btn-success btn-block'
+          |  この条件で検索
+          i.fas.fa-search.fa-fw

@@ -1,0 +1,12 @@
+.box.user-page.p-4
+  .follow-list.px-3
+    .row.d-flex.align-items-center
+      .co-3.information
+        | ユーザー一覧 (#{@user_count}人)
+      .col-9.justify-content-end
+        = render 'search_form'
+    .hr-blue
+    - if @users.present?
+      - @users.each do |user|
+        = render 'user_list', user: user
+  = paginate @users
