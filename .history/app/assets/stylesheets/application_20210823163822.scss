@@ -341,18 +341,16 @@ footer {
     text-decoration: none;
   }
 
+  // レビュー星の間隔(new,editで使用)
+  #star img {
+    margin-right: 40px;
+  }
+
   // レビュー星の間隔(index,showで使用)
   .star-size img {
     width: 20px;
     height: 20px;
     margin-right: 5px !important;
-  }
-
-  .season {
-    width: 9.7rem;
-    padding: 0.1rem;
-    color: white;
-    background-color: #d9b340;
   }
 
   .flower-spot {

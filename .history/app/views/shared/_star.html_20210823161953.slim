@@ -10,7 +10,7 @@
       starHalf: "#{asset_path('star-half.png')}",
       half: true,
       readOnly: true,
-      score: "#{spot.travel_records.average(:review).to_f.round(1)}",
+      score: "#{spot.travel_records.review_average_kai}",
     });
 - elsif controller.controller_name == 'spots'
   javascript:

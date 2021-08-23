@@ -1,8 +1,8 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_spot, only: %i[edit show update destroy photos placards map]
-  before_action :set_travel_records, only: %i[show photos placards map]
-  before_action :review_average, only: %i[show photos placards map]
+  before_action :set_spot, only: %i[ edit show update destroy photos placards map ]
+  before_action :set_travel_records, only: %i[ show photos placards map ]
+  before_action :review_average, only: %i[ show photos placards map ]
 
   def index
     @spots = Spot.all.page(params[:page]).per(6).order(created_at: :asc)
@@ -69,5 +69,8 @@ class SpotsController < ApplicationController
 
     def review_average
       @review_average = @travel_records.average(:review).to_f.round(1) if @travel_records.present?
+    end
+    def review_average_kai
+      @review_average = average(:review).to_f.round(1) if @travel_records.present?
     end
 end

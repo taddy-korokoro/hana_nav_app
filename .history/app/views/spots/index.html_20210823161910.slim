@@ -8,14 +8,17 @@
         = link_to spot_path(spot.id), class: "flower-spot"
           .row.no-gutters
             .col-9.body
-              .name
+              .name.mb-1
                 = spot.name
               #star.star-size.d-flex
-                .mb-1 id=("star-rate-#{spot.id}")
-                = render 'shared/star', spot: spot
-              .address.mb-1
+                div id=("star-rate-#{spot.id}")
+                = render 'shared/star', spot: spot, review_average_kai: @review_average_kai
+                - if review_average.present?
+                  .ml-2.score-size
+                    | (#{review_average})
+                        .address
                 = spot.location
-              .season.mb-1
+              .season.mb-2
                 = spot.time
               p
                 = spot.feature.truncate(300)

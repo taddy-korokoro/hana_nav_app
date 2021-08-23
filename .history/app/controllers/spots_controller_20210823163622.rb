@@ -1,8 +1,8 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_spot, only: %i[edit show update destroy photos placards map]
-  before_action :set_travel_records, only: %i[show photos placards map]
-  before_action :review_average, only: %i[show photos placards map]
+  before_action :set_spot, only: %i[ edit show update destroy photos placards map ]
+  before_action :set_travel_records, only: %i[ show photos placards map ]
+  before_action :review_average, only: %i[ show photos placards map ]
 
   def index
     @spots = Spot.all.page(params[:page]).per(6).order(created_at: :asc)
