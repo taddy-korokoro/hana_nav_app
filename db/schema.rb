@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_024749) do
+ActiveRecord::Schema.define(version: 2021_08_24_033012) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_08_20_024749) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_flower_items_on_name", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
@@ -104,6 +105,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_024749) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["area_id"], name: "index_spots_on_area_id"
+    t.index ["location"], name: "index_spots_on_location"
+    t.index ["name"], name: "index_spots_on_name", unique: true
   end
 
   create_table "travel_records", force: :cascade do |t|
