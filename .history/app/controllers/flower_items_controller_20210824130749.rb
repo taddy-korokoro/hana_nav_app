@@ -2,6 +2,7 @@ class FlowerItemsController < ApplicationController
   before_action :authenticate_user!
   def index
     @flower_items = FlowerItem.all
+
   end
 
   def show

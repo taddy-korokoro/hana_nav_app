@@ -8,9 +8,9 @@ header
       ul.navbar-nav
         - if user_signed_in?
           li.nav-item.active
-            = link_to 'ユーザーリスト', users_path, class: 'nav-link'
+            = link_to 'ユーザー一覧', users_path, class: 'nav-link'
           li.nav-item.active
-            = link_to '花リスト', flower_items_path, class: 'nav-link'
+            = link_to '花一覧', flower_items_path, class: 'nav-link'
           li.nav-item.active
             = link_to 'タイムライン', feeds_user_path(current_user), class: 'nav-link'
           li.nav-item.active
