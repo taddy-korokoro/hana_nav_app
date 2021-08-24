@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(version: 2021_08_24_010920) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["area_id"], name: "index_spots_on_area_id"
-    t.index ["name", "time", "location", "feature", "image", "url", "latitude", "longitude"], name: "spots_index"
   end
 
   create_table "travel_records", force: :cascade do |t|
