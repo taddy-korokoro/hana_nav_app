@@ -7,7 +7,7 @@ class TopController < ApplicationController
   def index
     # ransackの検索実行前
     @q = Spot.ransack(params[:q])
-    @spots = @q.result.page(params[:page]).per(5)
+    @spots = @q.result
     @flower_items = FlowerItem.includes(flower_item_seasons: :season)
     # 現在の月を格納
     @current_month = Date.today.month
@@ -17,7 +17,7 @@ class TopController < ApplicationController
   def search
     # ransackの検索結果
     @q = Spot.ransack(search_params)
-    @spots = @q.result.page(params[:page]).per(5)
+    @spots = @q.result.page(params[:page]).per(3)
 
     @flower_item = @spots.first if @spots.present?
   end

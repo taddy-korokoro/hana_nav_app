@@ -1,8 +1,8 @@
 / ----- レビュー星評価の実装 -----
 
-/ ----- 'top/index, search,users/favorites, spots/show,photos,placards,map'で使用中（平均値） -----
+/ ----- 'spots/show,photos,placards,map'で使用中（平均値） -----
 - if controller.controller_name == 'spots' && controller.action_name == 'index' \
-  || controller.controller_name == 'top' || controller.action_name == 'favorites'
+  || controller.controller_name == 'top'
   javascript:
     $('#star-rate-#{spot.id}').raty({
       size     : 36,

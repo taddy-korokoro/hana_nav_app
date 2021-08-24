@@ -15,13 +15,12 @@
     .information
      | お気に入り (#{@user.favorites.count})
     .hr-blue
-    .p-1
-      - if @favorites.present?
-        - @favorites.each do |favorite|
-          = render 'shared/spot_detail', spot: favorite.spot
-          hr
-      - else
-        div
-        | お気に入りがありません
+    - if @favorites.present?
+      - @favorites.each do |favorite|
+        = render 'shared/spot_detail', spot: favorite.spot
         hr
+    - else
+      div
+       | お気に入りがありません
+      hr
   = paginate @favorites

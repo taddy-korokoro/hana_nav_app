@@ -15,7 +15,7 @@
     .information
      | お気に入り (#{@user.favorites.count})
     .hr-blue
-    .p-1
+    .p-2
       - if @favorites.present?
         - @favorites.each do |favorite|
           = render 'shared/spot_detail', spot: favorite.spot

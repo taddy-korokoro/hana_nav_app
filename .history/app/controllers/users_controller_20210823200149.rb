@@ -4,19 +4,19 @@ class UsersController < ApplicationController
 
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.page(params[:page]).per(5).order(created_at: :desc)
+    @users = @q.result.includes(:travel_records, :likes).page(params[:page]).per(5).order(created_at: :desc)
     @user_count = User.all.count
   end
 
   def search
     @q = User.search(search_params)
-    @users = @q.result.page(params[:page]).per(5).order(created_at: :desc)
+    @users = @q.result.includes(:travel_records, :likes).page(params[:page]).per(5).order(created_at: :desc)
     # 検索一致したユーザー数を表示するためのインスタンス
     @user_count = @users.page(params[:page]).count
   end
 
   def travel_records
-    @travel_records = @user.travel_records.includes(:spot).page(params[:page]).per(5).order(created_at: :desc)
+    @travel_records = @user.travel_records.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def favorites

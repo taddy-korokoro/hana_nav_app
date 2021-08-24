@@ -1,0 +1,23 @@
+/ ----- 'top/index'で使用中 -----
+.box.p-4
+  .heading
+   | スポット一覧
+  .hr-blue
+  .flower-spots
+    - spots.each do |spot|
+      - spot.spot_seasons.where(season_id: current_month).each do |season|
+        .card.mt-3
+          = link_to spot_path(season.spot.id), class: "flower-spot"
+            .row.no-gutters
+              .col-9.body
+                .name.mb-1
+                  = season.spot.name
+                .address
+                  = season.spot.location
+                .season.mb-2
+                  = season.spot.time
+                p
+                  = season.spot.feature.truncate(280)
+              .col-3.pl-2
+                = image_tag season.spot.image.to_s, class: "image"
+        hr

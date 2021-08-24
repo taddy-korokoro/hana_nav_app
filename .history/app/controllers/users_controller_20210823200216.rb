@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def travel_records
-    @travel_records = @user.travel_records.includes(:spot).page(params[:page]).per(5).order(created_at: :desc)
+    @travel_records = @user.travel_records.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def favorites

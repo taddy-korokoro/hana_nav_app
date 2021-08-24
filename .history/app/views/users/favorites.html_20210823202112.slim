@@ -15,13 +15,26 @@
     .information
      | お気に入り (#{@user.favorites.count})
     .hr-blue
-    .p-1
-      - if @favorites.present?
-        - @favorites.each do |favorite|
-          = render 'shared/spot_detail', spot: favorite.spot
-          hr
-      - else
-        div
-        | お気に入りがありません
+    - if @favorites.present?
+      - @favorites.each do |favorite|
+        = render 'shared/spot_detail', spot: favorite.spot
+        /= link_to spot_path(favorite.spot.id)
+          .row.px-1.py-2
+            .col-8
+              .name.mb-2
+                = favorite.spot.name
+              .location.mb-2
+                = favorite.spot.location
+              .feature.mb-2
+                = favorite.spot.feature.truncate(220)
+            .offset-1.col-3
+              - if favorite.spot.image?
+                = image_tag favorite.spot.image.to_s, class: 'image border'
+              - else
+                = image_tag 'no_img.png', class: 'image border'
         hr
+    - else
+      div
+       | お気に入りがありません
+      hr
   = paginate @favorites

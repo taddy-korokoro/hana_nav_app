@@ -17,7 +17,7 @@ class TopController < ApplicationController
   def search
     # ransackの検索結果
     @q = Spot.ransack(search_params)
-    @spots = @q.result.page(params[:page]).per(5)
+    @spots = @q.result.includes(:seasons, :spot_seasons).page(params[:page]).per(5)
 
     @flower_item = @spots.first if @spots.present?
   end

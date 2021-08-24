@@ -5,6 +5,6 @@
   .flower-spots
     - @spots.each do |spot|
       .card.mt-3
-        = render 'shared/spot_detail', spot: spot
+        = render 'shared/spot_detail', spot, spot
       hr
   = paginate @spots

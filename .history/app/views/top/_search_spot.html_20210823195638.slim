@@ -4,8 +4,8 @@
    | スポット一覧
   .hr-blue
   .flower-spots
-    - if spots.present?
-      - spots.each do |spot|
+    - if @spots.present?
+      - @spots.each do |spot|
         = render 'shared/spot_detail', spot: spot
         hr
     - else

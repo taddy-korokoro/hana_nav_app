@@ -1,0 +1,19 @@
+= link_to spot_path(spot.id), class: "flower-spot"
+  .row.no-gutters
+    .col-9.body
+      .name
+        = spot.name
+      #star.star-size.d-flex
+        .mb-1 id=("star-rate-#{spot.id}")
+        = render 'shared/star', spot: spot
+      .address.mb-1
+        = spot.location
+      .season.mb-1
+        = spot.time
+      p
+        = spot.feature.truncate(280)
+    .col-3.pl-1
+      - if spot.image?
+        = image_tag spot.image.to_s, class: "image"
+      - else
+        = image_tag 'no_img.png', class: 'image border'
