@@ -23,8 +23,8 @@
           = f.input :image_3, as: :file, label: false, :input_html => { id: "image-select-btn_3" }
 
       .form-group.mt-4
-        = f.input :title, :input_html => { autocomplete: "off" }, required: false
-        = f.input :content, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10, autocomplete: "off" }, required: false
+        = f.input :title, required: false
+        = f.input :content, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 }, required: false
 
       /----- スポット詳細ページ経由でのスポット名自動入力 -----
       - if @spot.present?
@@ -43,7 +43,7 @@
             <div class="modal-content">
               <div class="modal-body">
                 .form-group
-                  = f.input :place, :placeholder => "スポット名・住所を入力してください", label: false, required: false, :input_html => { id: "spot_search", autocomplete: "off" }
+                  = f.input :place, :placeholder => "スポット名・住所を入力してください", autocomplete: "off", label: false, required: false, :input_html => { id: "spot_search" }
                 .form-group
                   <label for="select_form" id="label">該当スポット一覧</label>
                   <select multiple class="form-control" id="select_form"></select>
