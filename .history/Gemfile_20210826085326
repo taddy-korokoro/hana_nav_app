@@ -57,8 +57,6 @@ group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'bullet'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'spring-commands-rspec'
 end
 
 group :development do

@@ -23,13 +23,13 @@ module HanaNavApp
     config.time_zone = 'Asia/Tokyo'
     #slimに変更
     config.generators.template_engine = :slim
+  end
 
-    config.generators do |g|
-      g.test_framework :rspec,
-            view_specs: false,
-            helper_specs: false,
-            controller_specs: false,
-            routing_specs: false
-    end
+  config.generators do |g|
+    g.test_framework :rspec,
+          view_specs: false,
+          helper_specs: false,
+          controller_specs: false,
+          routing_specs: false
   end
 end
