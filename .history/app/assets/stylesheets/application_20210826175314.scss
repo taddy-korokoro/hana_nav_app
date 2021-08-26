@@ -191,14 +191,14 @@ label {
 }
 
 // 区切り線
-.hr-blue {
-  width: 100%;
-  height: 2px;
-  background-color: $blue;
-  border: none;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
+// .hr-blue {
+//   width: 100%;
+//   height: 2px;
+//   background-color: $blue;
+//   border: none;
+//   margin-top: 0.5rem;
+//   margin-bottom: 1rem;
+// }
 
 // 区切り線
 .hr-gray {
@@ -320,57 +320,56 @@ footer {
 }
 
 
-// // トップページ/検索後のスポット詳細
-// .flower-spots {
-//   .card {
-//     border: none;
-//   }
+トップページ/検索後のスポット詳細 .flower-spots {
+  .card {
+    border: none;
+  }
 
-//   a {
-//     text-decoration: none;
-//   }
+  a {
+    text-decoration: none;
+  }
 
-//   // レビュー星の間隔(index,showで使用)
-//   .star-size img {
-//     width: 20px;
-//     height: 20px;
-//     margin-right: 5px !important;
-//   }
+  // レビュー星の間隔(index,showで使用)
+  .star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
 
-//   .season {
-//     width: 9.7rem;
-//     padding: 0.1rem;
-//     color: white;
-//     background-color: #d9b340;
-//   }
+  .season {
+    width: 9.7rem;
+    padding: 0.1rem;
+    color: white;
+    background-color: #d9b340;
+  }
 
-//   .flower-spot {
-//     padding: 15px;
+  .flower-spot {
+    padding: 15px;
 
-//     .body {
-//       color: #444444;
-//       font-size: 0.9rem;
+    .body {
+      color: #444444;
+      font-size: 0.9rem;
 
-//       .name {
-//         color: $custom-green;
-//         font-size: 1.2rem;
-//         font-weight: bold;
-//       }
+      .name {
+        color: $custom-green;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
 
-//       p {
-//         margin: 0;
-//       }
-//     }
+      p {
+        margin: 0;
+      }
+    }
 
-//     .image {
-//       width: 230px;
-//       height: 230px;
-//       background-position: center center;
-//       background-size: cover;
-//       border-radius: 5px;
-//     }
-//   }
-// }
+    .image {
+      width: 230px;
+      height: 230px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+  }
+}
 
 // スポット投稿ページ
 .travel-record-wrapper {

@@ -1,5 +1,5 @@
-/ ----- top/_current_month_spots, users/favoritesで使用 -----
-= link_to spot_path(spot.id)
+/ ----- top/_current_month_spots, users/favorites, spots/indexで使用-----
+= link_to spot_path(spot.id), class: "spot-list__link"
   .row.no-gutters
     .col-9.spot-list__body
       .spot-list__name
@@ -15,6 +15,6 @@
         = spot.feature.truncate(280)
     .col-3.pl-2
       - if spot.image?
-        = image_tag spot.image.to_s, class: 'spot-list__image'
+        = image_tag spot.image.to_s, class: "spot-list__image"
       - else
         = image_tag 'no_img.png', class: 'spot-list__image border'

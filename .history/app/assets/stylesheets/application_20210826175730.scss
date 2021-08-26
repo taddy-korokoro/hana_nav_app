@@ -320,169 +320,67 @@ footer {
 }
 
 
-// // トップページ/検索後のスポット詳細
-// .flower-spots {
-//   .card {
-//     border: none;
-//   }
-
-//   a {
-//     text-decoration: none;
-//   }
-
-//   // レビュー星の間隔(index,showで使用)
-//   .star-size img {
-//     width: 20px;
-//     height: 20px;
-//     margin-right: 5px !important;
-//   }
-
-//   .season {
-//     width: 9.7rem;
-//     padding: 0.1rem;
-//     color: white;
-//     background-color: #d9b340;
-//   }
-
-//   .flower-spot {
-//     padding: 15px;
-
-//     .body {
-//       color: #444444;
-//       font-size: 0.9rem;
-
-//       .name {
-//         color: $custom-green;
-//         font-size: 1.2rem;
-//         font-weight: bold;
-//       }
-
-//       p {
-//         margin: 0;
-//       }
-//     }
-
-//     .image {
-//       width: 230px;
-//       height: 230px;
-//       background-position: center center;
-//       background-size: cover;
-//       border-radius: 5px;
-//     }
-//   }
-// }
-
-// スポット投稿ページ
-.travel-record-wrapper {
-  img {
-    @include thumb-img;
+// トップページ/検索後のスポット詳細
+.flower-spots {
+  .card {
+    border: none;
   }
 
-  // a {
-  //   color: black;
-  // }
-
-  // レビュー星の間隔(new,editで使用)
-  #star img {
-    margin-right: 40px;
+  a {
+    text-decoration: none;
   }
 
   // レビュー星の間隔(index,showで使用)
-  .star-size img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px !important;
-  }
+  //   .star-size img {
+  //     width: 20px;
+  //     height: 20px;
+  //     margin-right: 5px !important;
+  //   }
 
-  .post-img {
-    margin-right: 0;
+  //   .season {
+  //     width: 9.7rem;
+  //     padding: 0.1rem;
+  //     color: white;
+  //     background-color: #d9b340;
+  //   }
 
+  //   .flower-spot {
+  //     padding: 15px;
+
+  //     .body {
+  //       color: #444444;
+  //       font-size: 0.9rem;
+
+  //       .name {
+  //         color: $custom-green;
+  //         font-size: 1.2rem;
+  //         font-weight: bold;
+  //       }
+
+  //       p {
+  //         margin: 0;
+  //       }
+  //     }
+
+  //     .image {
+  //       width: 230px;
+  //       height: 230px;
+  //       background-position: center center;
+  //       background-size: cover;
+  //       border-radius: 5px;
+  //     }
+  //   }
+  // }
+
+  // スポット投稿ページ
+  .travel-record-wrapper {
     img {
-      width: 300px;
-      height: 300px;
-      border: 1px solid $custom-gray;
-      border-radius: 5%;
-      object-fit: cover;
+      @include thumb-img;
     }
-  }
-}
 
-// 切り替えボタンの設定
-.active-btn {
-  background-color: #30a1f2;
-  color: white;
-}
-
-.spot-detail {
-  .title {
-    color: $custom-green;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  .btn-width {
-    width: 160px;
-    padding: 5px;
-  }
-
-  .img {
-    width: 425px;
-    height: 350px;
-    display: block;
-    margin: 20px auto;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-    object-fit: cover;
-  }
-
-  // 写真一覧の投稿者名
-  .contributors {
-    position: absolute;
-    right: 10%;
-    bottom: 5%;
-    color: white;
-    text-shadow: 1px 1px 0 $custom-gray, -1px 1px 0 $custom-gray, 1px -1px 0 $custom-gray, -1px -1px 0 $custom-gray;
-  }
-}
-
-// スポット詳細ページのテーブル設定
-.table {
-  font-weight: normal;
-
-  // 文字（地図）の中央配置
-  .tr-hight {
-    height: 20rem;
-  }
-
-  tr {
-    height: 4rem;
-
-    th {
-      // font-weight: normal;
-      padding: 1.5rem;
-    }
-  }
-}
-
-// 地図の画面サイズ
-#map {
-  height: 300px;
-  width: 70%;
-}
-
-// ページネーションの設定
-.pagination {
-  justify-content: center;
-  padding-top: 1.5rem;
-}
-
-// プロフィールページの設定
-.user-page {
-
-  .post-list {
-    a {
-      color: black;
-    }
+    // a {
+    //   color: black;
+    // }
 
     // レビュー星の間隔(new,editで使用)
     #star img {
@@ -495,90 +393,192 @@ footer {
       height: 20px;
       margin-right: 5px !important;
     }
+
+    .post-img {
+      margin-right: 0;
+
+      img {
+        width: 300px;
+        height: 300px;
+        border: 1px solid $custom-gray;
+        border-radius: 5%;
+        object-fit: cover;
+      }
+    }
   }
 
-  .card {
-    border: none;
-  }
-
-  .trim-img img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    background-position: center center;
-  }
-
-  .edit-btn {
-    width: 140px;
-    border: 1px solid $custom-gray;
-    border-radius: 0.25rem;
-    color: $custom-gray;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .follow-btn {
-    width: 140px;
-    border: none;
-    border-radius: 0.25rem;
+  // 切り替えボタンの設定
+  .active-btn {
+    background-color: #30a1f2;
     color: white;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    font-size: 1rem;
-    line-height: 1.5;
   }
 
-  .self-introduction {
-    width: 500px;
-    height: 200px;
-    background-color: $custom-light;
-    border-radius: 5px;
-  }
-
-  .image {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    background-position: center center;
-    background-size: cover;
-    border-radius: 5px;
-  }
-
-  .content {
-    height: 90px;
-    background-color: $custom-light;
-    padding: 0.5rem;
-    border-radius: 5px;
-  }
-
-  .favorite-list {
-    .name {
+  .spot-detail {
+    .title {
       color: $custom-green;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
 
-    .location {
+    .btn-width {
+      width: 160px;
       padding: 5px;
+    }
+
+    .img {
+      width: 425px;
+      height: 350px;
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #dee2e6;
+      border-radius: 0.25rem;
+      object-fit: cover;
+    }
+
+    // 写真一覧の投稿者名
+    .contributors {
+      position: absolute;
+      right: 10%;
+      bottom: 5%;
       color: white;
-      background-color: #d9b340;
-    }
-
-    .feature {
-      line-height: 1.4;
-      color: #999999;
+      text-shadow: 1px 1px 0 $custom-gray, -1px 1px 0 $custom-gray, 1px -1px 0 $custom-gray, -1px -1px 0 $custom-gray;
     }
   }
 
-  .follow-list {
-    img {
-      @include thumb-img;
+  // スポット詳細ページのテーブル設定
+  .table {
+    font-weight: normal;
+
+    // 文字（地図）の中央配置
+    .tr-hight {
+      height: 20rem;
+    }
+
+    tr {
+      height: 4rem;
+
+      th {
+        // font-weight: normal;
+        padding: 1.5rem;
+      }
     }
   }
-}
+
+  // 地図の画面サイズ
+  #map {
+    height: 300px;
+    width: 70%;
+  }
+
+  // ページネーションの設定
+  .pagination {
+    justify-content: center;
+    padding-top: 1.5rem;
+  }
+
+  // プロフィールページの設定
+  .user-page {
+
+    .post-list {
+      a {
+        color: black;
+      }
+
+      // レビュー星の間隔(new,editで使用)
+      #star img {
+        margin-right: 40px;
+      }
+
+      // レビュー星の間隔(index,showで使用)
+      .star-size img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px !important;
+      }
+    }
+
+    .card {
+      border: none;
+    }
+
+    .trim-img img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      background-position: center center;
+    }
+
+    .edit-btn {
+      width: 140px;
+      border: 1px solid $custom-gray;
+      border-radius: 0.25rem;
+      color: $custom-gray;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .follow-btn {
+      width: 140px;
+      border: none;
+      border-radius: 0.25rem;
+      color: white;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .self-introduction {
+      width: 500px;
+      height: 200px;
+      background-color: $custom-light;
+      border-radius: 5px;
+    }
+
+    .image {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+
+    .content {
+      height: 90px;
+      background-color: $custom-light;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+
+    .favorite-list {
+      .name {
+        color: $custom-green;
+      }
+
+      .location {
+        padding: 5px;
+        color: white;
+        background-color: #d9b340;
+      }
+
+      .feature {
+        line-height: 1.4;
+        color: #999999;
+      }
+    }
+
+    .follow-list {
+      img {
+        @include thumb-img;
+      }
+    }
+  }

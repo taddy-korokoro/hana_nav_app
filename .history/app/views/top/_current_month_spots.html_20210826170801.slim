@@ -3,7 +3,7 @@
   .spot-list
     .spot-list__heading
      | スポット一覧
-    .spot-list__hr
+    .hr-blue
     .flower-spots
       - spots.each do |spot|
         - spot.spot_seasons.where(season_id: current_month).each do |season|

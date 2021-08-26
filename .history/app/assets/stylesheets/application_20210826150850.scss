@@ -8,11 +8,9 @@ $custom-bg-yellow: #fefff7;
 $custom-search-form-bg-yellow: #fdf966;
 
 @import "bootstrap/scss/bootstrap";
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
-@import "global";
-@import "spot-list";
 
 // 全要素の余白をリセット
 * {
@@ -157,11 +155,11 @@ label {
   color: $custom-gray;
 }
 
-// // 見出しの設定
-// .heading {
-//   font-size: 1.5rem;
-//   font-weight: bold;
-// }
+// 見出しの設定
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 // サブタイトル文字の設定
 .information {
@@ -170,9 +168,9 @@ label {
   padding: 0.75rem 0;
 }
 
-// p {
-//   color: $custom-gray;
-// }
+p {
+  color: $custom-gray;
+}
 
 .main-img {
   height: 535px;
@@ -320,57 +318,65 @@ footer {
 }
 
 
-// // トップページ/検索後のスポット詳細
-// .flower-spots {
-//   .card {
-//     border: none;
-//   }
+// トップページ/検索後のスポット詳細
+.flower-spots {
+  .card {
+    border: none;
+  }
 
-//   a {
-//     text-decoration: none;
-//   }
+  a {
+    text-decoration: none;
+  }
 
-//   // レビュー星の間隔(index,showで使用)
-//   .star-size img {
-//     width: 20px;
-//     height: 20px;
-//     margin-right: 5px !important;
-//   }
+  // レビュー星の間隔(index,showで使用)
+  .star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
 
-//   .season {
-//     width: 9.7rem;
-//     padding: 0.1rem;
-//     color: white;
-//     background-color: #d9b340;
-//   }
+  .season {
+    width: 9.7rem;
+    padding: 0.1rem;
+    color: white;
+    background-color: #d9b340;
+  }
 
-//   .flower-spot {
-//     padding: 15px;
+  .flower-spot {
+    padding: 15px;
 
-//     .body {
-//       color: #444444;
-//       font-size: 0.9rem;
+    .body {
+      color: #444444;
+      font-size: 0.9rem;
 
-//       .name {
-//         color: $custom-green;
-//         font-size: 1.2rem;
-//         font-weight: bold;
-//       }
+      .name {
+        color: $custom-green;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
 
-//       p {
-//         margin: 0;
-//       }
-//     }
+      p {
+        margin: 0;
+      }
+    }
 
-//     .image {
-//       width: 230px;
-//       height: 230px;
-//       background-position: center center;
-//       background-size: cover;
-//       border-radius: 5px;
-//     }
-//   }
-// }
+    .image {
+      width: 230px;
+      height: 230px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+
+    .sample-image {
+      height: 150px;
+      background-image: url("spot_01.jpg");
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+  }
+}
 
 // スポット投稿ページ
 .travel-record-wrapper {
