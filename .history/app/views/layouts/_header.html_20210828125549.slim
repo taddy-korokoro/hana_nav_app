@@ -17,15 +17,15 @@ header.header
             = link_to '投稿する', new_travel_record_path, class: 'nav-link'
           li.nav-item.active.px-3
             - if current_user.persisted? && current_user.profile_image?
-              = link_to image_tag(current_user.profile_image.url), travel_records_user_path(current_user), class: 'header__thumb-img'
+              = link_to image_tag(current_user.profile_image.thumb.url), travel_records_user_path(current_user), class: 'header__thumb-img'
             - else
               = link_to image_tag('no_profile_img.png'), travel_records_user_path(current_user), class: 'header__thumb-img'
           li.nav-item.active
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__btn btn btn-primary'
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-primary'
         - else
           li.nav-item.active
-            = link_to "ゲスト（閲覧用）", users_guest_sign_in_path, method: :post, class: 'header__btn btn btn-warning mr-2'
+            = link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: 'header__btn btn btn-warning mr-2'
           li.nav-item.active
-            = link_to "アカウント作成", new_user_registration_path, class: 'header__btn btn btn-light mr-2'
+            = link_to "アカウント作成", new_user_registration_path, class: 'btn btn-light mr-2'
           li.nav-item.active
-            = link_to "ログイン", new_user_session_path, class: 'header__btn btn btn-primary'
+            = link_to "ログイン", new_user_session_path, class: 'btn btn-primary'

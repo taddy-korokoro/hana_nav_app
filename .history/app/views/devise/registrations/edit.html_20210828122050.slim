@@ -1,13 +1,9 @@
-.user-information.p-5
-  .user-information__heading.p-1
+.user-information-edit.p-5
+  .user-information-edit__heading.p-1
    | プロフィール編集
-  .user-information__hr-blue
+  .user-information-edit__hr-blue
   = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-<<<<<<< HEAD
     /= bootstrap_devise_error_messages!
-=======
-    = render 'layouts/error_messages', model: f.object
->>>>>>> add_css_design_bem
     .form-group
       = f.label :name
       = f.text_field :name, autofocus: true, autocomplete: 'username', placeholder: "例）ハナナビ", class: 'form-control'
@@ -25,14 +21,14 @@
     .form-group
       - if current_user.persisted? && current_user.profile_image?
         p プロフィール画像
-        = image_tag current_user.profile_image.to_s, id: "profile_img_prev", class: 'user-information__img'
+        = image_tag current_user.profile_image.to_s, id: "profile_img_prev", class: 'user-information-edit__img'
         .form-group.mt-2
           = f.check_box :remove_profile_image, class: "mr-2"
           = f.label :remove_profile_image
       - else
         p プロフィール画像
         .mb-2
-          = image_tag 'no_profile_img.png', id: "profile_img_prev", class: 'user-information__img'
+          = image_tag 'no_profile_img.png', id: "profile_img_prev", class: 'user-information-edit__img'
           = f.hidden_field :profile_image_cache
         br
       = f.file_field :profile_image, id: "image-select-btn"
