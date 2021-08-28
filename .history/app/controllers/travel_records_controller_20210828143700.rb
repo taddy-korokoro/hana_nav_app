@@ -3,7 +3,7 @@ class TravelRecordsController < ApplicationController
   before_action :set_travel_record, only: %i[edit show update destroy]
 
   def index
-    @travel_records = TravelRecord.includes(:user).page(params[:page]).per(3).order(created_at: :desc)
+    @travel_records = TravelRecord.includes(:user).page(params[:page]).per(2).order(created_at: :desc)
   end
 
   def new
