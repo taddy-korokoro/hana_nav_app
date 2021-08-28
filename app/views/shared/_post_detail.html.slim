@@ -1,4 +1,5 @@
 / ----- 'travel_record/index,show, spots/placards'で使用中 -----
+- show_raty ||= true # デフォルト値の設定
 .container
   .row.d-flex.align-items-center.px-1.pt-2
     .col
@@ -7,16 +8,12 @@
     .col.d-flex.justify-content-end
       = l travel_record.visited_on, format: :long
   / ----- レビュー星の表示 -----
-  - if controller.controller_name == 'travel_records' && controller.action_name == 'index' \
-    || controller.controller_name == 'travel_records' && controller.action_name == 'show' \
-    || controller.controller_name == 'spots' && controller.action_name == 'placards' \
-    || controller.controller_name == 'users' && controller.action_name == 'feeds'
-
+  - if show_raty # パーシャルを呼ぶ際の引数とする
     #star.travel-record-detail__star-size.d-flex.justify-content-end.pb-1
-      .d-flex id=("star-rate-#{travel_record.id}")
+      .d-flex id=("js-star-rate-#{travel_record.id}")
 
     javascript:
-      $('#star-rate-#{travel_record.id}').raty({
+      $('#js-star-rate-#{travel_record.id}').raty({
         size     : 36,
         starOff: "#{asset_path('star-off.png')}",
         starOn: "#{asset_path('star-on.png')}",

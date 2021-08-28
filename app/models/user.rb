@@ -52,7 +52,7 @@ class User < ApplicationRecord
   end
   # フォローしているユーザーが投稿したデータを取得
   def feed
-    TravelRecord.where("user_id IN (?)", following_ids)
+    TravelRecord.where(user_id: following_ids)
   end
   # ソート機能の設定
   ransacker :travel_records_count do

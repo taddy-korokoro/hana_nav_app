@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     # ゲストログイン用
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  # インクリメンタルサーチ専用のルーティング
-  get 'travel_records/search', to: 'travel_records#search'
 
   resources :users, only: %i[index] do
     member do
@@ -30,11 +28,13 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
 
   resources :travel_records do
-    resource :likes, only: %i[create destroy]
-  end
+    collection do
+      get 'search' # インクリメンタルサーチ専用のルーティング
+    end
 
-  post 'travel_records/:travel_record_id/comments', to: 'comments#create', as: :travel_record_comments
-  delete 'travel_records/:travel_record_id/comments/:id', to: 'comments#destroy', as: :travel_record_comment
+    resource :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy]
+  end
 
   resources :spots, only: %i[show] do
     member do
