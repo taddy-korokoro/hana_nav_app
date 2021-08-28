@@ -1,0 +1,27 @@
+.travel-record-detail {
+  @extend %box;
+
+  &__user-name {
+    @extend %link-color;
+  }
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__post-img img {
+    @extend %post-img;
+  }
+
+  &__star-size img {
+    @extend %star-size;
+  }
+
+  &__hr-gray {
+    @extend %hr-gray;
+  }
+}

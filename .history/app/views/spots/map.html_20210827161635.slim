@@ -1,0 +1,51 @@
+.spot-detail.p-4
+  .container
+    .row.d-flex.align-items-center
+      .col
+        .spot-detail__heading.py-2
+         | スポット紹介
+      .col
+        #flash_message
+          = render 'layouts/flash_messages'
+    .spot-detail__hr-blue
+    = render 'spots/spot_detail', spot: @spot, travel_records: @travel_records, review_average: @review_average
+    .btn-group.btn-group-lg.d-flex.mb-4
+      = link_to spot_path, class: 'btn btn-block btn-light flex-fill'
+        | TOP
+      = link_to photos_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | 写真
+      = link_to placards_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | はなたび記録
+      = link_to map_spot_path, class: 'btn btn-block btn-primary flex-fill'
+        | アクセス
+    .spot-detail__info
+      | #{@spot.name}の地図
+    .spot-detail__hr-blue
+    #map.w-100.mb-4
+    .spot-detail__info
+     | #{@spot.name}の基本情報
+    .spot-detail__hr-blue
+    table.table.table-bordered
+      tr
+        th.table-light.d-flex.justify-content-center scope="row"
+          | 開催時期
+        td.align-middle
+          = @spot.time
+      tr
+        th.table-light.d-flex.justify-content-center scope="row"
+          | 花の種類
+        td.align-middle
+          = @spot.flower_items.map{| item |item.name}.join('、')
+      tr
+        th.table-light.d-flex.justify-content-center scope="row"
+          | ウェブサイト
+        td.align-middle
+          = link_to @spot.url, @spot.url, target: :_blank, rel: "noopener noreferrer"
+      tr
+        th.table-light.d-flex.justify-content-center scope="row"
+          | 所在地
+        td.align-middle
+          = @spot.location
+
+= render 'shared/google_map', spot: @spot
+script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=#{ENV['GOOGLE_MAP_API']}&callback=initMap" async defer

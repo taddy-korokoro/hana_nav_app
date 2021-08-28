@@ -1,0 +1,15 @@
+.post-field {
+  @include box(white);
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__post-img {
+    @extend %post-img;
+  }
+}

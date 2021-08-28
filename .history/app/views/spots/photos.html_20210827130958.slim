@@ -1,0 +1,29 @@
+.spot-detail.p-4
+  .container
+    = render 'spots/spot_detail', spot: @spot, travel_records: @travel_records, review_average: @review_average
+    .btn-group.btn-group-lg.d-flex.mb-4
+      = link_to spot_path, class: 'btn btn-block btn-light flex-fill'
+        | TOP
+      = link_to photos_spot_path, class: 'btn btn-block btn-primary flex-fill'
+        | 写真
+      = link_to placards_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | はなたび記録
+      = link_to map_spot_path, class: 'btn btn-block btn-light flex-fill'
+        | アクセス
+    .spot-detail__info
+      | #{@spot.name}の写真一覧
+    .spot-detail__hr-blue
+    .row
+      - unless @travel_records.present?
+        .col-6
+          = image_tag('no_img.png', class: 'spot-detail__image position-relative border')
+        .col-6
+          = image_tag('no_img.png', class: 'spot-detail__image position-relative border')
+      - else
+        - @photos.each do | photo |
+          .col-6
+            = image_tag photo.image_1.to_s, class: 'spot-detail__image border'
+            = link_to travel_record_path(photo.id) do
+              p.contributors
+                | by #{photo.user.name}さん
+    = paginate @photos

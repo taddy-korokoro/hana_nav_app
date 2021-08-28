@@ -1,0 +1,19 @@
+.travel-record-detail {
+  @include box(white);
+
+  a {
+    @extend %link-color;
+  }
+
+  img {
+    @extend %thumb-img;
+  }
+
+  &__star-size {
+    @extend %star-size;
+  }
+
+  #star img {
+    margin-right: 40px;
+  }
+}

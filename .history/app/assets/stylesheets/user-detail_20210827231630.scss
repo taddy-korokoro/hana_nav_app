@@ -1,0 +1,42 @@
+.user-detail {
+  @include box(white);
+
+  a {
+    @extend %link-color;
+  }
+
+  &__thumb-img img {
+    @extend %thumb-img;
+  }
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__info {
+    @extend %info;
+  }
+
+  &__star-size img {
+    @extend %star-size;
+  }
+
+  &__score-size {
+    font-size: 1.2rem;
+  }
+
+  &__img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+
+
+}

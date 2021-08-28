@@ -1,0 +1,20 @@
+.spot-list {
+  a {
+    @extend %a;
+  }
+
+  &__heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__hr {
+    @extend %hr--blue;
+  }
+
+  &__card {
+    border: none;
+  }
+
+
+}

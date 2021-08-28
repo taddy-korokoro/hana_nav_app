@@ -1,0 +1,21 @@
+.comment-field {
+  &__info {
+    @extend %info;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__thumb-img img {
+    @extend %thumb-img;
+  }
+
+  // &__user-name {
+  //   @extend %link-color;
+  // }
+
+  &__reply-field {
+    width: 95%;
+  }
+}

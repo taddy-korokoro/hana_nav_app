@@ -1,0 +1,58 @@
+.flower-list {
+
+  a {
+    @extend %text-decoration-none;
+  }
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__item {
+    padding: 0 20px;
+    margin-bottom: 40px;
+  }
+
+  &__relative {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    margin-top: 10px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  &__season {
+    padding: 5px;
+    color: white;
+    // background-color: $gold;
+  }
+
+  &__name--green {
+    padding: 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+    // color: $green;
+  }
+
+  &__feature--gray {
+    line-height: 1.4;
+    color: $gray;
+  }
+}

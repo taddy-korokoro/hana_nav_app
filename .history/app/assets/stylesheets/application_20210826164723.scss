@@ -1,0 +1,592 @@
+// Bootstrap 色のカスタマイズ
+$theme-colors: ("primary": #30a1f2, "light": #e5e5e5, "success": #54bca9);
+$custom-light: #f1f1f1;
+$custom-gray: #909397;
+$custom-green: #54bca9;
+$custom-yellow: #feb25c;
+$custom-bg-yellow: #fefff7;
+$custom-search-form-bg-yellow: #fdf966;
+
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "/app/assets/stylesheets/global.scss";
+@import "/app/assets/stylesheets/spot-list.scss";
+
+// 全要素の余白をリセット
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin main-font {
+  font-family: DIN Condensed;
+}
+
+// サムネイル画像の表示設定
+@mixin thumb-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+// ログイン画面
+.container-login {
+  @extend .container-fluid;
+  max-width: 700px;
+  padding: 2rem;
+}
+
+// 「ログインしました」などのフラッシュ用スタイル
+.alert-notice {
+  @extend .alert-info !optional;
+}
+
+.alert-alert {
+  @extend .alert-danger !optional;
+}
+
+// placeholderの文字サイズを変更
+.form-control::placeholder {
+  font-size: 12px;
+}
+
+.blue-color {
+  color: $blue;
+}
+
+.yellow-color {
+  color: $custom-yellow;
+}
+
+// リンクの文字色
+.link {
+  color: black;
+}
+
+// ボタンの修正
+.btn-block+.btn-block {
+  margin-top: 0;
+}
+
+// ボタン文字色の修正
+.btn-success {
+  color: white;
+}
+
+.score-size {
+  font-size: 1.2rem;
+}
+
+// フォントの設定
+body {
+  font-family: "YuGothic", "Yu Gothic", "Hiragino Kaku Gothic ProN",
+    "ヒラギノ角ゴ ProN W3", "メイリオ", "Meiryo", "ＭＳ ゴシック", sans-serif;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+// 背景色の設定
+.bg-color {
+  background-color: $custom-bg-yellow;
+}
+
+// 囲み枠の設定
+// .box {
+//   background-color: white;
+//   border: 1px solid $custom-gray;
+//   border-radius: 5px;
+// }
+
+.card {
+  border-radius: 15px;
+}
+
+// 非同期時フラッシュメッセージの設定
+.alert {
+  margin-bottom: 0;
+}
+
+header {
+  border-bottom: 0.2rem solid $custom-gray;
+
+  .logo img {
+    width: 180px;
+    height: 55px;
+    object-fit: cover;
+  }
+
+  img {
+    @include thumb-img;
+  }
+}
+
+// body幅の設定
+.home-width {
+  width: 1000px;
+}
+
+.w-95 {
+  width: 95%;
+}
+
+// メインイメージのデザイン設定
+.img-shadow {
+  box-shadow: 0 20px 10px 2px $custom-gray;
+}
+
+// コンセプト欄のデザイン設定
+.card-body {
+  color: $custom-gray;
+  font-weight: bold;
+}
+
+// 検索フォームの背景色
+.search-form-bg-color {
+  background-color: $custom-search-form-bg-yellow;
+  padding: 20px;
+}
+
+// ラベルの文字色
+label {
+  color: $custom-gray;
+}
+
+// 見出しの設定
+.heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+// サブタイトル文字の設定
+.information {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.75rem 0;
+}
+
+p {
+  color: $custom-gray;
+}
+
+.main-img {
+  height: 535px;
+  background-image: url("main_img.png");
+  background-position: center center;
+  background-size: cover;
+  border-radius: 20px;
+}
+
+// プロフィール画像の表示
+.profile-wrapper img {
+  width: 300px;
+  height: 300px;
+  border-radius: 5%;
+  object-fit: cover;
+}
+
+// 区切り線
+.hr-blue {
+  width: 100%;
+  height: 2px;
+  background-color: $blue;
+  border: none;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+// 区切り線
+.hr-gray {
+  width: 100%;
+  height: 2px;
+  background-color: $custom-gray;
+  border: none;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+// フッター
+footer {
+  text-align: center;
+  background-color: #fff;
+  border-top: 0.2rem solid $custom-gray;
+  color: $custom-gray;
+  @include main-font;
+}
+
+// トップページ/ログイン後の花一覧画面
+.flower-list {
+  a {
+    text-decoration: none;
+  }
+
+  .flower {
+    padding: 0 20px;
+    margin-bottom: 40px;
+
+    .flower-image {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      margin-top: 10px;
+
+      .image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+      }
+    }
+
+    .flower-body {
+
+      .season {
+        padding: 5px;
+        color: white;
+        background-color: #d9b340;
+      }
+
+      .name {
+        padding: 8px 0;
+        font-size: 14px;
+        font-weight: bold;
+        color: $custom-green;
+      }
+
+
+      .feature {
+        line-height: 1.4;
+        color: #787369;
+      }
+    }
+  }
+}
+
+// 検索後の花詳細
+.flower-box {
+  background-color: #FDF9EF;
+  border: 1px solid #787369;
+  border-radius: 5px;
+
+  .flower-image {
+    position: relative;
+    width: 100%;
+    padding: 10%;
+
+    .image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      width: 85%;
+      height: 85%;
+      border-radius: 50%;
+      background-position: center center;
+      background-size: cover;
+    }
+  }
+
+  .flower-name {
+    color: #787369;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .season {
+    width: 9.7rem;
+    padding: 0.2rem;
+    color: white;
+    background-color: #d9b340;
+  }
+
+  .feature {
+    line-height: 1.4;
+    color: #787369;
+  }
+}
+
+
+// トップページ/検索後のスポット詳細
+.flower-spots {
+  .card {
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  // レビュー星の間隔(index,showで使用)
+  .star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
+
+  .season {
+    width: 9.7rem;
+    padding: 0.1rem;
+    color: white;
+    background-color: #d9b340;
+  }
+
+  .flower-spot {
+    padding: 15px;
+
+    .body {
+      color: #444444;
+      font-size: 0.9rem;
+
+      .name {
+        color: $custom-green;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .image {
+      width: 230px;
+      height: 230px;
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+
+    .sample-image {
+      height: 150px;
+      background-image: url("spot_01.jpg");
+      background-position: center center;
+      background-size: cover;
+      border-radius: 5px;
+    }
+  }
+}
+
+// スポット投稿ページ
+.travel-record-wrapper {
+  img {
+    @include thumb-img;
+  }
+
+  // a {
+  //   color: black;
+  // }
+
+  // レビュー星の間隔(new,editで使用)
+  #star img {
+    margin-right: 40px;
+  }
+
+  // レビュー星の間隔(index,showで使用)
+  .star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
+
+  .post-img {
+    margin-right: 0;
+
+    img {
+      width: 300px;
+      height: 300px;
+      border: 1px solid $custom-gray;
+      border-radius: 5%;
+      object-fit: cover;
+    }
+  }
+}
+
+// 切り替えボタンの設定
+.active-btn {
+  background-color: #30a1f2;
+  color: white;
+}
+
+.spot-detail {
+  .title {
+    color: $custom-green;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .btn-width {
+    width: 160px;
+    padding: 5px;
+  }
+
+  .img {
+    width: 425px;
+    height: 350px;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    object-fit: cover;
+  }
+
+  // 写真一覧の投稿者名
+  .contributors {
+    position: absolute;
+    right: 10%;
+    bottom: 5%;
+    color: white;
+    text-shadow: 1px 1px 0 $custom-gray, -1px 1px 0 $custom-gray, 1px -1px 0 $custom-gray, -1px -1px 0 $custom-gray;
+  }
+}
+
+// スポット詳細ページのテーブル設定
+.table {
+  font-weight: normal;
+
+  // 文字（地図）の中央配置
+  .tr-hight {
+    height: 20rem;
+  }
+
+  tr {
+    height: 4rem;
+
+    th {
+      // font-weight: normal;
+      padding: 1.5rem;
+    }
+  }
+}
+
+// 地図の画面サイズ
+#map {
+  height: 300px;
+  width: 70%;
+}
+
+// ページネーションの設定
+.pagination {
+  justify-content: center;
+  padding-top: 1.5rem;
+}
+
+// プロフィールページの設定
+.user-page {
+
+  .post-list {
+    a {
+      color: black;
+    }
+
+    // レビュー星の間隔(new,editで使用)
+    #star img {
+      margin-right: 40px;
+    }
+
+    // レビュー星の間隔(index,showで使用)
+    .star-size img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px !important;
+    }
+  }
+
+  .card {
+    border: none;
+  }
+
+  .trim-img img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-position: center center;
+  }
+
+  .edit-btn {
+    width: 140px;
+    border: 1px solid $custom-gray;
+    border-radius: 0.25rem;
+    color: $custom-gray;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .follow-btn {
+    width: 140px;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .self-introduction {
+    width: 500px;
+    height: 200px;
+    background-color: $custom-light;
+    border-radius: 5px;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+
+  .content {
+    height: 90px;
+    background-color: $custom-light;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+
+  .favorite-list {
+    .name {
+      color: $custom-green;
+    }
+
+    .location {
+      padding: 5px;
+      color: white;
+      background-color: #d9b340;
+    }
+
+    .feature {
+      line-height: 1.4;
+      color: #999999;
+    }
+  }
+
+  .follow-list {
+    img {
+      @include thumb-img;
+    }
+  }
+}

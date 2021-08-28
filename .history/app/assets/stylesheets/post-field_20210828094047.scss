@@ -1,0 +1,19 @@
+.post-field {
+  @extend %box;
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__img {
+    @extend %post-img;
+  }
+
+  #star img {
+    @extend %star-large-size;
+  }
+}

@@ -1,0 +1,9 @@
+.search-form {
+  background-color: $yellow;
+  padding: 20px;
+
+  &__button--green {
+    background-color: $green;
+    color: white;
+  }
+}

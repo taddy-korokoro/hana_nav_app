@@ -1,0 +1,7 @@
+.travel-record-detail {
+  @include box(white);
+
+  &____user-link {
+    @extend %link-color;
+  }
+}

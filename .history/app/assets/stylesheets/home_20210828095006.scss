@@ -1,0 +1,14 @@
+.home {
+  &__main-img {
+    @extend %main-img;
+  }
+
+  &__card {
+    max-width: 1000px;
+  }
+
+  &__card--gray {
+    color: #909397;
+    font-weight: bold;
+  }
+}

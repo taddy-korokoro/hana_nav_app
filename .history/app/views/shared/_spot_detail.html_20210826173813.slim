@@ -1,0 +1,20 @@
+/ ----- top/_current_month_spots, users/favorites, spots/indexで使用-----
+= link_to spot_path(spot.id), class: "spot-list__link"
+  .row.no-gutters
+    .col-9.spot-list__body
+      .name
+        = spot.name
+      #star.spot-list__star-size.d-flex
+        .mb-1 id=("star-rate-#{spot.id}")
+        = render 'shared/star', spot: spot
+      .spot-list__address.mb-1
+        = spot.location
+      .spot-list__season.mb-1
+        = spot.time
+      .spot-list__feature
+        = spot.feature.truncate(280)
+    .col-3.pl-2
+      - if spot.image?
+        = image_tag spot.image.to_s, class: "spot-list__image"
+      - else
+        = image_tag 'no_img.png', class: 'spot-list__image border'

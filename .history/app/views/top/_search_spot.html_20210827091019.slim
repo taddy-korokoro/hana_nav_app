@@ -1,0 +1,14 @@
+/ ----- 'top/search'で使用中 -----
+.box.p-4
+  .spot-list
+    .spot-list__heading
+     | スポット一覧
+    .spot-list__hr-blue
+    .spot-list__link.p-2
+      - if @spots.present?
+        - @spots.each do |spot|
+          = render 'shared/spot_detail', spot: spot
+          hr
+      - else
+        div
+        | 該当スポットがありません

@@ -1,0 +1,6 @@
+.mb-4
+  = render 'layouts/flash_messages'
+.main-img.mb-5
+= render 'search_form'
+= render 'flower_item_list', flower_items: @flower_items
+= render 'current_month_spots', spots: @spots
