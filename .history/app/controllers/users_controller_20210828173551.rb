@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @q = User.search(search_params)
     @users = @q.result.page(params[:page]).per(5).order(created_at: :desc)
     # 検索一致したユーザー数を表示するためのインスタンス
-    @user_count = @q.result.count
+    @user_count = @q.resule.count
+    # TODO:ページネーションで遷移するとユーザーリストが(0人)と表示される（改善用）
   end
 
   def travel_records
