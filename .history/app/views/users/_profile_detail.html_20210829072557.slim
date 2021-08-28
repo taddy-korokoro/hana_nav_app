@@ -8,7 +8,7 @@
     - else
       .col
         .profile-detail__heading.py-2
-          | #{user.name}さんのプロフィール
+          | #{@user.name}さんのプロフィール
     .col
       #flash_message
         = render 'layouts/flash_messages'
