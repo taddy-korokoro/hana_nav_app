@@ -3,7 +3,7 @@
     = t('.sign_up')
   .user-information__hr-blue
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = render 'layouts/error_messages', model: f.object
+    /= bootstrap_devise_error_messages!
     .form-group
       = f.label :ニックネーム
       = f.text_field :name, autofocus: true, autocomplete: 'username', placeholder: "ハナナビ", class: 'form-control'
@@ -16,7 +16,7 @@
       - if @minimum_password_length
         small.form-text.text-muted
           = t('devise.shared.minimum_password_length', count: @minimum_password_length)
-    .form-group.pb-4
+    .form-group.pm-2
       = f.label :password_confirmation
       = f.password_field :password_confirmation, autocomplete: 'current-password', placeholder: "パスワードを再度入力して入力してください", class: 'form-control'
     .form-group

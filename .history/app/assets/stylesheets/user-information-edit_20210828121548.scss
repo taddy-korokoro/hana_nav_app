@@ -1,0 +1,12 @@
+.user-information-edit {
+  @extend %box !optional;
+
+
+  &__heading {
+    @extend %heading !optional;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue !optional;
+  }
+}

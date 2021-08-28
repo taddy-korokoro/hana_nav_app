@@ -108,6 +108,12 @@ $green: #54bca9;
   border-radius: 5px;
 }
 
+// @mixin box($bg-color) {
+//   background-color: $bg-color;
+//   border: 1px solid $gray;
+//   border-radius: 5px;
+// }
+
 @import 'bootstrap/scss/bootstrap';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
@@ -124,7 +130,7 @@ $green: #54bca9;
 @import 'comment_field';
 @import 'post-field';
 @import 'profile-detail';
-@import 'user-information';
+@import 'user-information-edit';
 
 // 全要素の余白リセット
 * {

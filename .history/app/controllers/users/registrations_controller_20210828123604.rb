@@ -4,7 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # ゲストユーザーの編集と削除をさせないようにする
   def ensure_normal_user
     if resource.email == 'guest@exsample.com'
-      redirect_to index_path, alert: "ゲストユーザーの編集・削除できません。"
+      redirect_to top_path, alert: "ゲストユーザーの編集・削除できません。"
     end
   end
 

@@ -21,11 +21,11 @@ header.header
             - else
               = link_to image_tag('no_profile_img.png'), travel_records_user_path(current_user), class: 'header__thumb-img'
           li.nav-item.active
-            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'header__btn btn btn-primary'
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-primary'
         - else
           li.nav-item.active
-            = link_to "ゲスト（閲覧用）", users_guest_sign_in_path, method: :post, class: 'header__btn btn btn-warning mr-2'
+            = link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: 'header__btn btn btn-warning mr-2'
           li.nav-item.active
-            = link_to "アカウント作成", new_user_registration_path, class: 'header__btn btn btn-light mr-2'
+            = link_to "アカウント作成", new_user_registration_path, class: 'btn btn-light mr-2'
           li.nav-item.active
-            = link_to "ログイン", new_user_session_path, class: 'header__btn btn btn-primary'
+            = link_to "ログイン", new_user_session_path, class: 'btn btn-primary'

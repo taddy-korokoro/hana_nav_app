@@ -10,9 +10,4 @@
   &__thumb-img img {
     @extend %thumb-img !optional;
   }
-
-  &__btn {
-    width: 160px;
-    padding: 5px;
-  }
 }
