@@ -1,0 +1,22 @@
+/ ----- 'spots/show,photos,placards,map'で使用中 -----
+.row.d-flex.align-items-center
+  .col
+    .spot-detail__name--green
+      = spot.name
+  .col.d-flex.justify-content-end
+    = render 'spots/post_button', spot: spot
+    = render 'favorites/button', spot: spot
+.row.d-flex.align-items-center.pb-1
+  .col
+    #star.star-size.d-flex
+      div id=("star-rate-#{spot.id}")
+      = render 'shared/star', spot: spot, review_average: review_average
+      - if review_average.present?
+        .ml-2.score-size
+          | (#{review_average})
+.d-flex.align-items-center
+  i.fas.fa-map-marker-alt.pr-1
+  = spot.location
+.d-flex.align-items-center.mb-3
+  i.far.fa-clock.pr-1
+  = spot.time

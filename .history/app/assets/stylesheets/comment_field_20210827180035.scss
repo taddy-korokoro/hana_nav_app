@@ -1,0 +1,17 @@
+.comment-field {
+  &__info {
+    @extend %info;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__thumb-img img {
+    @extend %thumb-img;
+  }
+
+  &__user-name a {
+    @extend %link-color;
+  }
+}

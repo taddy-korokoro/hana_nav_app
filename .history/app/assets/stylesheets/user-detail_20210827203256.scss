@@ -1,0 +1,23 @@
+.user-detail {
+  @include box(white);
+
+  a {
+    @extend %link-color;
+  }
+
+  &__thumb-img img {
+    @extend %thumb-img;
+  }
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__info {
+    @extend %ifo;
+  }
+}

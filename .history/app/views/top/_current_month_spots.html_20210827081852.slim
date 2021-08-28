@@ -1,0 +1,11 @@
+/ ----- 'top/index'で使用中 -----
+.box.p-4
+  .spot-list
+    .spot-list__heading
+     | スポット一覧
+    .spot-list__hr-blue
+    .spot-list__link
+      - spots.each do |spot|
+        = render 'shared/spot_detail', spot: spot
+        hr
+    = paginate @spots

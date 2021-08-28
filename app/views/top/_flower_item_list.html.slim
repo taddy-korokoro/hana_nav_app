@@ -1,0 +1,13 @@
+/ ----- 'top/index','flower_items/index'で使用中 -----
+.flower-list.border-0.container
+  .row
+    - flower_items.each do |flower_item|
+      = link_to flower_item_path(flower_item.id), class: "flower-list__item col-4"
+        .flower-list__relative
+          = image_tag flower_item.image.to_s, class: "flower-list__image"
+        .flower-list__season
+          = flower_item.time
+        .flower-list__name--green
+          = flower_item.name
+        .flower-list__feature--gray
+          = flower_item.feature.truncate(70)

@@ -1,0 +1,57 @@
+.spot-list {
+  a {
+    @extend %text-decoration-none;
+  }
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__card {
+    border: none;
+  }
+
+  &__star-size img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px !important;
+  }
+
+  &__season {
+    width: 9.7rem;
+    padding: 0.1rem;
+    color: white;
+    background-color: $gold;
+  }
+
+  &__body {
+    color: black;
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+
+  &__name--green {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $green;
+  }
+
+  &__feature--gray {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $gray;
+  }
+
+  &__image {
+    width: 230px;
+    height: 230px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+}

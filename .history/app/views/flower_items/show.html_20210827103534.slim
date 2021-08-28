@@ -1,0 +1,38 @@
+.flower-detail.mb-3.p-4
+  .row.no-gutters
+    .col-9
+      .flower-detail__name.mb-2
+        | #{@flower_item.name}の名所・見頃情報
+      .flower-detail__season.mb-2.p-1
+        = @flower_item.time
+      .flower-detail__feature--gray
+        = @flower_item.feature
+    .flower-detail__image-relative.col-3.pl-2
+      = image_tag @flower_item.image.to_s, class: "flower-detail__image"
+
+.spot-list.p-4
+  .spot-list__heading
+   | #{@flower_item.name}を鑑賞できるスポット一覧
+  .spot-list__hr-blue
+  .spot-list__link.p-2
+    - if @spots.present?
+      - @spots.each do |spot|
+        = render 'shared/spot_detail', spot: spot
+        /.card.mt-3
+          = link_to spot_path(spot.id), class: "flower-spot"
+            .row.no-gutters
+              .col-9.body
+                .name.mb-1
+                  = spot.name
+                .address
+                  = spot.location
+                .season.mb-2
+                  = spot.time
+                p
+                  = spot.feature
+              .col-3.pl-2
+                = image_tag spot.image.to_s, class: "image"
+        hr
+    - else
+      div
+       | 該当スポットがありません

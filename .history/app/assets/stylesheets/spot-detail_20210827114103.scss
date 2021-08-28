@@ -1,0 +1,17 @@
+.spot-detail {
+  @include box(white);
+
+  &__heading {
+    @extend %heading;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+
+  &__name--green {
+    color: $green;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}

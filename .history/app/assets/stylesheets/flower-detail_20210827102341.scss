@@ -1,0 +1,41 @@
+.flower-detail {
+  @include box(#FDF9EF);
+
+  &__name {
+    color: $gray;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  &__season {
+    width: 11rem;
+    padding: 5px;
+    color: white;
+    background-color: $gold;
+  }
+
+  &__feature--gray {
+    line-height: 1.4;
+    color: $gray;
+  }
+
+  &__image-relative {
+    position: relative;
+    width: 100%;
+    padding: 10%;
+  }
+
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 85%;
+    height: 85%;
+    border-radius: 50%;
+    background-position: center center;
+    background-size: cover;
+  }
+}

@@ -1,0 +1,20 @@
+.travel-record-detail {
+  @include box(white);
+
+  a {
+    @extend %link-color;
+  }
+
+  &__img img {
+    width: 300px;
+    height: 300px;
+    border: 1px solid $custom-gray;
+    border-radius: 5%;
+    object-fit: cover;
+  }
+
+  &__star-size img {
+    @extend %star-size;
+  }
+
+}

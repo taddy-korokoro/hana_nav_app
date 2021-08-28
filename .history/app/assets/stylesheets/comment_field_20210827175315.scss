@@ -1,0 +1,9 @@
+.comment-field {
+  &__info {
+    @extend %info;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue;
+  }
+}

@@ -1,0 +1,5 @@
+.user-detail {
+  &__thumb-img {
+    @extend %thumb-img;
+  }
+}

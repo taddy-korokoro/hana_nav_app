@@ -1,0 +1,11 @@
+.home {
+  &__main-img {
+    @extend %main-img;
+  }
+
+  // コンセプト欄のデザイン設定
+  .card-body {
+    color: $gray;
+    font-weight: bold;
+  }
+}
