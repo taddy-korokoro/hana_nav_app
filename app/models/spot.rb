@@ -9,6 +9,6 @@ class Spot < ApplicationRecord
 
   # 既に「お気に入り」していれば「true」を返す
   def favorited_by?(user)
-    favorites.where(user_id: user.id).exists?
+    favorites.where(user: user).exists?
   end
 end

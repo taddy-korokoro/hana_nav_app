@@ -12,9 +12,7 @@ class TravelRecordsController < ApplicationController
   end
 
   def create
-    @travel_record = TravelRecord.new(travel_record_params)
-    # deviseのメソッドを使って「ログインしている自分のid(user_id)」を代入
-    @travel_record.user_id = current_user.id
+    @travel_record = current_user.travel_records.new(travel_record_params)
     if @travel_record.save
       redirect_to travel_record_path(@travel_record.id), notice: "投稿に成功しました。"
     else
@@ -52,7 +50,7 @@ class TravelRecordsController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
+    return if params[:keyword] == ""
     @spots = Spot.where('name LIKE ? OR location LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     respond_to do |format|
       format.html
