@@ -1,0 +1,53 @@
+/ ----- 'travel_record/index,show, spots/placards'で使用中 -----
+- show_raty ||= true
+
+.container
+  .row.d-flex.align-items-center.px-1.pt-2
+    .col
+      = render 'shared/profile_image', travel_record: travel_record
+      = link_to "#{travel_record.user.name}さん", travel_records_user_path(travel_record.user.id), class: 'travel-record-detail__user-name pl-1'
+    .col.d-flex.justify-content-end
+      = l travel_record.visited_on, format: :long
+
+  / ----- レビュー星の表示 -----
+  - if show_raty
+    #star.travel-record-detail__star-size.d-flex.justify-content-end.pb-1
+      .d-flex id=("star-rate-#{travel_record.id}")
+
+    javascript:
+      $('#star-rate-#{travel_record.id}').raty({
+        size     : 36,
+        starOff: "#{asset_path('star-off.png')}",
+        starOn: "#{asset_path('star-on.png')}",
+        starHalf: "#{asset_path('star-half.png')}",
+        half: true,
+        readOnly: true,
+        score: #{travel_record.review},
+      });
+
+  .d-flex.justify-content-end
+    .pr-3 id='like-button_#{ travel_record.id }'
+      = render 'likes/button', travel_record: travel_record
+    .pr-1#comment_icon
+      = render 'comments/comment_icon', comments: travel_record.comments
+  p 訪れた場所
+  .card-body.border.rounded.mb-3(style="color: #54bca9;")
+    = travel_record.place
+  p タイトル
+  .card-body.border.rounded.mb-3
+    = travel_record.title
+  p クチコミ
+  .card-body.border.rounded.mb-3
+    = simple_format(travel_record.content)
+  .travel-record-detail__post-img.row.mb-4
+    - if travel_record.image_1.present?
+      #img_1.col-4
+        = image_tag travel_record.image_1.to_s
+    - if travel_record.image_2.present?
+      #img_2.col-4
+        = image_tag travel_record.image_2.to_s
+    - if travel_record.image_3.present?
+      #img_3.col-4
+        = image_tag travel_record.image_3.to_s
+    - elsif travel_record.image_1.blank? && travel_record.image_2.blank? && travel_record.image_3.blank?
+      .col-4 = image_tag 'no_img.png'
