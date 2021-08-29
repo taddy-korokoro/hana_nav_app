@@ -1,0 +1,25 @@
+.comment-field {
+  &__info {
+    @extend %info !optional;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue !optional;
+  }
+
+  &__thumb-img img {
+    @extend %thumb-img !optional;
+  }
+
+  &__user-name {
+    @extend %link-color !optional;
+  }
+
+  &__reply-field {
+    width: 95%;
+  }
+
+  &__frame {
+    overflow: scroll;
+  }
+}

@@ -31,13 +31,13 @@
     .pr-1#comment_icon
       = render 'comments/comment_icon', comments: travel_record.comments
   p 訪れた場所
-  .card-body.border.rounded.mb-3
+  .card-body.bg-light.border.rounded.mb-3
     = travel_record.place
   p タイトル
   .card-body.border.rounded.mb-3
     = travel_record.title
   p クチコミ
-  .card-body.border.rounded.mb-3
+  .card-body.bg-light.border.rounded.mb-3
     = simple_format(travel_record.content)
   .travel-record-detail__post-img.row.mb-4
     - if travel_record.image_1.present?

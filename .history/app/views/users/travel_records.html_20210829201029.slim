@@ -25,7 +25,7 @@
               .mb-1(style="color: #54bca9;")
                 = travel_record.spot.name
               .user-detail__content.mb-1
-                = simple_format(travel_record.content)
+                = format(travel_record.content.truncate(140))
               div
                 = travel_record.visited_on
             .offset-1.col-3

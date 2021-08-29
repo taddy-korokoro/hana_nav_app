@@ -1,0 +1,45 @@
+/ ----- 'comments/_index'で使用中 -----
+.container
+  .row.d-flex.align-items-center.pb-3
+    .col
+      - if comment.user.profile_image?
+        = link_to image_tag(comment.user.profile_image.to_s), travel_records_user_path(comment.user.id), class: 'comment-field__thumb-img'
+      - else
+        = link_to image_tag('no_profile_img.png'), travel_records_user_path(comment.user.id), class: 'comment-field__thumb-img'
+      = link_to "#{comment.user.name}さん", travel_records_user_path(comment.user.id), class: 'comment-field__user-name pl-1'
+    .col.d-flex.justify-content-end
+      = comment.created_at.strftime('%Y/%m/%d')
+  .card-body.border.rounded.mb-3
+    = simple_format(comment.comment)
+  hr.d-none
+    /----- 返信コメントの表示 -----
+    - comment.replies.each do | reply |
+      .comment-field__reply-field.container.pt-3
+        .row.d-flex.align-items-center.pb-3
+          .col
+            - if reply.user.profile_image?
+              = link_to travel_records_user_path(reply.user.id), class: 'comment-field__thumb-img'
+                = image_tag(reply.user.profile_image.to_s)
+            - else
+              = link_to travel_records_user_path(reply.user.id), class: 'comment-field__thumb-img'
+                = image_tag('no_profile_img.png')
+            = link_to travel_records_user_path(reply.user.id), class: 'comment-field__user-name pl-1'
+              | #{reply.user.name}さん
+          .col.d-flex.justify-content-end
+            = reply.created_at.strftime('%Y/%m/%d')
+        .card-body.border.rounded.mb-3
+          = simple_format(reply.comment)
+          - unless comment.user == current_user
+            = link_to travel_record_comment_path(comment.travel_record_id, reply.id), method: :delete, remote: true do
+              .text-right
+                button.btn.btn-outline-secondary
+                  | 削除する
+    / ----- ここまで ----
+    - if comment.user != current_user
+      = render 'comments/reply_form', comment: comment, comment_reply: comment_reply
+    - if comment.user == current_user
+      = link_to travel_record_comment_path(comment.travel_record_id, comment.id), method: :delete, remote: true do
+        .text-right
+          button.btn.btn-outline-secondary
+            | 削除する
+  hr
