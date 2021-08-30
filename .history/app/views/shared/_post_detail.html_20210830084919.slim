@@ -4,7 +4,7 @@
 .container
   .row.d-flex.align-items-center.px-1.pt-2
     .col
-      = render 'shared/profile_image', travel_record: travel_record, profile_image_confirmation: 'render_argument_travel_record'
+      = render 'shared/profile_image', travel_record: travel_record, profile_image_confirmation: 'users_feed_only'
       = link_to "#{travel_record.user.name}さん", travel_records_user_path(travel_record.user.id), class: 'travel-record-detail__user-name pl-1'
     .col.d-flex.justify-content-end
       = l travel_record.visited_on, format: :long

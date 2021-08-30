@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
   # ユーザーをフォローする
   def follow!(user)
-    self.following_relationships.create!(following_id: user.id)
+    self.following_relationships.create(following_id: user.id)
   end
   # ユーザーのフォローを解除する
   def unfollow(user)

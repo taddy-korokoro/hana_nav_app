@@ -1,7 +1,7 @@
 / ----- プロフィール画像がnilの場合の対処 -----
 
 /------ 'users/index, search, followings, followers' in use ------
-- if profile_image_confirmation == 'render_argument_user'
+-if profile_image_confirmation == 'render_argument_user'
 
   - if user.profile_image.blank?
     = link_to image_tag('no_profile_img.png'), travel_records_user_path(user.id), class: 'user-detail__thumb-img'

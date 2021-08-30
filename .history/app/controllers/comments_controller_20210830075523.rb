@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_travel_record
-
+  before_action set_travel_record: only: %i[create destroy]
   def create
     #投稿に紐づいたコメントを作成
     @comment = @travel_record.comments.new(comment_params)

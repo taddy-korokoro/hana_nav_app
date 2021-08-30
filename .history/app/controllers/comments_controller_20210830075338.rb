@@ -1,6 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :set_travel_record
-
   def create
     #投稿に紐づいたコメントを作成
     @comment = @travel_record.comments.new(comment_params)
