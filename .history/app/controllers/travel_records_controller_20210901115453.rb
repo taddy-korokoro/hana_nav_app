@@ -14,7 +14,7 @@ class TravelRecordsController < ApplicationController
   def create
     @travel_record = current_user.travel_records.new(travel_record_params)
     if @travel_record.save
-      redirect_to index_path, notice: "投稿に成功しました。"
+      redirect_to root_path, notice: "投稿に成功しました。"
     else
       render :new
     end
