@@ -1,0 +1,34 @@
+/ ----- 'travel_records/show' in use -----
+/-if travel_record.user_id == current_user.id
+  i.far.fa-thumbs-up.fa-fw.text-dark
+  = travel_record.likes.count
+/- elsif controller.controller_name == 'travel_records' && controller.action_name == 'show'
+  - if travel_record.liked_by?(current_user)
+    = link_to travel_record_likes_path(travel_record), class: 'text-dark', method: :delete, remote: true do
+      i.fas.fa-thumbs-up.fa-fw.text-warning
+      = travel_record.likes.count
+  - else
+    = link_to travel_record_likes_path(travel_record), class: 'text-dark', method: :post, remote: true do
+      i.far.fa-thumbs-up.fa-fw.text-warning
+      = travel_record.likes.count
+/ ----- 'shared/_post_detail, users/travel_record,like' in use -----
+/- else
+  i.far.fa-thumbs-up.fa-fw.text-dark
+  = travel_record.likes.count
+
+/ ----- 'shared/_post_detail, users/travel_record,like' in use -----
+- if controller.controller_name == 'users'
+  i.far.fa-thumbs-up.fa-fw.text-dark
+  = travel_record.likes.count
+-elsif travel_record.user_id == current_user.id
+  i.far.fa-thumbs-up.fa-fw.text-dark
+  = travel_record.likes.count
+- else
+  - if travel_record.liked_by?(current_user)
+    = link_to travel_record_likes_path(travel_record), class: 'text-dark', method: :delete, remote: true do
+      i.fas.fa-thumbs-up.fa-fw.text-warning
+      = travel_record.likes.count
+  - else
+    = link_to travel_record_likes_path(travel_record), class: 'text-dark', method: :post, remote: true do
+      i.far.fa-thumbs-up.fa-fw.text-warning
+      = travel_record.likes.count

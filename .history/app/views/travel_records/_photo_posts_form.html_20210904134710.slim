@@ -1,0 +1,23 @@
+- style ||= false
+
+- if controller.action_name == 'new'
+  .col-4 id="img_#{num}" style="#{style}"
+    = image_tag 'no_img.png', id: "img_prev_#{num}", class: "post-field__img mb-3"
+    = f.input :"image_#{num}_cache", as: :hidden
+    label.upload-btn
+      = 'ファイルを選択'
+      = f.input :"image_#{num}", as: :file, label: false, :input_html => { id: "image-select-btn_#{num}"}
+
+- elsif controller.action_name == 'edit'
+  - if travel_record."image_#{number}".present?
+    .col-4 id="img_#{num}"
+      = image_tag travel_record.image_1.to_s, id: "img_prev_#{num}", class: "post-field__img mb-3"
+      = f.input :"remove_image_#{num}", as: :boolean
+      = f.input :"image_#{num}_cache", as: :hidden
+      = f.input :"image_#{num}", as: :file, label: false, :input_html => { id: "image-select-btn_#{num}" }
+  - else
+    .col-4 id="img_#{num}"
+      = image_tag 'no_img.png', id: "img_prev_#{num}", class: "post-field__img mb-3"
+      = f.input :"remove_image_#{num}", as: :boolean
+      = f.input :"image_#{num}_cache", as: :hidden
+      = f.input :"image_#{num}", as: :file, label: false, :input_html => { id: "image-select-btn_#{num}" }

@@ -1,0 +1,24 @@
+.user-information.py-4.px-5
+  .user-information__heading.p-1
+    = t('.sign_up')
+  .user-information__hr-blue
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render 'layouts/error_messages', model: f.object
+    .form-group
+      = f.label :ニックネーム
+      = f.text_field :name, autofocus: true, autocomplete: 'username', placeholder: "例) ハナナビ", class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "例) hana_nav@example.com", class: 'form-control'
+    .form-group
+      = f.label :password
+      = f.password_field :password, autocomplete: 'current-password', placeholder: "※半角8文字以上で入力してください", class: 'form-control'
+      - if @minimum_password_length
+        small.form-text.text-muted
+          = t('devise.shared.minimum_password_length', count: @minimum_password_length)
+    .form-group.pb-4
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: 'current-password', placeholder: "※パスワードを再度入力して入力してください", class: 'form-control'
+    .form-group
+      = f.submit t('.sign_up'), class: 'btn btn-primary btn-block'
+  = render 'devise/shared/links'

@@ -1,0 +1,64 @@
+/ ----- レビュー星評価の実装 -----
+
+/ ----- 'top/index, search,users/favorites, spots/show,photos,placards,map'（平均値） -----
+- if controller.controller_name == 'top' || controller.action_name == 'favorites' \
+  || controller.controller_name == 'flower_items'
+  javascript:
+    $('#star-rate-#{spot.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: "#{spot.travel_records.average(:review).to_f.round(1)}",
+    });
+- elsif controller.controller_name == 'spots'
+  javascript:
+    $('#star-rate-#{spot.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: "#{review_average}",
+    });
+/ ----- 'users/travel_records,likes'(デフォルト表示)-----
+- elsif controller.controller_name == 'users' && controller.action_name == 'travel_records' \
+     || controller.controller_name == 'users' && controller.action_name == 'likes'
+  javascript:
+    $('#star-rate-#{travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: #{travel_record.review},
+    });
+/ ----- 'travel_record/new'(入力時) -----
+- if controller.controller_name == 'travel_records' && controller.action_name == 'new' \
+  || controller.controller_name == 'travel_records' && controller.action_name == 'create'
+
+  javascript:
+    $('#star').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      scoreName: 'travel_record[review]',
+      half: true,
+    });
+/ ----- 'travel_record/edit'(変更時) -----
+- elsif controller.controller_name == 'travel_records' && controller.action_name == 'edit'
+  javascript:
+    $('#star-rate-#{@travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: #{@travel_record.review},
+      scoreName: 'travel_record[review]'
+    });

@@ -1,0 +1,29 @@
+.post-field.p-3
+  .post-field__heading.p-1
+   | 投稿編集
+  .post-field__hr-blue
+  .p-3
+    = simple_form_for @travel_record do |f|
+      = render 'layouts/error_messages',model: f.object
+      .form-group
+        = f.label :images
+        br
+        .row.mb-4
+          = render 'travel_records/photo_posts_form', f: f, travel_record: @travel_record.image_1, num: '1'
+          = render 'travel_records/photo_posts_form', f: f, travel_record: @travel_record.image_2, num: '2'
+          = render 'travel_records/photo_posts_form', f: f, travel_record: @travel_record.image_3, num: '3'
+      .form-group.mt-4
+        = f.input :title, required: false
+        = f.input :content, :as => :text, :input_html => { 'rows' => 5, 'cols' => 10 },required: false
+      = render 'incremental_search_form' , f: f, travel_record: @travel_record
+      .row.mt-4
+        .form-group.col-4
+          = f.input :visited_on, as: :date, html5: true, required: false
+        #star.form-group.offset-2.col-6
+          = f.label :review, required: false
+          .d-flex id=("star-rate-#{@travel_record.id}")
+        = render 'shared/star', show_raty: 'edit'
+      .mt-4
+        = f.button :submit, "編集する", class: 'btn btn-primary btn-block'
+      .mt-4
+        = link_to "この投稿を削除する", travel_record_path(@travel_record), method: :delete, class: 'btn btn-light text-danger font-weight-bold btn-block'

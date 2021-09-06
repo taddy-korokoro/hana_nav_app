@@ -1,0 +1,47 @@
+.post-field.p-3
+  .post-field__heading.p-1
+   | 新規投稿
+  .post-field__hr-blue
+  .p-3
+    = simple_form_for @travel_record do |f|
+      = render 'layouts/error_messages', model: f.object
+      .form-group
+        = f.label :images
+        br
+      .row.mb-4
+        #img_1.col-4
+          = image_tag 'no_img.png', id: "img_prev_1", class: "post-field__img mb-3"
+          /= f.input :image_1_cache, as: :hidden
+          = f.hidden_field :profile_image_cache
+          = f.input :image_1, as: :file, label: false, :input_html => { id: "image-select-btn_1" }
+        #img_2.col-4(style="display: none;")
+          = image_tag 'no_img.png', id: "img_prev_2", class: "post-field__img mb-3"
+          = f.input :image_2_cache, as: :hidden
+          = f.input :image_2, as: :file, label: false, :input_html => { id: "image-select-btn_2" }
+        #img_3.col-4(style="display: none;")
+          = image_tag 'no_img.png', id: "img_prev_3", class: "post-field__img mb-3"
+          = f.input :image_3_cache, as: :hidden
+          = f.input :image_3, as: :file, label: false, :input_html => { id: "image-select-btn_3" }
+
+      .form-group.mt-4
+        = f.input :title, label: 'タイトル【必須】', :input_html => { autocomplete: "off" }, required: false
+        = f.input :content, label: 'クチコミ【必須】', :as => :text, :input_html => { 'rows' => 5, 'cols' => 10, autocomplete: "off" }, required: false
+
+      /----- スポット詳細ページ経由でのスポット名自動入力 -----
+      - if @spot.present?
+        = f.hidden_field :spot_id, value: @spot.id
+        .form-group.mt-4
+          = f.input :place, label: '訪れた場所【必須】', input_html: { value: @spot.name, readonly: true }, required: false
+      /----- スポットと紐付いていない場合 -----
+      - else
+        = render 'incremental_search_form' , f: f, travel_record: @travel_record
+      .row.mt-4
+        .form-group.col-4
+          = f.input :visited_on, label: '訪れた日【必須】', as: :date, html5: true, required: false
+        #star.form-group.offset-2.col-6
+          = f.label :review, label: 'オススメ度【必須】', required: false
+          .d-flex
+            = f.hidden_field :review, id: :review_star
+        = render 'shared/star', show_raty: 'new'
+      .mt-4
+        = f.button :submit, "投稿する", class: 'btn btn-primary btn-block'

@@ -1,0 +1,67 @@
+/ ----- レビュー星評価の実装 -----
+- show_raty ||= false
+
+/ ----- 'top/index, search, users/favorites, flower_items'(平均値) -----
+- if show_raty == 'average'
+  javascript:
+    $('#star-rate-#{spot.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: "#{spot.travel_records.average(:review).to_f.round(1)}"
+    });
+/ ----- 'spots/show,photos,placards,map'(平均値) -----
+- elsif controller.controller_name == 'spots'
+  javascript:
+    $('#star-rate-#{spot.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: "#{review_average}"
+    });
+
+/ ----- 'users/travel_records,likes'(デフォルト表示)-----
+- if show_raty == 'default'
+  javascript:
+    $('#star-rate-#{travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      readOnly: true,
+      score: #{travel_record.review}
+    });
+
+/ ----- 'travel_record/new'(入力時) -----
+- if show_raty == 'new'
+  javascript:
+    const review = `#{@travel_record.review}`
+    $('#star').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: #{@travel_record.review},
+      scoreName: 'travel_record[review]'
+    });
+
+/ ----- 'travel_record/edit'(変更時) -----
+- if show_raty == 'edit'
+  javascript:
+    $('#star-rate-#{@travel_record.id}').raty({
+      size     : 36,
+      starOff: "#{asset_path('star-off.png')}",
+      starOn: "#{asset_path('star-on.png')}",
+      starHalf: "#{asset_path('star-half.png')}",
+      half: true,
+      score: #{@travel_record.review},
+      scoreName: 'travel_record[review]'
+    });

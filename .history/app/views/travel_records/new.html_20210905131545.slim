@@ -1,0 +1,35 @@
+.post-field.p-3
+  .post-field__heading.p-1
+   | 新規投稿
+  .post-field__hr-blue
+  .p-3
+    = simple_form_for @travel_record do |f|
+      = render 'layouts/error_messages', model: f.object
+      .form-group
+        = f.label :images
+      .row.mb-4
+        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "1"
+        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "2", style: "display: none;"
+        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "3", style: "display: none;"
+      .form-group.mb-4
+        = f.input :title, label: 'タイトル【必須】', :input_html => { autocomplete: "off" }, required: false
+        = f.input :content, label: 'クチコミ【必須】', :as => :text, :input_html => { 'rows' => 5, 'cols' => 10, autocomplete: "off" }, required: false
+      /----- スポット詳細ページ経由でのスポット名自動入力 -----
+      - if @spot.present?
+        = f.hidden_field :spot_id, value: @spot.id
+        .form-group.mb-4
+          = f.input :place, label: '訪れた場所【必須】', input_html: { value: @spot.name, readonly: true }, required: false
+      /----- スポットと紐付いていない場合 -----
+      - else
+        = render 'incremental_search_form' , f: f, travel_record: @travel_record
+      .row.my-4
+        .col-4
+          = f.input :visited_on, label: '訪れた日【必須】', as: :date, html5: true, required: false
+        #star.offset-2.col-6
+          = f.label :'オススメ度【必須】', required: false
+          div class=(f.object.errors[:review].present? ? 'form-control is-invalid' : nil)
+            .d-flex
+              = f.hidden_field :review, id: :review_star
+              = render 'shared/star', show_raty: 'new'
+          <div class="invalid-feedback #{f.object.errors[:review].present? ? 'd-block' : 'd-none'}">オススメ度を入力してください</div>
+      = f.button :submit, "投稿する", class: 'btn btn-primary btn-block'

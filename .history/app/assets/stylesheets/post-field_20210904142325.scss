@@ -1,0 +1,25 @@
+.post-field {
+  @extend %box !optional;
+
+  &__heading {
+    @extend %heading !optional;
+  }
+
+  &__hr-blue {
+    @extend %hr-blue !optional;
+  }
+
+  &__img {
+    @extend %post-img !optional;
+  }
+
+  &--style {
+    .form-group {
+      margin-bottom: 0;
+    }
+  }
+
+  #star img {
+    @extend %star-large-size !optional;
+  }
+}
