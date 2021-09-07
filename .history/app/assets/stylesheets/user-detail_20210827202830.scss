@@ -1,7 +1,0 @@
-.user-detail {
-  @include box(white);
-
-  &__thumb-img img {
-    @extend %thumb-img;
-  }
-}

@@ -1,6 +1,0 @@
-/------ 'shared/_post_detailで使用'------
-/ プロフィール画像がnilの場合の対処
-- if travel_record.user.profile_image.blank?
-  = link_to image_tag('no_profile_img.png'), travel_record_user_path(travel_record.user.id)
-- else
-  = link_to image_tag(travel_record.user.profile_image.thumb.url), travel_record_user_path(travel_record.user.id)

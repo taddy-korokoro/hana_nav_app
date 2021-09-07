@@ -1,9 +1,0 @@
-.flower-detail {
-  @include box(#FDF9EF);
-
-  &__name {
-    color: $gray;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-}

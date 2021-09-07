@@ -1,8 +1,0 @@
-h1 ユーザー一覧
-.container
-  .row
-    - @users.each do | user |
-      .col-6
-        = user.name
-        = user.self_introduction
-        = image_tag user.profile_image.to_s,  :size => '200x200'

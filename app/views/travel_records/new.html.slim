@@ -8,12 +8,12 @@
       .form-group
         = f.label :images
       .row.mb-4
-        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "1"
-        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "2", style: "display: none;"
-        = render 'travel_records/photo_posts_form', f: f, view: 'new', num: "3", style: "display: none;"
+        = render 'travel_records/photo_posts_form', f: f, num: '1'
+        = f.object.image_2.present? ? (render 'travel_records/photo_posts_form', f: f, num: '2', style: 'block') : (render 'travel_records/photo_posts_form', f: f, num: '2', style: 'none')
+        = f.object.image_3.present? ? (render 'travel_records/photo_posts_form', f: f, num: '3', style: 'block') : (render 'travel_records/photo_posts_form', f: f, num: '3', style: 'none')
       .form-group.mb-4
-        = f.input :title, label: 'タイトル【必須】', :input_html => { autocomplete: "off" }, required: false
-        = f.input :content, label: 'クチコミ【必須】', :as => :text, :input_html => { 'rows' => 5, 'cols' => 10, autocomplete: "off" }, required: false
+        = f.input :title, label: 'タイトル【必須】', :input_html => { autocomplete: 'off' }, required: false
+        = f.input :content, label: 'クチコミ【必須】', :as => :text, :input_html => { 'rows' => 5, 'cols' => 10, autocomplete: 'off' }, required: false
 
       /----- スポット詳細ページ経由でのスポット名自動入力 -----
       - if @spot.present?
@@ -36,4 +36,4 @@
               = render 'shared/star', show_raty: 'new', f: f
           div class=("invalid-feedback #{is_error ? 'd-block' : 'd-none'}")
            | オススメ度を入力してください
-      = f.button :submit, "投稿する", class: 'btn btn-primary btn-block'
+      = f.button :submit, '投稿する', class: 'btn btn-primary btn-block'

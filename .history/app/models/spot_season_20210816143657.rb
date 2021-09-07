@@ -1,2 +1,0 @@
-class SpotSeason < ApplicationRecord
-end

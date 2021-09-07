@@ -1,5 +1,0 @@
-= form_with model: [travel_record, comment], local: false do |f|
-  .form-group
-      = f.label "コメントを投稿する"
-      = f.text_area :comment, autofocus: true, autocomplete: 'off', placeholder: "コメントを入力してください", class: 'form-control'
-  = f.submit "コメントする", class: 'btn btn-warning btn-block'

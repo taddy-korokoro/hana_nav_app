@@ -1,7 +1,0 @@
-.spot-detail {
-  @include box(white);
-
-  &__heading {
-    @extend %heading;
-  }
-}

@@ -21,8 +21,8 @@
     .form-group
       .d-block
         = f.label :profile_image
-      - if current_user.profile_image?
-        = image_tag current_user.profile_image.to_s, id: 'profile_img_prev', class: 'user-information__img'
+      - if f.object.profile_image?
+        = image_tag f.object.profile_image.to_s, id: 'profile_img_prev', class: 'user-information__img'
         .form-group.mt-2
           = f.check_box :remove_profile_image, class: 'mr-2'
           = f.label :remove_profile_image
@@ -34,7 +34,7 @@
         br
       label.upload-btn
         = 'ファイルを選択'
-        = f.file_field :profile_image, id: 'file-btn'
+        = f.file_field :profile_image, id: 'file_btn'
     .form-group
       = f.label :self_introduction
       = f.text_area :self_introduction, :size => '10x10', autofocus: true, autocomplete: 'off', placeholder: 'プロフィールを入力してください', class: 'form-control'
