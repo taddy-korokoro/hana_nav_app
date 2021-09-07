@@ -5,6 +5,12 @@
     @extend %link-color !optional;
   }
 
+  &__link-hover--blue {
+    a:hover {
+      color: #30a1f2;
+    }
+  }
+
   &__thumb-img img {
     @extend %thumb-img !optional;
   }

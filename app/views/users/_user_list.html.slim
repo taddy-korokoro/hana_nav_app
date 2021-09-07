@@ -1,6 +1,6 @@
 / ----- 'users/index, search, followings, followers' in use -----
 .row.d-flex.align-items-center.px-2.py-2
-  .col-10
+  .col-10.user-detail__link-hover--blue
     = render 'shared/profile_image', user: user, profile_image_confirmation: 'render_argument_user'
     = link_to "#{user.name}さん", travel_records_user_path(user.id), class: 'user-detail__link--black pl-1'
   .col-2

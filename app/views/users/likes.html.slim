@@ -7,13 +7,13 @@
     .user-detail__hr-blue
     - if @likes.present?
       - @likes.each do |like|
-        = link_to travel_record_path(like.travel_record.id)
+        = link_to travel_record_path(like.travel_record.id), class: 'user-detail__link--black'
           .row.px-1.py-2
             .col-8
               .mb-1
                 = like.travel_record.title
               .d-flex.align-items-center.mb-1
-                #star.star-size
+                #star.user-detail__star-size
                   .d-flex id=("star-rate-#{like.travel_record.id}")
                   = render 'shared/star', travel_record: like.travel_record, show_raty: 'default'
                 .user-detail__score-size.ml-2.mr-2
