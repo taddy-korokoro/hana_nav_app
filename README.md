@@ -12,6 +12,7 @@ heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
 
 ## 環境
 
+- macOS
 - ruby 2.7.2
 - rails 6.1.4
   - Slim(HTMLテンプレートエンジン)
@@ -20,6 +21,11 @@ heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
 - MySQL
 - heroku(AWS:S3)
 
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/aba30134513f9fea927d38fdccc60660.png)](https://gyazo.com/aba30134513f9fea927d38fdccc60660)
+
+## 使い方
+
 ## 機能一覧
 
 - 新規登録/ログイン/パスワード再設定機能(devise)
@@ -27,24 +33,23 @@ heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
   - スポット検索 
   - ユーザー検索(ソート機能)
 - 投稿機能
-　　　　-　画像投稿(carrierwave,rmagick,fog-aws)
-　　　　 -　プレビュー機能
-　　　　-　インクリメンタルサーチ機能(タイムレス検索)
-　　　　-　レビュー機能(raty)
+  - 画像投稿(carrierwave,rmagick,fog-aws)
+    - プレビュー機能
+  - インクリメンタルサーチ機能(タイムレス検索)
+  - レビュー機能(raty)
 - タイムライン機能
   - フォローユーザーの投稿を確認できる
 - お気に入り機能(Ajax)
-  -　スポットの登録
+  - スポットの登録
 - いいね機能(Ajax)
-  -　ユーザーの投稿に対して共感等の意思表現 
+  - ユーザーの投稿に対して共感等の意思表現 
 - フォロー機能(Ajax)
 - ページネーション機能(kaminari)
 - スポット所在地の地図表示(google maps API)
 
-## スポットデータの取得
+## 非機能一覧
 - スクレイピング(nokogiri)->(app/models/scraping.rb)
-- バルクインサート(activerecord-import)
+  - スポットデータの取得
+- バルクインサート(activerecord-import)->(lib/import_csv.rb)
   - CSVファイルのデータをDBに投入
-
-## テスト
-- RSpec
+- テスト(RSpec)
