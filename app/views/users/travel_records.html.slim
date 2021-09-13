@@ -31,6 +31,10 @@
             .offset-1.col-3
               - if travel_record.image_1?
                 = image_tag travel_record.image_1.to_s, class: 'user-detail__img border'
+              - elsif travel_record.image_2?
+                = image_tag travel_record.image_2.to_s, class: 'user-detail__img border'
+              - elsif travel_record.image_3?
+                = image_tag travel_record.image_3.to_s, class: 'user-detail__img border'
               - else
                 = image_tag 'no_img.png', class: 'user-detail__img border'
         hr
