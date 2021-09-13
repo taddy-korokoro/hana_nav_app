@@ -1,4 +1,4 @@
-### 全国にある花の名所を探すことができる共有サイト「花ナビ(hana_nav)」
+### 全国にある花の名所を探すことができる共有サイト「花ナビ」
 
 [![Image from Gyazo](https://i.gyazo.com/500ce9a9a11dc63b9cfe58778b94d451.png)](https://gyazo.com/500ce9a9a11dc63b9cfe58778b94d451)
 
