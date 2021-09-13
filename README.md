@@ -9,6 +9,7 @@
 ## サービスURL
 
 heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
+AWS: (実装予定)
 
 ## 環境
 
@@ -22,7 +23,7 @@ heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
 - heroku(AWS:S3)
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/aba30134513f9fea927d38fdccc60660.png)](https://gyazo.com/aba30134513f9fea927d38fdccc60660)
+[![Image from Gyazo](https://i.gyazo.com/991a2a06478a8109446748bdd7e3baa2.png)](https://gyazo.com/991a2a06478a8109446748bdd7e3baa2)
 
 ## 使い方
 
