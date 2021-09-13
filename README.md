@@ -8,8 +8,8 @@
 
 ## サービスURL
 
-heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
-AWS: (実装予定)
+- heroku: https://hana-nav.herokuapp.com (レスポンス未対応)
+- AWS: (実装予定)
 
 ## 環境
 
