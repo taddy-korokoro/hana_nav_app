@@ -25,7 +25,14 @@
 ## ER図
 [![Image from Gyazo](https://i.gyazo.com/991a2a06478a8109446748bdd7e3baa2.png)](https://gyazo.com/991a2a06478a8109446748bdd7e3baa2)
 
-## 使い方
+## プレビュー
+### トップページ（検索機能）
+
+[![Image from Gyazo](https://i.gyazo.com/504262a13ad24b9b83a7525a7192dd87.png)](https://gyazo.com/504262a13ad24b9b83a7525a7192dd87)
+
+### ユーザー詳細ページ
+
+[![Image from Gyazo](https://i.gyazo.com/b715fadb37618028c547f79d6a2bac5f.png)](https://gyazo.com/b715fadb37618028c547f79d6a2bac5f)
 
 ## 機能一覧
 
