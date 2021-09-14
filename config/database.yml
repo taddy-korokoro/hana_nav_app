@@ -21,11 +21,17 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  adapter: mysql2
-  charset: utf8mb4
-  encoding: utf8mb4
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  port: <%= ENV['DB_PORT'] %>
+<<: *default
+database: hana_nav_production
+username: root
+password: <%= ENV['DATABASE_PASSWORD'] %>
+socket: /var/lib/mysql/mysql.sock
+# production:
+#   <<: *default
+#   adapter: mysql2
+#   charset: utf8mb4
+#   encoding: utf8mb4
+#   database: <%= ENV['DB_NAME'] %>
+#   username: <%= ENV['DATABASE_USERNAME'] %>
+#   password: <%= ENV['DATABASE_PASSWORD'] %>
+#   port: <%= ENV['DB_PORT'] %>
