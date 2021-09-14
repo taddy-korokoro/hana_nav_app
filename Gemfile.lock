@@ -184,7 +184,6 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
-    mysql2 (0.5.3)
     nio4r (2.5.7)
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
@@ -366,7 +365,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
-  mysql2
   nokogiri (>= 1.11.4)
   pry-rails
   puma (~> 5.0)
