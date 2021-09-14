@@ -21,11 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-<<: *default
-database: hana_nav_production
-username: root
-password: <%= ENV['DATABASE_PASSWORD'] %>
-socket: /var/lib/mysql/mysql.sock
+  <<: *default
+  database: hana_nav_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
 # production:
 #   <<: *default
 #   adapter: mysql2
