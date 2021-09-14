@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  database: hana_nav_production
+  database: アプリ名_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
