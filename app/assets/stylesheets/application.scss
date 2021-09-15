@@ -11,7 +11,8 @@ $green: #54bca9;
 
 %main-img {
   height: 535px;
-  background-image: url("main_img.png");
+  background-image: image-url("main_img.png");
+  // background-image: url("main_img.png");
   background-position: center center;
   background-size: cover;
   border-radius: 20px;
