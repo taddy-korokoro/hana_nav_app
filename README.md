@@ -1,6 +1,6 @@
 ### 全国にある花の名所を探すことができる共有サイト「花ナビ」
 
-[![Image from Gyazo](https://i.gyazo.com/500ce9a9a11dc63b9cfe58778b94d451.png)](https://gyazo.com/500ce9a9a11dc63b9cfe58778b94d451)
+[![Image from Gyazo](https://i.gyazo.com/e07a7005050d03e338c8bdcfe9a338d1.png)](https://gyazo.com/e07a7005050d03e338c8bdcfe9a338d1)
 
 ## サービス概要
 「自然の中で花を楽しみたい！でも周りにどのようなスポットがあるのか分からない、、」<br>
